@@ -493,11 +493,6 @@ table.insert(M, {
             })
         end
     },
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        opts = {},
-    },
     -- Line indentation
     {
         "lukas-reineke/indent-blankline.nvim",

@@ -50,9 +50,9 @@ end
 M.setup = function()
     require("mason").setup()
     require("mason-lspconfig").setup()
+    -- only manage stuff in here when nix won't work 
     require('mason-tool-installer').setup({
         ensure_installed = {
-            "rust_analyzer",
             "codelldb",
             "java-debug-adapter",
             "java-test",
@@ -400,6 +400,13 @@ M.setup = function()
             require("metals").initialize_or_attach(metals_config)
         end,
         group = nvim_metals_group,
+    })
+
+    --------------------------------------------------------
+    --- TYPESCRIPT CONFIGURATION
+    --------------------------------------------------------
+    lspconfig.ts_ls.setup({
+        on_attach = M.on_attach_common,
     })
 end
 return M
