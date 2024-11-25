@@ -1,35 +1,4 @@
-{pkgs, ...}: let
-  treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-    p.bash
-    p.comment
-    p.css
-    p.dockerfile
-    p.fish
-    p.gitattributes
-    p.gitignore
-    p.go
-    p.gomod
-    p.gosum
-    p.gowork
-    p.hcl
-    p.java
-    p.javascript
-    p.jq
-    p.json5
-    p.json
-    p.lua
-    p.make
-    p.markdown
-    p.nix
-    p.nu
-    p.python
-    p.rust
-    p.toml
-    p.typescript
-    p.vue
-    p.yaml
-  ]);
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     hadolint
     dprint
@@ -62,11 +31,6 @@ in {
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
-    # extraConfig = ":luafile ~/.config/nvim/init.lua";
-    plugins = [
-      treesitterWithGrammars
-      pkgs.vimPlugins.nvim-lsp-ts-utils
-    ];
   };
 
   home.file."./.config/nvim/" = {

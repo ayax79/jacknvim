@@ -68,29 +68,41 @@ table.insert(M, {
             vim.o.timeoutlen = 300
         end,
     },
+    "JoosepAlviste/nvim-ts-context-commentstring",
     -- Configurations and extraction layer for the treesitter parsing tool
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
+        lazy = false,
+        build = ":TSUpdate",
+        opts = {
+            ensure_installed = { "nu", "lua", "rust", "toml", "markdown", "markdown_inline", "regex", "go" },
+            auto_install = true,
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = { "markdown" },
+            },
+            ident = { enable = true },
+            rainbow = {
+                enable = true,
+                extended_mode = true,
+                max_file_lines = nil,
+            },
         },
-        config = function()
-            -- Treesitter Plugin Setup
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "lua", "rust", "toml", "markdown", "markdown_inline", "regex", "nu", "go" },
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = { "markdown" },
+        config = function(_, opts)
+            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+            parser_config.nu = {
+                install_info = {
+                    url = "~/src/nushell/tree-sitter-nu", -- local path or git repo
+                    files = { "src/parser.c", "src/scanner.c" },                            -- note that some parsers also require src/scanner.c or src/scanner.cc
+                    branch = "main",                                       -- default branch in case of git repo if different from master
+                    generate_requires_npm = false,                         -- if stand-alone parser without npm dependencies
+                    requires_generate_from_grammar = false,                -- if folder contains pre-generated src/parser.c
                 },
-                ident = { enable = true },
-                rainbow = {
-                    enable = true,
-                    extended_mode = true,
-                    max_file_lines = nil,
-                },
-            })
+                filetype = "nu",                                           -- if filetype does not match the parser name
+            }
+            require("nvim-treesitter.configs").setup(opts)
         end,
+        dependencies = { 'nushell/tree-sitter-nu' },
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -174,7 +186,6 @@ table.insert(M, {
             })
         end,
         dependencies = {
-            'nvim-treesitter/nvim-treesitter', -- optional
             'nvim-tree/nvim-web-devicons',     -- optional
         }
     },
@@ -382,7 +393,6 @@ table.insert(M, {
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
         build = "make",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
             "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
@@ -466,7 +476,6 @@ table.insert(M, {
         dependencies = { -- optional packages
             "ray-x/guihua.lua",
             "neovim/nvim-lspconfig",
-            "nvim-treesitter/nvim-treesitter",
         },
         config = function()
             require("go").setup()
@@ -557,24 +566,6 @@ table.insert(M, {
             },
         },
         ft = { "scala", "sbt" },
-    },
-    -- nushell support
-    {
-        "LhKipp/nvim-nu",
-        build = ":TSInstall nu",
-        lazy = false,
-        -- ft = "nu",
-        config = function()
-            require 'nu'.setup {
-                use_lsp_features = true, -- requires https://github.com/jose-elias-alvarez/null-ls.nvim
-                -- lsp_feature: all_cmd_names is the source for the cmd name completion.
-                -- It can be
-                --  * a string, which is evaluated by nushell and the returned list is the source for completions (requires plenary.nvim)
-                --  * a list, which is the direct source for completions (e.G. all_cmd_names = {"echo", "to csv", ...})
-                --  * a function, returning a list of strings and the return value is used as the source for completions
-                all_cmd_names = [[help commands | get name | str join "\n"]]
-            }
-        end,
     },
     -- json/yaml schema stores
     "b0o/SchemaStore.nvim",
