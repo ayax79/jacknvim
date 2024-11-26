@@ -50,7 +50,7 @@ end
 M.setup = function()
     require("mason").setup()
     require("mason-lspconfig").setup()
-    -- only manage stuff in here when nix won't work 
+    -- only manage stuff in here when nix won't work
     require('mason-tool-installer').setup({
         ensure_installed = {
             "codelldb",
@@ -115,7 +115,7 @@ M.setup = function()
 
     require("lsp-colors").setup()
 
-    local codelldb_home = vim.fn.stdpath('data')  .. '/mason/packages/codelldb/extension/'
+    local codelldb_home = vim.fn.stdpath('data') .. '/mason/packages/codelldb/extension/'
     local codelldb_path = codelldb_home .. 'adapter/codelldb'
 
     local dap, dapui = require("dap"), require("dapui")
