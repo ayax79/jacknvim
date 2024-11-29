@@ -212,9 +212,9 @@ M.setup = function()
                         },
                         cargo = {
                             autoReload = true,
-                            features = "all",
+                            -- features = "all",
                         },
-                        procMacro = { enable = true },
+                        -- procMacro = { enable = true },
                         diagnostics = { disabled = { "inactive-code" } },
 
                     },
