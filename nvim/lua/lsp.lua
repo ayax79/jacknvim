@@ -59,7 +59,7 @@ M.setup = function()
             "jdtls",
             "lombok-nightly",
             "openjdk-17",
-            "rust-analyzer",
+            -- "rust-analyzer",
             "spring-boot-tools",
         }
     })
@@ -138,7 +138,6 @@ M.setup = function()
     --------------------------------------------------------
     --- RUST CONFIGURATION
     --------------------------------------------------------
-
     vim.g.rustaceanvim = function()
         -- Update this path
         local liblldb_path = codelldb_home .. 'lldb/lib/liblldb'
@@ -205,20 +204,67 @@ M.setup = function()
                     M.setup_codelens_refresh(client, bufnr)
                 end,
                 -- rust-analyzer language server configuration
+                -- settings = {
+                --     ['rust-analyzer'] = {
+                --         initialization_options = {
+                --             -- get more cargo-less diagnostics from rust-analyzer,
+                --             -- which might include false-positives (those can be turned off by their names)
+                --             diagnostics = {
+                --                 experimental = {
+                --                     enable = true,
+                --                 }
+                --             },
+                --             -- To disable the checking entirely
+                --             -- (ignores all cargo and check settings below)
+                --             checkOnSave = false,
+                --             -- To check the `lib` target only.
+                --             cargo = {
+                --                 allTargets = false
+                --             },
+                --             -- Use `-p` instead of `--workspace` for cargo check
+                --             check = {
+                --                 workspace = false,
+                --             }
+                --         }
+                --     },
+                -- },
                 settings = {
                     ['rust-analyzer'] = {
-                        check = {
-                            features = "all",
-                        },
-                        cargo = {
-                            autoReload = true,
-                            -- features = "all",
-                        },
-                        -- procMacro = { enable = true },
+                        -- check = {
+                        --     features = "all",
+                        -- },
+                        -- cargo = {
+                        --     autoReload = true,
+                        --     -- features = "all",
+                        -- },
+                        -- -- procMacro = { enable = true },
                         diagnostics = { disabled = { "inactive-code" } },
-
+                        files = {
+                            excludeDirs = {
+                                "_build",
+                                ".dart_tool",
+                                ".flatpak-builder",
+                                ".git",
+                                ".gitlab",
+                                ".gitlab-ci",
+                                ".gradle",
+                                ".idea",
+                                ".next",
+                                ".project",
+                                ".scannerwork",
+                                ".settings",
+                                ".venv",
+                                "archetype-resources",
+                                "bin",
+                                "hooks",
+                                "node_modules",
+                                "po",
+                                "screenshots",
+                                "target"
+                            }
+                        }
                     },
-                },
+                }
             },
             -- DAP configuration
             dap = {
