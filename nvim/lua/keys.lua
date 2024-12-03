@@ -34,8 +34,8 @@ wk.add({
     -- Global Mappings
     { "[d",       vim.diagnostic.goto_prev,     desc = "Prev Diagnostic", },
     { "]d",       vim.diagnostic.goto_next,     desc = "Next Diagnostic", },
-    { '<space>q', vim.diagnostic.setloclist,    desc = "Set Loclist", },
-    { "<space>Q", vim.lsp.diagnostic.setqflist, desc = "Set Quickfixlist", },
+    { '<space>ql', vim.diagnostic.setloclist,    desc = "Set Loclist", },
+    { "<space>qq", vim.diagnostic.setqflist, desc = "Set Quickfixlist", },
     { "-",        "<CMD>Oil<CR>",               desc = "Open parent directory", },
 
     -- Find Group (Telescope)
