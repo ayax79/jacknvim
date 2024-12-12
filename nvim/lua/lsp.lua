@@ -37,7 +37,14 @@ end
 M.on_attach_common = function(client, bufnr)
     vim.lsp.inlay_hint.enable(true)
     M.setup_codelens_refresh(client, bufnr)
-    navic.attach(client, bufnr)
+
+    local status_ok, doc_symbols_supported = pcall(function()
+        return client.supports_method("textDocument/documentSymbol")
+    end)
+
+    if status_ok and doc_symbols_supported then
+        navic.attach(client, bufnr)
+    end
 end
 
 function M.get_capabilities()
@@ -398,7 +405,10 @@ M.setup = function()
     --------------------------------------------------------
     --- NUSHELL CONFIGURATION
     --------------------------------------------------------
-    require 'lspconfig'.nushell.setup {}
+    require 'lspconfig'.nushell.setup {
+        on_attach = M.on_attach_common,
+        capabilities = capabilities,
+    }
 
     --------------------------------------------------------
     --- JAVA CONFIGURATION
@@ -411,6 +421,7 @@ M.setup = function()
     --------------------------------------------------------
     lspconfig.gopls.setup({
         on_attach = M.on_attach_common,
+        capabilities = capabilities,
     })
 
     --------------------------------------------------------
@@ -453,6 +464,16 @@ M.setup = function()
     --------------------------------------------------------
     lspconfig.ts_ls.setup({
         on_attach = M.on_attach_common,
+        capabilities = capabilities,
+    })
+
+
+    --------------------------------------------------------
+    --- TERRAFORM CONFIGURATION
+    --------------------------------------------------------
+    lspconfig.terraformls.setup({
+        on_attach = M.on_attach_common,
+        capabilities = capabilities,
     })
 end
 return M

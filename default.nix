@@ -9,7 +9,7 @@
     nodePackages.vscode-langservers-extracted
     yaml-language-server # YAML language server
     efm-langserver # EFM language server
-    terraform-lsp # terrform language server
+    terraform-ls # terrform language server
     pyright # Pyright language server
     alejandra # Alejandra nix formatting
     # Lua language server
