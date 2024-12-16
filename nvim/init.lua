@@ -29,8 +29,5 @@ require("lazy").setup(plugins, lazy_opts)
 -- lsp configuration
 require("lsp").setup()
 
--- code completion configuration
-require("completions")
-
 -- key mappings including which key
 require("keys")

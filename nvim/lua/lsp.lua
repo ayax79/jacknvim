@@ -48,10 +48,8 @@ M.on_attach_common = function(client, bufnr)
 end
 
 function M.get_capabilities()
-    -- Add additional capabilities supported by nvim-cmp
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-    return capabilities
+    return require('blink.cmp').get_lsp_capabilities(capabilities)
 end
 
 M.setup = function()
@@ -106,9 +104,9 @@ M.setup = function()
     -- noselect: Do not select, force to select one from the menu
     -- shortness: avoid showing extra messages when using completion
     -- updatetime: set updatetime for CursorHold
-    vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
-    vim.opt.shortmess = vim.opt.shortmess + { c = true }
-    vim.api.nvim_set_option_value("updatetime", 300, { scope = 'global' })
+    -- vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
+    -- vim.opt.shortmess = vim.opt.shortmess + { c = true }
+    -- vim.api.nvim_set_option_value("updatetime", 300, { scope = 'global' })
 
     -- -- Fixed column for diagnostics to appear
     -- -- Show autodiagnostic popup on cursor hover_range
@@ -443,7 +441,7 @@ M.setup = function()
     metals_config.init_options.statusBarProvider = "off"
 
     -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-    metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+    metals_config.capabilities = M.get_capabilities()
 
     metals_config.on_attach = function(client, bufnr)
         require("metals").setup_dap()
@@ -466,7 +464,6 @@ M.setup = function()
         on_attach = M.on_attach_common,
         capabilities = capabilities,
     })
-
 
     --------------------------------------------------------
     --- TERRAFORM CONFIGURATION

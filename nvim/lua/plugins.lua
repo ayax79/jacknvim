@@ -1,50 +1,14 @@
 M = {}
 
---------------------------------------------------------
---- THEME, UI, & VISUALS
---------------------------------------------------------
-if vim.g.theme_name == "nord" then
-    table.insert(M, {
-        "shaunsingh/nord.nvim",
+table.insert(M, {
+    {
+        'rmehri01/onenord.nvim',
         lazy = false,
         priority = 1000,
         config = function()
-            -- Example config in lua
-            vim.g.nord_contrast = true
-            vim.g.nord_borders = true
-            vim.g.nord_disable_background = false
-            vim.g.nord_italic = false
-            vim.g.nord_uniform_diff_background = true
-            vim.g.nord_bold = false
-
-            -- Load the colorscheme
-            require('nord').set()
+            require 'onenord'.setup()
         end
-    })
-elseif vim.g.theme_name == "nordic" then
-    table.insert(M,
-        {
-            'AlexvZyl/nordic.nvim',
-            lazy = false,
-            priority = 1000,
-            config = function()
-                require 'nordic'.load()
-            end
-        })
-elseif vim.g.theme_name == "onenord" then
-    table.insert(M,
-        {
-            'rmehri01/onenord.nvim',
-            lazy = false,
-            priority = 1000,
-            config = function()
-                require 'onenord'.setup()
-            end
-        })
-end
-
-table.insert(M, {
-
+    },
     --------------------------------------------------------
     --- COMMON LIBRARIES & EDITOR FUNCTIONALITY
     --------------------------------------------------------
@@ -348,42 +312,84 @@ table.insert(M, {
     --- COMPLETIONS SUPPORT
     --------------------------------------------------------
 
-    -- Completion engine
-    "hrsh7th/nvim-cmp",
-    -- Using this fork for nvim-cmp for the ability to put
-    -- the completions above the line to avoid conflicting with copilot
-    -- {
-    --     "llllvvuu/nvim-cmp",
-    --     branch = "feat/above"
-    -- },
-    -- cmp source for nvim api
-    "hrsh7th/cmp-nvim-lsp",
-    -- cmp source for buffer words
-    "hrsh7th/cmp-buffer",
-    -- cmp source for filesystem paths
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    -- completions for signatures
-    --  "hrsh7th/cmp-nvim-lsp-signature-help" ,
-    "hrsh7th/cmp-nvim-lua",
+    {
+        'saghen/blink.cmp',
+        lazy = false, -- lazy loading handled internally
+        -- optional: provides snippets for the snippet source
+        dependencies = 'rafamadriz/friendly-snippets',
+
+        -- use a release tag to download pre-built binaries
+        version = 'v0.*',
+        -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+        -- build = 'cargo build --release',
+        -- If you use nix, you can build from source using latest nightly rust with:
+        -- build = 'nix run .#build-plugin',
+
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            -- 'default' for mappings similar to built-in completion
+            -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+            -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+            -- see the "default configuration" section below for full documentation on how to define
+            -- your own keymap.
+            keymap = { preset = 'default' },
+
+            appearance = {
+                -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+                -- Useful for when your theme doesn't support blink.cmp
+                -- will be removed in a future release
+                use_nvim_cmp_as_default = true,
+                -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+                -- Adjusts spacing to ensure icons are aligned
+                nerd_font_variant = 'mono'
+            },
+
+            -- default list of enabled providers defined so that you can extend it
+            -- elsewhere in your config, without redefining it, via `opts_extend`
+            sources = {
+                completion = {
+                    -- enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', "copilot" },
+                    enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
+                },
+                --     providers = {
+                --         copilot = {
+                --             name = "copilot",
+                --             module = "blink-cmp-copilot",
+                --             score_offset = 100,
+                --             async = true,
+                --         },
+                --     },
+            },
+
+            -- experimental auto-brackets support
+            -- completion = { accept = { auto_brackets = { enabled = true } } }
+
+            -- experimental signature help support
+            -- signature = { enabled = true }
+        },
+        -- allows extending the enabled_providers array elsewhere in your config
+        -- without having to redefine it
+        opts_extend = { "sources.completion.enabled_providers" },
+
+        menu = {
+            -- Reverse the direction priority in order to not conflict with copilot
+            direction_priority = { 'n', 's' },
+        },
+    },
     -- github copilot
-    "zbirenbaum/copilot-cmp",
-    "zbirenbaum/copilot.lua",
-    -- {
-    --     "CopilotC-Nvim/CopilotChat.nvim",
-    --     branch = "canary",
-    --     build = "make tiktoken",
-    --     dependencies = {
-    --         { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-    --         { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
-    --     },
-    --     opts = {
-    --         window = {
-    --             width = 0.33,
-    --         },
-    --     }
-    -- },
-    -- -- "github/copilot.vim",
+    -- "giuxtaposition/blink-cmp-copilot",
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                -- suggestion = { enabled = false },
+                -- panel = { enabled = false },
+            })
+        end,
+    },
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
@@ -440,13 +446,13 @@ table.insert(M, {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
+            "saghen/blink.cmp",
             "SmiteshP/nvim-navbuddy",
-            dependencies = {
-                "SmiteshP/nvim-navic",
-                "MunifTanjim/nui.nvim"
-            },
-            opts = { lsp = { auto_attach = true } }
         }
+    },
+    {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig"
     },
     -- provides the underlying debugger support
     "mfussenegger/nvim-dap",
@@ -848,7 +854,7 @@ table.insert(M, {
         config = function()
             require("bacon").setup({
                 quickfix = {
-                    enabled = true, -- Enable Quickfix integration
+                    enabled = true,       -- Enable Quickfix integration
                     event_trigger = true, -- Trigger QuickFixCmdPost after populating Quickfix list
                 },
             })
