@@ -24,6 +24,8 @@
     lua5_1
     html-tidy # html/xml formatter
     typescript-language-server
+    # rustacean graph crate functionality
+    graphviz
   ];
 
   programs.neovim = {
