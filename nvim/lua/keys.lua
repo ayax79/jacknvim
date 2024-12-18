@@ -31,7 +31,7 @@ wk.add({
         name = "Find",
         group = "Find",
         { "<leader>ff", fzf_lua.files,                 desc = "Find File", },
-        { "<leader>fg", fzf_lua.grep,                  desc = "Live Grep", },
+        { "<leader>fg", fzf_lua.live_grep,             desc = "Live Grep", },
         { "<leader>fb", fzf_lua.buffers,               desc = "Find Buffer", },
         { "<leader>fd", fzf_lua.diagnostics_workspace, desc = "Find Diagnostics", },
         { "<leader>fk", fzf_lua.keymaps,               desc = "Find Keymap", },
