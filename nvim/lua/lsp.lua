@@ -160,9 +160,6 @@ M.setup = function()
         return {
             -- Plugin configuration
             tools = {
-                runnables = {
-                    use_telescope = true,
-                },
                 float_win_config = {
                     border = {
                         { '╭', 'FloatBorder' },

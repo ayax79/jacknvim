@@ -1,27 +1,10 @@
 -- which key
 local wk = require("which-key")
-local telescope_builtin = require("telescope.builtin")
+local fzf_lua = require('fzf-lua')
 local crates = require("crates");
 
 -- BEGIN HARPOON
 local harpoon = require('harpoon')
--- basic telescope configuration
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
-
-    require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
-end
 -- END HARPOON
 
 -- substitude plugin
@@ -36,62 +19,60 @@ vim.keymap.set("n", ",", ":BaconList<CR>", { desc = "Open bacon locations list" 
 
 wk.add({
     -- Global Mappings
-    { "[d",       vim.diagnostic.goto_prev,     desc = "Prev Diagnostic", },
-    { "]d",       vim.diagnostic.goto_next,     desc = "Next Diagnostic", },
-    { '<space>ql', vim.diagnostic.setloclist,    desc = "Set Loclist", },
-    { "<space>qq", vim.diagnostic.setqflist, desc = "Set Quickfixlist", },
-    { "-",        "<CMD>Oil<CR>",               desc = "Open parent directory", },
+    { "[d",        vim.diagnostic.goto_prev,  desc = "Prev Diagnostic", },
+    { "]d",        vim.diagnostic.goto_next,  desc = "Next Diagnostic", },
+    { '<space>ql', vim.diagnostic.setloclist, desc = "Set Loclist", },
+    { "<space>qq", vim.diagnostic.setqflist,  desc = "Set Quickfixlist", },
+    { "-",         "<CMD>Oil<CR>",            desc = "Open parent directory", },
 
-    -- Find Group (Telescope)
+    -- Find Group
     {
         "<leader>f",
         name = "Find",
         group = "Find",
-        { "<leader>ff", telescope_builtin.find_files,                desc = "Find File", },
-        { "<leader>fg", telescope_builtin.live_grep,                 desc = "Live Grep", },
-        { "<leader>fb", telescope_builtin.buffers,                   desc = "Find Buffer", },
-        { "<leader>fd", telescope_builtin.diagnostics,               desc = "Find Diagnostics", },
-        { "<leader>fD", require("telescope").extensions.zoxide.list, desc = "Find Directory", },
-        { "<leader>fk", telescope_builtin.keymaps,                   desc = "Find Keymap", },
-        { "<leader>fq", telescope_builtin.quickfix,                  desc = "Find Quickfix", },
-        { "<leader>fQ", telescope_builtin.quickfix,                  desc = "Find Quickfix History", },
-        { "<leader>fr", telescope_builtin.registers,                 desc = "Find Register", },
-        { "<leader>fG", telescope_builtin.git_files,                 desc = "Find Git Files", },
-        { "<leader>fs", telescope_builtin.git_status,                desc = "Modified Git files", },
-        { "<leader>fj", telescope_builtin.jumplist,                  desc = "Jump List", },
+        { "<leader>ff", fzf_lua.files,                 desc = "Find File", },
+        { "<leader>fg", fzf_lua.grep,                  desc = "Live Grep", },
+        { "<leader>fb", fzf_lua.buffers,               desc = "Find Buffer", },
+        { "<leader>fd", fzf_lua.diagnostics_workspace, desc = "Find Diagnostics", },
+        { "<leader>fk", fzf_lua.keymaps,               desc = "Find Keymap", },
+        { "<leader>fq", fzf_lua.quickfix,              desc = "Find Quickfix", },
+        { "<leader>fQ", fzf_lua.quickfix_stack,        desc = "Find Quickfix History", },
+        { "<leader>fr", fzf_lua.registers,             desc = "Find Register", },
+        { "<leader>fG", fzf_lua.git_files,             desc = "Find Git Files", },
+        { "<leader>fs", fzf_lua.git_status,            desc = "Modified Git files", },
+        { "<leader>fj", fzf_lua.jumps,                 desc = "Jump List", },
     },
     -- Git Group
     {
         "<leader>g",
         name = "Git",
         group = "Git",
-        { "<leader>gg", "<cmd>LazyGit<cr>",            desc = "Lazy Git", },
-        { "<leader>gf", telescope_builtin.git_files,   desc = "Find Git Files", },
-        { "<leader>gz", telescope_builtin.git_status,  desc = "Modified Git files (git_status)", },
-        { "<leader>gl", telescope_builtin.git_commits, desc = "Git commits log", },
-        { "<leader>gZ", telescope_builtin.git_stash,   desc = "Git stash", },
+        { "<leader>gg", "<cmd>LazyGit<cr>",  desc = "Lazy Git", },
+        { "<leader>gf", fzf_lua.git_files,   desc = "Find Git Files", },
+        { "<leader>gz", fzf_lua.git_status,  desc = "Modified Git files (git_status)", },
+        { "<leader>gl", fzf_lua.git_commits, desc = "Git commits log", },
+        { "<leader>gZ", fzf_lua.git_stash,   desc = "Git stash", },
     },
     -- Bookmarks Group
     {
         "<leader>m",
         name = "Bookmarks",
         group = "Bookmarks",
-        { "<leader>mm", "<Cmd>BookmarkToggle<CR>",                       desc = "Toggle bookmark", },
-        { "<leader>mi", "<Cmd>BookmarkAnnotate<CR>",                     desc = "Annotate bookmark", },
-        { "<leader>mn", "<Cmd>BookmarkNext<CR>",                         desc = "Jump to next bookmark in buffer", },
-        { "<leader>mp", "<Cmd>BookmarkPrev<CR>",                         desc = "Jump to previous bookmark in buffer", },
-        { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",                      desc = "Show all bookmarks (toggle)", },
-        { "<leader>mc", "<Cmd>BookmarkClear<CR>",                        desc = "Clear bookmarks in current buffer", },
-        { "<leader>mx", "<Cmd>BookmarkClearAll<CR>",                     desc = "Clear bookmarks in all buffers", },
-        { "<leader>mf", "<Cmd>Telescope vim_bookmarks current_file<CR>", desc = "Find bookmark (current file)", },
-        { "<leader>mF", "<Cmd>Telescope vim_bookmarks all<CR>",          desc = "Find bookmark (all files)", },
+        { "<leader>mm", "<Cmd>BookmarkToggle<CR>",   desc = "Toggle bookmark", },
+        { "<leader>mi", "<Cmd>BookmarkAnnotate<CR>", desc = "Annotate bookmark", },
+        { "<leader>mn", "<Cmd>BookmarkNext<CR>",     desc = "Jump to next bookmark in buffer", },
+        { "<leader>mp", "<Cmd>BookmarkPrev<CR>",     desc = "Jump to previous bookmark in buffer", },
+        { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",  desc = "Show all bookmarks (toggle)", },
+        { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
+        { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
+        { "<leader>mf", fzf_lua.marks,               desc = "Find bookmark (current file)", },
     },
     -- Buffers Group
     {
         "<leader>b",
         name = "Buffers",
         group = "Buffers",
-        { "<leader>bf", telescope_builtin.buffers,            desc = "Find Buffer", },
+        { "<leader>bf", fzf_lua.buffers,                      desc = "Find Buffer", },
         { "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", desc = "Order buffers by number", },
         { "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>",    desc = "Order buffers by directory", },
         { "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>",     desc = "Order buffers by Language", },
@@ -102,11 +83,11 @@ wk.add({
         "<leader>l",
         name = "LSP",
         group = "LSP",
-        { "<leader>ls", telescope_builtin.lsp_document_symbols,  desc = "Document symbols", },
-        { "<leader>lS", telescope_builtin.lsp_workspace_symbols, desc = "Workspace symbols", },
-        { "<leader>ll", vim.lsp.codelens.run,                    desc = "CodeLens Action", },
-        { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>",      desc = "Peek Definition", },
-        { "<leader>lo", "<cmd>Lspsaga outline<cr>",              desc = "Outline", },
+        { "<leader>ls", fzf_lua.lsp_document_symbols,       desc = "Document symbols", },
+        { "<leader>lS", fzf_lua.lsp_workspace_symbols,      desc = "Workspace symbols", },
+        { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
+        { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition", },
+        { "<leader>lo", "<cmd>Lspsaga outline<cr>",         desc = "Outline", },
         --Debugger Group
         {
             "<leader>lD",
@@ -146,7 +127,6 @@ wk.add({
         "<leader>h",
         name = "Harpooon",
         group = "Harpooon",
-        { "<leader>hf", function() toggle_telescope(harpoon:list()) end,             desc = "Harpoon Telescope" },
         { "<leader>ha", function() harpoon:list():add() end,                         desc = "Harpoon Add File" },
         { "<leader>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon Quicklist" },
         { "<leader>hr", function() harpoon:list():remove() end,                      desc = "Remove Current File" },
@@ -157,44 +137,6 @@ wk.add({
         { "[h",         function() harpoon:list():prev() end,                        desc = "Harpoon Prev" },
         { "]h",         function() harpoon:list():next() end,                        desc = "Harpoon Next" },
     },
-    -- Copilot Chat
-    -- {
-    --     "<leader>p",
-    --     group = "Copilot",
-    --     {
-    --         "<leader>pq",
-    --         function()
-    --             local input = vim.fn.input("Quick Chat: ")
-    --             if input ~= "" then
-    --                 require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-    --             end
-    --         end,
-    --         desc = "CopilotChat - Quick chat"
-    --     },
-    --     {
-    --         "<leader>ph",
-    --         function()
-    --             local actions = require("CopilotChat.actions")
-    --             require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-    --         end,
-    --         desc = "CopilotChat - Help actions",
-    --     },
-    --     {
-    --         "<leader>pp",
-    --         function()
-    --             local actions = require("CopilotChat.actions")
-    --             require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-    --         end,
-    --         desc = "CopilotChat - Prompt actions",
-    --     },
-    --     {
-    --         "<leader>pt",
-    --         function()
-    --             require("CopilotChat").toggle()
-    --         end,
-    --         desc = "CopilotChat - Prompt actions",
-    --     },
-    -- }
 })
 
 -- Global mappings.
@@ -254,7 +196,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<space>lf", function()
             vim.lsp.buf.format({ async = true })
         end, util.with_description(opts, "Format"))
-        vim.keymap.set('n', '<space>lR', telescope_builtin.lsp_references, util.with_description(opts, "LSP references"))
+        vim.keymap.set('n', '<space>lR', fzf_lua.lsp_references, util.with_description(opts, "LSP references"))
 
         vim.keymap.set('v', 'M-K', require('dapui').eval, util.with_description(opts, "DAP Eval Expression"))
     end,

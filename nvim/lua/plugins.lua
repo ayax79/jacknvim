@@ -153,72 +153,19 @@ table.insert(M, {
             'nvim-tree/nvim-web-devicons', -- optional
         }
     },
-    -- Provides a betterquick fix and lsp diagnostics list
-    "nvim-telescope/telescope-ui-select.nvim",
-    -- Visual Search for files, quickfix, etc
     {
-        "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "folke/trouble.nvim",
-            "nvim-telescope/telescope-ui-select.nvim",
-        },
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            -- local actions = require("telescope.actions")
-            local open_with_trouble = require("trouble.sources.telescope").open
-
-            -- Use this to add more results without clearing the trouble list
-            -- local add_to_trouble = require("trouble.sources.telescope").add
-
-            local telescope = require("telescope")
-
-            telescope.setup({
-                defaults = {
-                    mappings = {
-                        i = { ["<c-t>"] = open_with_trouble },
-                        n = { ["<c-t>"] = open_with_trouble },
-                    },
-                },
-                extensions = {
-                    ["ui-select"] = {
-                        require("telescope.themes").get_dropdown({
-                            -- even more opts
-                        }),
-                    },
-                    fzf = {
-                        fuzzy = true,                   -- false will only do exact matching
-                        override_generic_sorter = true, -- override the generic sorter
-                        override_file_sorter = true,    -- override the file sorter
-                        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                    },
-                    zoxide = {
-                        prompt_title = "[ Find directory ]", -- Any title you like
-                        mappings = {
-                            default = {
-                                -- telescope-zoxide will change directory.
-                                -- But I'm only using it to get selection.path from telescope UI.
-                                after_action = function(selection)
-                                    vim.cmd("Oil " .. selection.path)
-                                    vim.api.nvim_feedkeys("_", "", false)
-                                end,
-                            },
-                        },
-                    },
-                },
+            -- calling `setup` is optional for customization
+            require("fzf-lua").setup({
+                fzf_colors = true,
             })
-
-            telescope.load_extension("ui-select")
-            telescope.load_extension("zoxide")
-        end,
+        end
     },
     -- bookmark support
     "MattesGroeger/vim-bookmarks",
-    -- search bookmarks in telescope
-    "tom-anders/telescope-vim-bookmarks.nvim",
-    "jvgrootveld/telescope-zoxide",
-    -- native fzf support
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
     -- project support
     {
         "ahmedkhalf/project.nvim",
@@ -306,7 +253,7 @@ table.insert(M, {
         end,
     },
     -- Git wrapper
-    { "tpope/vim-fugitive",                       lazy = false },
+    { "tpope/vim-fugitive",   lazy = false },
     "f-person/git-blame.nvim",
     -- ---------------------------------------------------------
     --- COMPLETIONS SUPPORT
