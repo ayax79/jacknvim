@@ -187,7 +187,7 @@ table.insert(M, {
         opts = {}, -- this is equalent to setup({}) function
     },
     -- handy keybindings
-    { "tpope/vim-unimpaired", lazy = false },
+    { "tpope/vim-unimpaired",    lazy = false },
     -- illuminates all instances that is selected
     {
         "RRethy/vim-illuminate",
@@ -256,8 +256,8 @@ table.insert(M, {
         end,
     },
     -- Git wrapper
-    { "tpope/vim-fugitive",   lazy = false },
-    {"f-person/git-blame.nvim", lazy = false},
+    { "tpope/vim-fugitive",      lazy = false },
+    { "f-person/git-blame.nvim", lazy = false },
     -- ---------------------------------------------------------
     --- COMPLETIONS SUPPORT
     --------------------------------------------------------
@@ -739,20 +739,6 @@ table.insert(M, {
             })
         end
     },
-    -- nvim v0.8.0
-    {
-        "kdheepak/lazygit.nvim",
-        cmd = {
-            "LazyGit",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
     ---@type LazySpec
     {
         "mikavilpas/yazi.nvim",
@@ -813,7 +799,26 @@ table.insert(M, {
                 },
             }
         end
-    }
+    },
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            bigfile = { enabled = true },
+            dashboard = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            lazygit = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            scroll = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+            zen = { enabled = true },
+        },
+    },
 })
 
 return M

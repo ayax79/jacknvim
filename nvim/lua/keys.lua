@@ -41,11 +41,11 @@ wk.add({
         "<leader>g",
         name = "Git",
         group = "Git",
-        { "<leader>gg", "<cmd>LazyGit<cr>",  desc = "Lazy Git", },
-        { "<leader>gf", fzf_lua.git_files,   desc = "Find Git Files", },
-        { "<leader>gz", fzf_lua.git_status,  desc = "Modified Git files (git_status)", },
-        { "<leader>gl", fzf_lua.git_commits, desc = "Git commits log", },
-        { "<leader>gZ", fzf_lua.git_stash,   desc = "Git stash", },
+        { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazy Git", },
+        { "<leader>gf", fzf_lua.git_files,               desc = "Find Git Files", },
+        { "<leader>gz", fzf_lua.git_status,              desc = "Modified Git files (git_status)", },
+        { "<leader>gl", fzf_lua.git_commits,             desc = "Git commits log", },
+        { "<leader>gZ", fzf_lua.git_stash,               desc = "Git stash", },
     },
     -- Bookmarks Group
     {
