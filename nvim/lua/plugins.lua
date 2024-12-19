@@ -462,7 +462,10 @@ table.insert(M, {
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
         opts = {},
+        config = true,
     },
     -- colors for lsp diagnostics
     { "folke/lsp-colors.nvim" },
