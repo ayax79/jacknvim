@@ -600,16 +600,6 @@ table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    -- General testing plugin
-    {
-        "klen/nvim-test",
-        opts = {
-            termOpts = {
-                direction = "horizontal",
-            },
-        },
-        config = true,
-    },
     -- LSP status, etc
     {
         "j-hui/fidget.nvim",
