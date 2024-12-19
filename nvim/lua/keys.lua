@@ -7,12 +7,6 @@ local crates = require("crates");
 local harpoon = require('harpoon')
 -- END HARPOON
 
--- substitude plugin
-vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
-vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
-vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
-vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
-
 -- bacon plugin
 vim.keymap.set("n", "!", ":BaconLoad<CR>:w<CR>:BaconNext<CR>", { desc = "Navigate to next bacon location" })
 vim.keymap.set("n", ",", ":BaconList<CR>", { desc = "Open bacon locations list" })

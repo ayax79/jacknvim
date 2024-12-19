@@ -257,7 +257,7 @@ table.insert(M, {
     },
     -- Git wrapper
     { "tpope/vim-fugitive",   lazy = false },
-    {"f-person/git-blame.nvim"}, lazy = false},
+    {"f-person/git-blame.nvim", lazy = false},
     -- ---------------------------------------------------------
     --- COMPLETIONS SUPPORT
     --------------------------------------------------------
