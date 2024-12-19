@@ -187,9 +187,12 @@ table.insert(M, {
         opts = {}, -- this is equalent to setup({}) function
     },
     -- handy keybindings
-    "tpope/vim-unimpaired",
+    { "tpope/vim-unimpaired", lazy = false },
     -- illuminates all instances that is selected
-    "RRethy/vim-illuminate",
+    {
+        "RRethy/vim-illuminate",
+        lazy = false,
+    },
 
     -- Provides smart support for comments
     {
@@ -254,7 +257,7 @@ table.insert(M, {
     },
     -- Git wrapper
     { "tpope/vim-fugitive",   lazy = false },
-    "f-person/git-blame.nvim",
+    {"f-person/git-blame.nvim"}, lazy = false},
     -- ---------------------------------------------------------
     --- COMPLETIONS SUPPORT
     --------------------------------------------------------
