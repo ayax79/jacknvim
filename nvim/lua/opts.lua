@@ -44,4 +44,4 @@ vim.o.conceallevel = 2
 -- -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
-vim.o.shell = 'nu'
+-- vim.o.shell = 'nu'
