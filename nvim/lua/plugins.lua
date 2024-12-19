@@ -166,19 +166,6 @@ table.insert(M, {
     },
     -- bookmark support
     "MattesGroeger/vim-bookmarks",
-    -- project support
-    {
-        "ahmedkhalf/project.nvim",
-        lazy = false,
-        config = function()
-            require("project_nvim").setup({
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "gradlew", "Cargo.toml" },
-            })
-        end,
-    },
     -- provides automatically closing brackets
     {
         "windwp/nvim-autopairs",
@@ -209,13 +196,11 @@ table.insert(M, {
         "RRethy/vim-illuminate",
         lazy = false,
     },
-
-    -- Provides smart support for comments
     {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
+        "folke/ts-comments.nvim",
+        opts = {},
+        event = "VeryLazy",
+        enabled = vim.fn.has("nvim-0.10.0") == 1,
     },
     ---------------------------------------------------------
     --- GIT SUPPORT
