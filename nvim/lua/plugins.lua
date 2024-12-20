@@ -310,7 +310,7 @@ table.insert(M, {
             -- your own keymap.
             keymap = {
                 preset = 'default',
-                ['<CR>'] = { 'accept', 'fallback' },
+                -- ['<CR>'] = { 'accept', 'fallback' },
             },
 
             appearance = {
@@ -326,10 +326,7 @@ table.insert(M, {
             -- default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, via `opts_extend`
             sources = {
-                completion = {
-                    -- enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', "copilot" },
-                    enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
-                },
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
                 --     providers = {
                 --         copilot = {
                 --             name = "copilot",
@@ -348,7 +345,7 @@ table.insert(M, {
         },
         -- allows extending the enabled_providers array elsewhere in your config
         -- without having to redefine it
-        opts_extend = { "sources.completion.enabled_providers" },
+        opts_extend = { "sources.default" },
 
         menu = {
             -- Reverse the direction priority in order to not conflict with copilot
@@ -870,6 +867,43 @@ table.insert(M, {
             }
         end
     },
+    {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    }
 })
 
 return M
