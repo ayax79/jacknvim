@@ -51,6 +51,24 @@ table.insert(M, {
                 extended_mode = true,
                 max_file_lines = nil,
             },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
+                },
+            },
+            textobjects = {
+                move = {
+                    enable = true,
+                    goto_next_start = { ["]m"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+                    goto_next_end = { ["]M"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+                    goto_previous_start = { ["[m"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
+                    goto_previous_end = { ["[M"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+                },
+            },
         },
         config = function(_, opts)
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -183,7 +201,13 @@ table.insert(M, {
         }
     },
     -- handy keybindings
-    { "tpope/vim-unimpaired",    lazy = false },
+    {
+        'tummetott/unimpaired.nvim',
+        event = 'VeryLazy',
+        opts = {
+            -- add options here if you wish to override the default settings
+        },
+    },
     -- illuminates all instances that is selected
     {
         "RRethy/vim-illuminate",
