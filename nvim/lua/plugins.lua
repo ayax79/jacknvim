@@ -338,7 +338,7 @@ table.insert(M, {
             },
 
             -- experimental auto-brackets support
-            -- completion = { accept = { auto_brackets = { enabled = true } } }
+            completion = { accept = { auto_brackets = { enabled = true } } }
 
             -- experimental signature help support
             -- signature = { enabled = true }
@@ -350,6 +350,16 @@ table.insert(M, {
         menu = {
             -- Reverse the direction priority in order to not conflict with copilot
             direction_priority = { 'n', 's' },
+            draw = {
+                treesitter = { "lsp" },
+            },
+        },
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+            enabled = vim.g.ai_cmp,
         },
     },
     -- github copilot
