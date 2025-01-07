@@ -913,7 +913,8 @@ table.insert(M, {
                 desc = "Quickfix List (Trouble)",
             },
         },
-    }
+    },
+    { "alexghergh/nvim-tmux-navigation" }
 })
 
 return M
