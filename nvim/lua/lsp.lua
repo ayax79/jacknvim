@@ -59,13 +59,13 @@ M.setup = function()
     require('mason-tool-installer').setup({
         ensure_installed = {
             "codelldb",
-            "java-debug-adapter",
-            "java-test",
-            "jdtls",
-            "lombok-nightly",
-            "openjdk-17",
+            -- "java-debug-adapter",
+            -- "java-test",
+            -- "jdtls",
+            -- "lombok-nightly",
+            -- "openjdk-17",
             -- "rust-analyzer",
-            "spring-boot-tools",
+            -- "spring-boot-tools",
         }
     })
 
