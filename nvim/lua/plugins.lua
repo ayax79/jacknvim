@@ -326,15 +326,21 @@ table.insert(M, {
             -- default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, via `opts_extend`
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-                --     providers = {
-                --         copilot = {
-                --             name = "copilot",
-                --             module = "blink-cmp-copilot",
-                --             score_offset = 100,
-                --             async = true,
-                --         },
-                --     },
+                default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+                providers = {
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        -- make lazydev completions top priority (see `:h blink.cmp`)
+                        score_offset = 100,
+                    },
+                    -- copilot = {
+                    --     name = "copilot",
+                    --     module = "blink-cmp-copilot",
+                    --     score_offset = 100,
+                    --     async = true,
+                    -- },
+                },
             },
 
             -- experimental auto-brackets support
@@ -486,12 +492,15 @@ table.insert(M, {
     },
     -- LSP support neovim development
     {
-        "folke/neodev.nvim",
-        config = function()
-            require("neodev").setup({
-                library = { plugins = { "nvim-dap-ui" }, types = true },
-            })
-        end
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     -- Line indentation
     {

@@ -280,11 +280,6 @@ M.setup = function()
     --- LUA configuration
     --------------------------------------------------------
 
-    -- neodev should be called before lsp config
-    require("neodev").setup({
-        library = { plugins = { "nvim-dap-ui" }, types = true },
-    })
-
     lspconfig.lua_ls.setup({
         on_attach = M.on_attach_common,
         capabilities = capabilities,
