@@ -525,15 +525,15 @@ table.insert(M, {
             'MunifTanjim/nui.nvim',
             'neovim/nvim-lspconfig',
             'mfussenegger/nvim-dap',
-            {
-                'williamboman/mason.nvim',
-                opts = {
-                    registries = {
-                        'github:nvim-java/mason-registry',
-                        'github:mason-org/mason-registry',
-                    },
-                },
-            }
+            --     {
+            --         'williamboman/mason.nvim',
+            --         opts = {
+            --             registries = {
+            --                 'github:nvim-java/mason-registry',
+            --                 'github:mason-org/mason-registry',
+            --             },
+            --         },
+            --     }
         },
     },
     {
@@ -640,10 +640,10 @@ table.insert(M, {
     },
     -- using mason for installing packages that are broken in nix.
     -- Looking at you vscode-lldb.
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    -- "williamboman/mason.nvim",
+    -- "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- LSP status, etc
     {
         "j-hui/fidget.nvim",
