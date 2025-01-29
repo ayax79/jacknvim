@@ -53,22 +53,22 @@ function M.get_capabilities()
 end
 
 M.setup = function()
-    require("mason").setup()
-    require("mason-lspconfig").setup()
-    -- only manage stuff in here when nix won't work
-    require('mason-tool-installer').setup({
-        ensure_installed = {
-            "codelldb",
-            -- "java-debug-adapter",
-            -- "java-test",
-            -- "jdtls",
-            -- "lombok-nightly",
-            -- "openjdk-17",
-            -- "rust-analyzer",
-            -- "spring-boot-tools",
-        }
-    })
-
+    -- require("mason").setup()
+    -- require("mason-lspconfig").setup()
+    -- -- only manage stuff in here when nix won't work
+    -- require('mason-tool-installer').setup({
+    --     ensure_installed = {
+    --         "codelldb",
+    --         -- "java-debug-adapter",
+    --         -- "java-test",
+    --         -- "jdtls",
+    --         -- "lombok-nightly",
+    --         -- "openjdk-17",
+    --         -- "rust-analyzer",
+    --         -- "spring-boot-tools",
+    --     }
+    -- })
+    --
     -- LSP Diagnostics Options Setup
     local sign = function(opts)
         vim.fn.sign_define(opts.name, {
