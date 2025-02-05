@@ -45,3 +45,6 @@ vim.o.conceallevel = 2
 vim.opt.laststatus = 3
 
 -- vim.o.shell = 'nu'
+--
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
