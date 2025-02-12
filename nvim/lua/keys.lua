@@ -1,10 +1,9 @@
 -- which key
 local wk = require("which-key")
-local fzf_lua = require('fzf-lua')
 local crates = require("crates");
 
 -- BEGIN HARPOON
-local harpoon = require('harpoon')
+-- local harpoon = require('harpoon')
 -- END HARPOON
 
 -- bacon plugin
@@ -18,35 +17,6 @@ wk.add({
     { '<space>ql', vim.diagnostic.setloclist, desc = "Set Loclist", },
     { "<space>qq", vim.diagnostic.setqflist,  desc = "Set Quickfixlist", },
     { "-",         "<CMD>Oil<CR>",            desc = "Open parent directory", },
-
-    -- Find Group
-    {
-        "<leader>f",
-        name = "Find",
-        group = "Find",
-        { "<leader>ff", fzf_lua.files,                      desc = "Find File", },
-        { "<leader>fg", function() fzf_lua.live_grep() end, desc = "Live Grep", },
-        { "<leader>fb", fzf_lua.buffers,                    desc = "Find Buffer", },
-        { "<leader>fd", fzf_lua.diagnostics_workspace,      desc = "Find Diagnostics", },
-        { "<leader>fk", fzf_lua.keymaps,                    desc = "Find Keymap", },
-        { "<leader>fq", fzf_lua.quickfix,                   desc = "Find Quickfix", },
-        { "<leader>fQ", fzf_lua.quickfix_stack,             desc = "Find Quickfix History", },
-        { "<leader>fr", fzf_lua.registers,                  desc = "Find Register", },
-        { "<leader>fG", fzf_lua.git_files,                  desc = "Find Git Files", },
-        { "<leader>fs", fzf_lua.git_status,                 desc = "Modified Git files", },
-        { "<leader>fj", fzf_lua.jumps,                      desc = "Jump List", },
-    },
-    -- Git Group
-    {
-        "<leader>g",
-        name = "Git",
-        group = "Git",
-        { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazy Git", },
-        { "<leader>gf", fzf_lua.git_files,               desc = "Find Git Files", },
-        { "<leader>gz", fzf_lua.git_status,              desc = "Modified Git files (git_status)", },
-        { "<leader>gl", fzf_lua.git_commits,             desc = "Git commits log", },
-        { "<leader>gZ", fzf_lua.git_stash,               desc = "Git stash", },
-    },
     -- Bookmarks Group
     {
         "<leader>m",
@@ -59,14 +29,12 @@ wk.add({
         { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",  desc = "Show all bookmarks (toggle)", },
         { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
         { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
-        { "<leader>mf", fzf_lua.marks,               desc = "Find bookmark (current file)", },
     },
     -- Buffers Group
     {
         "<leader>b",
         name = "Buffers",
         group = "Buffers",
-        { "<leader>bf", fzf_lua.buffers,                      desc = "Find Buffer", },
         { "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", desc = "Order buffers by number", },
         { "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>",    desc = "Order buffers by directory", },
         { "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>",     desc = "Order buffers by Language", },
@@ -77,8 +45,6 @@ wk.add({
         "<leader>l",
         name = "LSP",
         group = "LSP",
-        { "<leader>ls", fzf_lua.lsp_document_symbols,       desc = "Document symbols", },
-        { "<leader>lS", fzf_lua.lsp_workspace_symbols,      desc = "Workspace symbols", },
         { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
         { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition", },
         { "<leader>lo", "<cmd>Lspsaga outline<cr>",         desc = "Outline", },
@@ -117,20 +83,20 @@ wk.add({
         { "<leader>cC", crates.open_crates_io,                     desc = "Open Crates IO" },
     },
     -- Harpoon Group
-    {
-        "<leader>h",
-        name = "Harpooon",
-        group = "Harpooon",
-        { "<leader>ha", function() harpoon:list():add() end,                         desc = "Harpoon Add File" },
-        { "<leader>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon Quicklist" },
-        { "<leader>hr", function() harpoon:list():remove() end,                      desc = "Remove Current File" },
-        { "<leader>h1", function() harpoon:list():select(1) end,                     desc = "Select Item 1" },
-        { "<leader>h2", function() harpoon:list():select(2) end,                     desc = "Select Item 2" },
-        { "<leader>h3", function() harpoon:list():select(3) end,                     desc = "Select Item 3" },
-        { "<leader>h4", function() harpoon:list():select(4) end,                     desc = "Select Item 4" },
-        { "[h",         function() harpoon:list():prev() end,                        desc = "Harpoon Prev" },
-        { "]h",         function() harpoon:list():next() end,                        desc = "Harpoon Next" },
-    },
+    -- {
+    --     "<leader>h",
+    --     name = "Harpooon",
+    --     group = "Harpooon",
+    --     { "<leader>ha", function() harpoon:list():add() end,                         desc = "Harpoon Add File" },
+    --     { "<leader>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon Quicklist" },
+    --     { "<leader>hr", function() harpoon:list():remove() end,                      desc = "Remove Current File" },
+    --     { "<leader>h1", function() harpoon:list():select(1) end,                     desc = "Select Item 1" },
+    --     { "<leader>h2", function() harpoon:list():select(2) end,                     desc = "Select Item 2" },
+    --     { "<leader>h3", function() harpoon:list():select(3) end,                     desc = "Select Item 3" },
+    --     { "<leader>h4", function() harpoon:list():select(4) end,                     desc = "Select Item 4" },
+    --     { "[h",         function() harpoon:list():prev() end,                        desc = "Harpoon Prev" },
+    --     { "]h",         function() harpoon:list():next() end,                        desc = "Harpoon Next" },
+    -- },
 })
 
 -- Global mappings.
@@ -149,8 +115,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, util.with_description(opts, "Go to Declaration"))
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, util.with_description(opts, "Go to definition"))
+        -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, util.with_description(opts, "Go to Declaration"))
+        -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, util.with_description(opts, "Go to definition"))
         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, util.with_description(opts, "LSP hover"))
         vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", util.with_description(opts, "DOC"))
         vim.keymap.set("n", "gI", vim.lsp.buf.implementation, util.with_description(opts, "Go to implementation"))
@@ -186,12 +152,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --vim.keymap.set({ "n", "v" }, "<space>la", exec_code_action, util.with_description(opts, "Code Action"))
         vim.keymap.set({ "n", "v" }, "<space>la", "<cmd>Lspsaga code_action<cr>",
             util.with_description(opts, "Code Action"))
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, util.with_description(opts, "Go to references"))
+        -- vim.keymap.set("n", "gr", vim.lsp.buf.references, util.with_description(opts, "Go to references"))
         vim.keymap.set("n", "<space>lf", function()
             vim.lsp.buf.format({ async = true })
         end, util.with_description(opts, "Format"))
-        vim.keymap.set('n', '<space>lR', fzf_lua.lsp_references, util.with_description(opts, "LSP references"))
-
         vim.keymap.set('v', 'M-K', require('dapui').eval, util.with_description(opts, "DAP Eval Expression"))
     end,
 })
