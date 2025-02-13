@@ -247,19 +247,19 @@ table.insert(M, {
                     end, { expr = true, desc = 'Previous uncommitted change' })
 
                     -- Actions
-                    map('n', '<leader>gs', gs.stage_hunk, { desc = 'State Hunk' })
+                    -- map('n', '<leader>gs', gs.stage_hunk, { desc = 'State Hunk' })
                     map('n', '<leader>gr', gs.reset_hunk, { desc = 'Reset Hunk' })
                     map('v', '<leader>gs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
                         { desc = 'State Hunk' })
                     map('v', '<leader>gr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
                         { desc = 'Reset Hunk' })
-                    map('n', '<leader>gS', gs.stage_buffer, { desc = 'State Buffer' })
+                    -- map('n', '<leader>gS', gs.stage_buffer, { desc = 'State Buffer' })
                     map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo State Hunk' })
                     map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset Buffer' })
                     map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview Hunk' })
                     map('n', '<leader>gb', function() gs.blame_line { full = true } end, { desc = 'Blame Line' })
                     map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle Current Line Blame' })
-                    map('n', '<leader>gd', gs.diffthis, { desc = 'Diff this' })
+                    -- map('n', '<leader>gd', gs.diffthis, { desc = 'Diff this' })
                     map('n', '<leader>gD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
                     map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle Deleted' })
 
@@ -1043,23 +1043,23 @@ table.insert(M, {
             },
         },
     },
-    {
-        'alexghergh/nvim-tmux-navigation',
-        config = function()
-            local nvim_tmux_nav = require('nvim-tmux-navigation')
-
-            nvim_tmux_nav.setup {
-                disable_when_zoomed = true -- defaults to false
-            }
-
-            vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-            vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-            vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-            vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-            vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-            vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-        end
-    },
+--     {
+--         'alexghergh/nvim-tmux-navigation',
+--         config = function()
+--             local nvim_tmux_nav = require('nvim-tmux-navigation')
+--
+--             nvim_tmux_nav.setup {
+--                 disable_when_zoomed = true -- defaults to false
+--             }
+--
+--             vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+--             vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+--             vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+--             vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+--             vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+--             vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+--         end
+--     },
 })
 
 return M
