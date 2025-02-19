@@ -19,18 +19,6 @@ table.insert(M, {
             -- add options here if you wish to override the default settings
         },
     },
-    -- illuminates all instances that is selected
-    -- {
-    --     "RRethy/vim-illuminate",
-    --     lazy = false,
-    --     -- opts = {
-    --     --     delay = 200,
-    --     --     large_file_cutoff = 2000,
-    --     --     large_file_overrides = {
-    --     --         providers = { "lsp" },
-    --     --     },
-    --     -- }
-    -- },
     {
         "folke/ts-comments.nvim",
         opts = {},
