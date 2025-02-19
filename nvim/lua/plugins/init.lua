@@ -25,9 +25,10 @@ table.insert(M, {
     require("plugins/nvim_coverage"),
     require("plugins/unimpaired"),
     require("plugins/ts_comments"),
+    require("plugins/image"),
     --require("plugins/avante")
     -- handy keybindings
-    { "tpope/vim-fugitive",   lazy = false },
+    { "tpope/vim-fugitive",        lazy = false },
     -- { "f-person/git-blame.nvim", lazy = false },
     -- ---------------------------------------------------------
     --- COMPLETIONS SUPPORT
@@ -88,7 +89,7 @@ table.insert(M, {
     {
         'mrcjkb/rustaceanvim',
         version = '^5',
-        lazy = false,
+        lazy = true,
     },
     -- fork of null-ls
     "nvimtools/none-ls.nvim",
@@ -121,8 +122,7 @@ table.insert(M, {
     --     config = true,
     -- },
     -- colors for lsp diagnostics
-    { "folke/lsp-colors.nvim" },
-    -- Java LSP support
+    "folke/lsp-colors.nvim",
     -- json/yaml schema stores
     "b0o/SchemaStore.nvim",
     -- {
@@ -144,11 +144,6 @@ table.insert(M, {
         },
         config = true,
     },
-    -- Extra power search and replace
-    {
-        "tpope/vim-abolish",
-        lazy = false,
-    },
     -- using mason for installing packages that are broken in nix.
     -- Looking at you vscode-lldb.
     -- "williamboman/mason.nvim",
@@ -162,16 +157,17 @@ table.insert(M, {
         version = "1",
         config = true,
     },
-    {
-        "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    },
+    { 'echasnovski/mini.surround', version = '*' },
+    -- {
+    --     "kylechui/nvim-surround",
+    --     version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("nvim-surround").setup({
+    --             -- Configuration here, or leave empty to use defaults
+    --         })
+    --     end
+    -- },
     -- {
     --     "Canop/nvim-bacon",
     --     config = function()

@@ -32,6 +32,8 @@
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
+    extraLuaPackages = ps: [ps.magick];
+    extraPackages = [pkgs.imagemagick];
   };
 
   home.file."./.config/nvim/" = {
