@@ -1,91 +1,16 @@
 M = {}
 
-table.insert(M, require("plugins/lualine"))
-table.insert(M, require("plugins/treesitter"))
-table.insert(M, require("plugins/snacks"))
-
 table.insert(M, {
-    {
-        'rmehri01/onenord.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require 'onenord'.setup()
-        end
-    },
-    --------------------------------------------------------
-    --- COMMON LIBRARIES & EDITOR FUNCTIONALITY
-    --------------------------------------------------------
-
-    -- a common library of utilities
     "nvim-lua/plenary.nvim",
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        keys = {
-            {
-                "<leader>?",
-                function()
-                    require("which-key").show({ global = false })
-                end,
-                desc = "Buffer Local Keymaps (which-key)",
-            },
-        },
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-    },
-    -- "JoosepAlviste/nvim-ts-context-commentstring",
-    -- Configurations and extraction layer for the treesitter parsing tool
-    {
-        'nvimdev/lspsaga.nvim',
-        event = "LspAttach",
-        config = function()
-            require('lspsaga').setup({
-                lightbulb = {
-                    -- Don't show lightbulb in the status column... causes it to bounce
-                    sign = false,
-                },
-                diagnostic = {
-                    keys = {
-                        quit = '<ESC>',
-                    },
-                },
-                code_action = {
-                    keys = {
-                        quit = '<ESC>',
-                    },
-                },
-                definition = {
-                    keys = {
-                        quit = '<ESC>',
-                    },
-                },
-            })
-        end,
-        dependencies = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        }
-    },
-    -- bookmark support
-    -- "MattesGroeger/vim-bookmarks",
-    {
-        'echasnovski/mini.pairs',
-        version = '*',
-        opts = {
-            modes = { insert = true, command = true, terminal = false },
-            -- skip autopair when next character is one of these
-            skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-            -- skip autopair when the cursor is inside these treesitter nodes
-            skip_ts = { "string" },
-            -- skip autopair when next character is closing pair
-            -- and there are more closing pairs than opening pairs
-            skip_unbalanced = true,
-            -- better deal with markdown code blocks
-            markdown = true,
-        }
-    },
+    -- Theme
+    require("plugins/onenord"),
+    -- Bottom line
+    require("plugins/lualine"),
+    require("plugins/treesitter"),
+    require("plugins/snacks"),
+    require("plugins/whichkey"),
+    require("plugins/lspsaga"),
+    require("plugins/mini_pairs"),
     -- handy keybindings
     {
         'tummetott/unimpaired.nvim',
