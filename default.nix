@@ -34,6 +34,17 @@
     vimAlias = true;
     extraLuaPackages = ps: [ps.magick];
     extraPackages = [pkgs.imagemagick];
+    extraPython3Packages = ps:
+      with ps; [
+        # ... other python packages
+        pynvim
+        jupyter-client
+        cairosvg # for image rendering
+        pnglatex # for image rendering
+        plotly # for image rendering
+        pyperclip
+        nbformat
+      ];
   };
 
   home.file."./.config/nvim/" = {

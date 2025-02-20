@@ -26,6 +26,7 @@ table.insert(M, {
     require("plugins/unimpaired"),
     require("plugins/ts_comments"),
     require("plugins/image"),
+    require("plugins/molten"),
     --require("plugins/avante")
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
