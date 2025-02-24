@@ -15,4 +15,8 @@ return {
             markdown = true,
         }
     },
+    { 'echasnovski/mini.surround',  version = '*' },
+    { 'echasnovski/mini.pairs',     version = '*' },
+    { 'echasnovski/mini.move',      version = '*' },
+    { 'echasnovski/mini.splitjoin', version = '*' },
 }

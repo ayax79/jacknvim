@@ -74,8 +74,6 @@ table.insert(M, {
     "folke/lsp-colors.nvim",
     -- json/yaml schema stores
     "b0o/SchemaStore.nvim",
-    "neovim/nvim-lspconfig",
-    { 'echasnovski/mini.surround', version = '*' },
 })
 
 return M
