@@ -33,6 +33,7 @@ table.insert(M, {
     require("plugins/dap"),
     require("plugins/crates"),
     require("plugins/fidget"),
+    require("plugins/copilot"),
     --require("plugins/avante")
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
@@ -42,18 +43,6 @@ table.insert(M, {
     --------------------------------------------------------
 
     -- github copilot
-    -- "giuxtaposition/blink-cmp-copilot",
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot").setup({
-    --             -- suggestion = { enabled = false },
-    --             -- panel = { enabled = false },
-    --         })
-    --     end,
-    -- },
     -- "onsails/lspkind.nvim",
     --------------------------------------------------------
     --- LSP SUPPORT
