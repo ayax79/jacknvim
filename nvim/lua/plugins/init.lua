@@ -34,7 +34,7 @@ table.insert(M, {
     require("plugins/crates"),
     require("plugins/fidget"),
     require("plugins/copilot"),
-    --require("plugins/avante")
+    require("plugins/avante"),
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
     -- { "f-person/git-blame.nvim", lazy = false },
@@ -48,11 +48,11 @@ table.insert(M, {
     --- LSP SUPPORT
     --------------------------------------------------------
 
-    {
-        "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig"
-    },
-    -- configures lsp and debugger for rust
+    -- {
+    --     "SmiteshP/nvim-navic",
+    --     requires = "neovim/nvim-lspconfig"
+    -- },
+    -- -- configures lsp and debugger for rust
     {
         'mrcjkb/rustaceanvim',
         version = '^5',

@@ -2,7 +2,7 @@ M = {}
 
 -- local home = os.getenv "HOME"
 -- local nix_profile_bin = home .. "/.nix-profile/bin"
-local navic = require("nvim-navic")
+-- local navic = require("nvim-navic")
 
 local codelldb_home = vim.fn.stdpath('data') .. '/mason/packages/codelldb/extension/'
 local codelldb_path = codelldb_home .. 'adapter/codelldb'
@@ -46,9 +46,9 @@ M.on_attach_common = function(client, bufnr)
         return client.supports_method("textDocument/documentSymbol")
     end)
 
-    if status_ok and doc_symbols_supported then
-        navic.attach(client, bufnr)
-    end
+--     if status_ok and doc_symbols_supported then
+--         navic.attach(client, bufnr)
+--     end
 end
 
 function M.get_capabilities()
@@ -369,7 +369,7 @@ vim.g.rustaceanvim = function()
         -- LSP configuration
         server = {
             on_attach = function(client, bufnr)
-                M.on_attach_common(client, bufnr)
+                -- M.on_attach_common(client, bufnr)
                 -- Hover actions
                 vim.keymap.set(
                     "n",
