@@ -35,6 +35,7 @@ table.insert(M, {
     require("plugins/fidget"),
     require("plugins/copilot"),
     require("plugins/avante"),
+
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
     -- { "f-person/git-blame.nvim", lazy = false },
