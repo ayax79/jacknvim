@@ -270,8 +270,8 @@ M.setup = function()
     --------------------------------------------------------
     --- JAVA CONFIGURATION
     --------------------------------------------------------
-    require('java').setup()
-    require('lspconfig').jdtls.setup({})
+    -- require('java').setup()
+    -- require('lspconfig').jdtls.setup({})
 
     --------------------------------------------------------
     --- GO LANG CONFIGURATION
