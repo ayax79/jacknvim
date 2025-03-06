@@ -57,5 +57,44 @@ return
         hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
         hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
         hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
+
+        -- From advanced section
+        -- Align cursor columns.
+        set("n", "<leader>a", mc.alignCursors)
+
+        -- Split visual selections by regex.
+        set("x", "S", mc.splitCursors)
+
+        -- match new cursors within visual selections by regex.
+        set("x", "M", mc.matchCursors)
+
+        -- bring back cursors if you accidentally clear them
+        set("n", "<leader>gv", mc.restoreCursors)
+
+        -- Increment/decrement sequences, treaing all cursors as one sequence.
+        set({ "n", "x" }, "g<c-a>", mc.sequenceIncrement)
+        set({ "n", "x" }, "g<c-x>", mc.sequenceDecrement)
+
+        -- Add a cursor and jump to the next/previous search result.
+        set("n", "<leader>/n", function() mc.searchAddCursor(1) end)
+        set("n", "<leader>/N", function() mc.searchAddCursor(-1) end)
+
+        -- Jump to the next/previous search result without adding a cursor.
+        set("n", "<leader>/s", function() mc.searchSkipCursor(1) end)
+        set("n", "<leader>/S", function() mc.searchSkipCursor(-1) end)
+
+        -- Add a cursor to every search result in the buffer.
+        set("n", "<leader>/A", mc.searchAllAddCursors)
+
+        -- Pressing `<leader>miwap` will create a cursor in every match of the
+        -- string captured by `iw` inside range `ap`.
+        -- This action is highly customizable, see `:h multicursor-operator`.
+        set({ "n", "x" }, "<leader>m", mc.operator)
+
+        -- Press `mdip` to add a cursor for every error diagnostic in the range `ip`.
+        set({ "n", "x" }, "md", function()
+            -- See `:h vim.diagnostic.GetOpts`.
+            mc.diagnosticMatchCursors({ severity = vim.diagnostic.severity.ERROR })
+        end)
     end
 }

@@ -18,18 +18,20 @@ wk.add({
     { "<space>qq", vim.diagnostic.setqflist,  desc = "Set Quickfixlist", },
     { "-",         "<CMD>Oil<CR>",            desc = "Open parent directory", },
     -- Bookmarks Group
-    {
-        "<leader>m",
-        name = "Bookmarks",
-        group = "Bookmarks",
-        { "<leader>mm", "<Cmd>BookmarkToggle<CR>",   desc = "Toggle bookmark", },
-        { "<leader>mi", "<Cmd>BookmarkAnnotate<CR>", desc = "Annotate bookmark", },
-        { "<leader>mn", "<Cmd>BookmarkNext<CR>",     desc = "Jump to next bookmark in buffer", },
-        { "<leader>mp", "<Cmd>BookmarkPrev<CR>",     desc = "Jump to previous bookmark in buffer", },
-        { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",  desc = "Show all bookmarks (toggle)", },
-        { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
-        { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
-    },
+    --Renabling his is going to conflict with some of the multicursor settings. Update that first
+    -- Also the plugin is not installed
+    -- {
+    --     "<leader>m",
+    --     name = "Bookmarks",
+    --     group = "Bookmarks",
+    --     { "<leader>mm", "<Cmd>BookmarkToggle<CR>",   desc = "Toggle bookmark", },
+    --     { "<leader>mi", "<Cmd>BookmarkAnnotate<CR>", desc = "Annotate bookmark", },
+    --     { "<leader>mn", "<Cmd>BookmarkNext<CR>",     desc = "Jump to next bookmark in buffer", },
+    --     { "<leader>mp", "<Cmd>BookmarkPrev<CR>",     desc = "Jump to previous bookmark in buffer", },
+    --     { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",  desc = "Show all bookmarks (toggle)", },
+    --     { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
+    --     { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
+    -- },
     -- Buffers Group
     {
         "<leader>b",
