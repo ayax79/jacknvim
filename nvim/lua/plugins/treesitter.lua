@@ -3,7 +3,17 @@ return {
     lazy = false,
     build = ":TSUpdate",
     opts = {
-        ensure_installed = { "nu", "lua", "rust", "toml", "markdown", "markdown_inline", "regex", "go" },
+        ensure_installed = {
+            "go",
+            "lua",
+            "markdown",
+            "markdown_inline",
+            "nix",
+            "nu",
+            "regex",
+            "rust",
+            "toml",
+        },
         auto_install = true,
         highlight = {
             enable = true,
