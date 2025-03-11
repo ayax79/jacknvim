@@ -5,7 +5,7 @@ return {
     build = ":UpdateRemotePlugins",
     keys = {
         {
-            "<leader>Mi",
+            "<leader>ji",
             function()
                 local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
                 if venv ~= nil then
@@ -19,13 +19,13 @@ return {
             desc = "Initialize Molten for python3",
         },
         -- { "<leader>mi", ":MoltenInit<CR>",                  silent = true, desc = "Initialize the plugin" },
-        { "<leader>Mo", ":MoltenEvaluateOperator<CR>",      desc = "run operator selection" },
-        { "<leader>Ml", ":MoltenEvaluateLine<CR>",          desc = "evaluate line" },
-        { "<leader>Mc", ":MoltenReevaluateCell<CR>",        desc = "re-evaluate cell" },
-        { "<leader>Mv", ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "evaluate visual selection", mode = "v" },
-        { "<leader>Md", ":MoltenDelete<CR>",                desc = "molten delete cell" },
-        { "<leader>Mh", ":MoltenHideOutput<CR>",            desc = "hide output" },
-        { "<leader>Ms", ":noautocmd MoltenEnterOutput<CR>", desc = "show/enter output" },
+        { "<leader>jo", ":MoltenEvaluateOperator<CR>",      desc = "run operator selection" },
+        { "<leader>jl", ":MoltenEvaluateLine<CR>",          desc = "evaluate line" },
+        { "<leader>jc", ":MoltenReevaluateCell<CR>",        desc = "re-evaluate cell" },
+        { "<leader>jv", ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "evaluate visual selection", mode = "v" },
+        { "<leader>jd", ":MoltenDelete<CR>",                desc = "molten delete cell" },
+        { "<leader>jh", ":MoltenHideOutput<CR>",            desc = "hide output" },
+        { "<leader>js", ":noautocmd MoltenEnterOutput<CR>", desc = "show/enter output" },
     },
     init = function()
         -- these are examples, not defaults. Please see the readme
