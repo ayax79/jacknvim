@@ -32,16 +32,6 @@ wk.add({
     --     { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
     --     { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
     -- },
-    -- Buffers Group
-    {
-        "<leader>b",
-        name = "Buffers",
-        group = "Buffers",
-        { "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", desc = "Order buffers by number", },
-        { "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>",    desc = "Order buffers by directory", },
-        { "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>",     desc = "Order buffers by Language", },
-        { "<leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>", desc = "Order buffers by window number", },
-    },
     -- LSP Group
     {
         "<leader>l",
