@@ -33,22 +33,8 @@ wk.add({
     --     { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
     -- },
     -- LSP Group
-    {
-        "<leader>l",
-        name = "LSP",
-        group = "LSP",
-        { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
-        { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition", },
-        { "<leader>lo", "<cmd>Lspsaga outline<cr>",         desc = "Outline", },
-        --Debugger Group
-        {
-            "<leader>lD",
-            name = "Debugger",
-            group = "Debugger",
-            { "<leader>lDb", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint", },
-            { "<leader>lDu", require("dapui").toggle,        desc = "Toggle Debugger UI", },
-        },
-    },
+    { "<leader>a", group = "Avante" },
+    { "<leader>b", group = "Buffers" },
     -- Crates Group
     {
         "<leader>c",
@@ -74,6 +60,32 @@ wk.add({
         { "<leader>cD", crates.open_documentation,                 desc = "Open Documentation" },
         { "<leader>cC", crates.open_crates_io,                     desc = "Open Crates IO" },
     },
+    { "<leader>f", group = "Find" },
+    { "<leader>g", group = "Git" },
+    { "<leader>j", group = "Molten" },
+    {
+        "<leader>l",
+        name = "LSP",
+        group = "LSP",
+        { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
+        { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition", },
+        { "<leader>lo", "<cmd>Lspsaga outline<cr>",         desc = "Outline", },
+        --Debugger Group
+        {
+            "<leader>lD",
+            name = "Debugger",
+            group = "Debugger",
+            { "<leader>lDb", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint", },
+            { "<leader>lDu", require("dapui").toggle,        desc = "Toggle Debugger UI", },
+        },
+    },
+    { "<leader>q", group = "Quickfix" },
+    { "<leader>r", group = "Refactor" },
+    { "<leader>s", group = "Search (Picker)" },
+    { "<leader>u", group = "Opts" },
+    { "<leader>w", group = "Workspaces" },
+    { "<leader>x", group = "Trouble" },
+    { "<leader>/", group = "Search" },
     -- Harpoon Group
     -- {
     --     "<leader>h",
