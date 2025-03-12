@@ -4,7 +4,13 @@ return {
     build = ":TSUpdate",
     opts = {
         ensure_installed = {
+            "comment",
             "go",
+            "gomod",
+            "gosum",
+            "gotmpl",
+            "gowork",
+            "json",
             "lua",
             "markdown",
             "markdown_inline",
@@ -12,9 +18,11 @@ return {
             "nu",
             "regex",
             "rust",
+            "sql",
             "toml",
         },
         auto_install = true,
+        sync_install = true,
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = { "markdown" },
