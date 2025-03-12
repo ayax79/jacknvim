@@ -35,6 +35,7 @@ table.insert(M, {
     require("plugins/fidget"),
     require("plugins/copilot"),
     require("plugins/avante"),
+    require("plugins/rustaceanvim"),
 
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
@@ -54,11 +55,6 @@ table.insert(M, {
     --     requires = "neovim/nvim-lspconfig"
     -- },
     -- -- configures lsp and debugger for rust
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^5',
-        lazy = true,
-    },
     -- fork of null-ls
     "nvimtools/none-ls.nvim",
     "folke/lsp-colors.nvim",
