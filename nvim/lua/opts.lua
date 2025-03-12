@@ -34,7 +34,11 @@ vim.g.gitblame_enabled = 0
 vim.filetype.add({
     extension = {
         avsc = "json",
-    }
+    },
+    filename = {
+        ["Jenkinsfile"] = "groovy",
+        ["AutoJenkinsfile"] = "groovy",
+    },
 })
 
 vim.o.cursorline = true
