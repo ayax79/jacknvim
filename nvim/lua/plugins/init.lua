@@ -36,6 +36,7 @@ table.insert(M, {
     require("plugins/copilot"),
     require("plugins/avante"),
     require("plugins/rustaceanvim"),
+    require("plugins/menu"),
 
     -- handy keybindings
     { "tpope/vim-fugitive",        lazy = false },
