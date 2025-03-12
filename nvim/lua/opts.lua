@@ -1,4 +1,4 @@
--- disable netrw at the very start of your init.lua
+-- Disabling netrw because it is replaced by Oil
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
