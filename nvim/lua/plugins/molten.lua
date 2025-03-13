@@ -19,13 +19,13 @@ return {
             desc = "Initialize Molten for python3",
         },
         -- { "<leader>mi", ":MoltenInit<CR>",                  silent = true, desc = "Initialize the plugin" },
-        { "<leader>jo", ":MoltenEvaluateOperator<CR>",      desc = "run operator selection" },
-        { "<leader>jl", ":MoltenEvaluateLine<CR>",          desc = "evaluate line" },
         { "<leader>jc", ":MoltenReevaluateCell<CR>",        desc = "re-evaluate cell" },
-        { "<leader>jv", ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "evaluate visual selection", mode = "v" },
         { "<leader>jd", ":MoltenDelete<CR>",                desc = "molten delete cell" },
         { "<leader>jh", ":MoltenHideOutput<CR>",            desc = "hide output" },
+        { "<leader>jl", ":MoltenEvaluateLine<CR>",          desc = "evaluate line" },
+        { "<leader>jo", ":MoltenEvaluateOperator<CR>",      desc = "run operator selection" },
         { "<leader>js", ":noautocmd MoltenEnterOutput<CR>", desc = "show/enter output" },
+        { "<leader>jv", ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "evaluate visual selection", mode = "v" },
     },
     init = function()
         -- these are examples, not defaults. Please see the readme
