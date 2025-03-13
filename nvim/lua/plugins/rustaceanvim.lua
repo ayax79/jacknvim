@@ -77,7 +77,6 @@ vim.g.rustaceanvim = function()
                     diagnostics = { disabled = { "inactive-code" } },
                     files = {
                         excludeDirs = {
-                            "_build",
                             ".dart_tool",
                             ".flatpak-builder",
                             ".git",
@@ -90,6 +89,7 @@ vim.g.rustaceanvim = function()
                             ".scannerwork",
                             ".settings",
                             ".venv",
+                            "_build",
                             "archetype-resources",
                             "bin",
                             "hooks",
