@@ -1,6 +1,6 @@
 -- Supported themes
 -- nord, noridc, onenord
-vim.g.theme_name = "onenord"
+vim.g.theme_name = "nord"
 
 require("opts")
 
