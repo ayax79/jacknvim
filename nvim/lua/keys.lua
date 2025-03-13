@@ -164,6 +164,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+local menu_options = require("menu_options");
+
 -- Keyboard users
 vim.keymap.set("n", "<C-t>", function()
     require("menu").open("default")
@@ -176,8 +178,8 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
     vim.cmd.exec '"normal! \\<RightMouse>"'
 
     -- clicked buf
-    local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-    local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+    -- local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+    -- local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
 
-    require("menu").open(options, { mouse = true })
+    require("menu").open(menu_options, { mouse = true })
 end, {})
