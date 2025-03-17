@@ -9,6 +9,7 @@ table.insert(M, {
     require("plugins/avante"),
     require("plugins/blink"),
     require("plugins/bufferline"),
+    require("plugins/colorizer"),
     require("plugins/copilot"),
     require("plugins/crates"),
     require("plugins/dap"),
