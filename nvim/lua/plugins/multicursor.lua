@@ -21,11 +21,11 @@ return {
         -- Add or skip adding a new cursor by matching word/selection
         set({ "n", "x" }, "<leader>n",
             function() mc.matchAddCursor(1) end)
-        set({ "n", "x" }, "<leader>s",
+        set({ "n", "x" }, "M-s",
             function() mc.matchSkipCursor(1) end)
-        set({ "n", "x" }, "<leader>N",
+        set({ "n", "x" }, "M-n",
             function() mc.matchAddCursor(-1) end)
-        set({ "n", "x" }, "<leader>S",
+        set({ "n", "x" }, "M-S",
             function() mc.matchSkipCursor(-1) end)
 
         -- In normal/visual mode, press `mwap` will create a cursor in every match of
