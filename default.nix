@@ -40,7 +40,8 @@
         pynvim
         jupyter-client
         cairosvg # for image rendering
-        pnglatex # for image rendering
+        # Build failure 2024-03-17
+        # pnglatex # for image rendering
         plotly # for image rendering
         pyperclip
         nbformat
