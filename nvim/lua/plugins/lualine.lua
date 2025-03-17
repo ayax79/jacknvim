@@ -3,11 +3,12 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-        require("lualine").setup({
+    opts = function()
+        local opts = {
             options = {
                 icons_enabled = true,
-                theme = vim.g.theme_name,
+                -- theme = vim.g.theme_name,
+                theme = "auto",
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = {
@@ -34,7 +35,29 @@ return {
                         shorting_target = 40,
                     },
                 },
-                lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                -- lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                lualine_x = {
+                    {
+                        require("noice").api.status.message.get_hl,
+                        cond = require("noice").api.status.message.has,
+                    },
+                    {
+                        require("noice").api.status.command.get,
+                        cond = require("noice").api.status.command.has,
+                        color = { fg = "#d08770" },
+                    },
+                    {
+                        require("noice").api.status.mode.get,
+                        cond = require("noice").api.status.mode.has,
+                        color = { fg = "#d08770" },
+                    },
+                    {
+                        require("noice").api.status.search.get,
+                        cond = require("noice").api.status.search.has,
+                        color = { fg = "#d08770" },
+                    },
+                    'filetype',
+                },
                 lualine_y = { "progress" },
                 lualine_z = { "location" },
             },
@@ -49,7 +72,23 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-            extensions = {},
-        })
+            extensions = { "lazy", "fzf", "oil" , "trouble"},
+        }
+        -- local trouble = require("trouble")
+        -- local symbols = trouble.statusline({
+        --     mode = "lsp_document_symbols",
+        --     groups = {},
+        --     title = false,
+        --     filter = { range = true },
+        --     format = "{kind_icon}{symbol.name:Normal}",
+        --     -- The following line is needed to fix the background color
+        --     -- Set it to the lualine section you want to use
+        --     hl_group = "lualine_c_normal",
+        -- })
+        -- table.insert(opts.sections.lualine_c, {
+        --     symbols.get,
+        --     cond = symbols.has,
+        -- })
+        return opts
     end,
 }
