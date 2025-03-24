@@ -37,6 +37,7 @@ vim.filetype.add({
     },
     filename = {
         ["Jenkinsfile"] = "groovy",
+        ["Jenkinsfile.rollback"] = "groovy",
         ["AutoJenkinsfile"] = "groovy",
     },
 })
