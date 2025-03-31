@@ -5,6 +5,7 @@ local crates = require("crates");
 -- BEGIN HARPOON
 -- local harpoon = require('harpoon')
 -- END HARPOON
+--
 
 -- bacon plugin
 vim.keymap.set("n", "!", ":BaconLoad<CR>:w<CR>:BaconNext<CR>", { desc = "Navigate to next bacon location" })
@@ -153,9 +154,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- end
 
         --vim.keymap.set({ "n", "v" }, "<space>la", exec_code_action, util.with_description(opts, "Code Action"))
-        vim.keymap.set({ "n", "v" }, "<space>la", "<cmd>Lspsaga code_action<cr>",
-            util.with_description(opts, "Code Action"))
-        -- vim.keymap.set("n", "gr", vim.lsp.buf.references, util.with_description(opts, "Go to references"))
         vim.keymap.set("n", "<space>lf", function()
             vim.lsp.buf.format({ async = true })
         end, util.with_description(opts, "Format"))
@@ -163,22 +161,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-local menu_options = require("menu_options");
-
--- Keyboard users
-vim.keymap.set("n", "<C-t>", function()
-    require("menu").open("default")
-end, {})
-
--- mouse users + nvimtree users!
-vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
-    require('menu.utils').delete_old_menus()
-
-    vim.cmd.exec '"normal! \\<RightMouse>"'
-
-    -- clicked buf
-    -- local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-    -- local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
-
-    require("menu").open(menu_options, { mouse = true })
-end, {})
+-- replaced by improved menus in 0.11
+-- local menu_options = require("menu_options");
+--
+-- -- Keyboard users
+-- vim.keymap.set("n", "<C-t>", function()
+--     require("menu").open("default")
+-- end, {})
+--
+-- -- mouse users + nvimtree users!
+-- vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
+--     require('menu.utils').delete_old_menus()
+--
+--     vim.cmd.exec '"normal! \\<RightMouse>"'
+--
+--     -- clicked buf
+--     -- local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+--     -- local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+--
+--     require("menu").open(menu_options, { mouse = true })
+-- end, {})

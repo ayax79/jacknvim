@@ -19,7 +19,8 @@ table.insert(M, {
     require("plugins/lspconfig"),
     require("plugins/lspsaga"),
     require("plugins/lualine"),
-    require("plugins/menu"),
+    -- using menu improvements in 0.11
+    -- require("plugins/menu"),
     require("plugins/molten"),
     require("plugins/multicursor"),
     require("plugins/neoconf"),
@@ -35,7 +36,8 @@ table.insert(M, {
     require("plugins/treesitter"),
     require("plugins/trouble"),
     require("plugins/ts_comments"),
-    require("plugins/unimpaired"),
+    -- largerly replaced by built in functionality in 0.11
+    -- require("plugins/unimpaired"),
     require("plugins/whichkey"),
     require("plugins/yazi"),
 
