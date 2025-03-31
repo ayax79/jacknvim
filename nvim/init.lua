@@ -4,6 +4,10 @@ vim.g.theme_name = "nord"
 
 require("opts")
 
+-- This step will load constants, functions etc
+-- that should be loaded before lazy
+local lsp = require("lsp")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -26,8 +30,8 @@ local lazy_opts = {
 }
 require("lazy").setup(plugins, lazy_opts)
 
--- lsp configuration
-require("lsp").setup()
+-- lsp configuration post lazy setup (lspconfig requriement)
+lsp.setup()
 
 -- key mappings including which key
 require("keys")
