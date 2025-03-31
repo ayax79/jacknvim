@@ -33,47 +33,8 @@ vim.g.rustaceanvim = function()
         },
         -- LSP configuration
         server = {
-            -- on_attach = function(client, bufnr)
-            --     -- M.on_attach_common(client, bufnr)
-            --     -- Hover actions
-            --
-            --     M.setup_codelens_refresh(client, bufnr)
-            -- end,
-            -- rust-analyzer language server configuration
-            -- settings = {
-            --     ['rust-analyzer'] = {
-            --         initialization_options = {
-            --             -- get more cargo-less diagnostics from rust-analyzer,
-            --             -- which might include false-positives (those can be turned off by their names)
-            --             diagnostics = {
-            --                 experimental = {
-            --                     enable = true,
-            --                 }
-            --             },
-            --             -- To disable the checking entirely
-            --             -- (ignores all cargo and check settings below)
-            --             checkOnSave = false,
-            --             -- To check the `lib` target only.
-            --             cargo = {
-            --                 allTargets = false
-            --             },
-            --             -- Use `-p` instead of `--workspace` for cargo check
-            --             check = {
-            --                 workspace = false,
-            --             }
-            --         }
-            --     },
-            -- },
             settings = {
                 ['rust-analyzer'] = {
-                    -- check = {
-                    --     features = "all",
-                    -- },
-                    -- cargo = {
-                    --     autoReload = true,
-                    --     -- features = "all",
-                    -- },
-                    -- -- procMacro = { enable = true },
                     diagnostics = { disabled = { "inactive-code" } },
                     files = {
                         excludeDirs = {
@@ -157,22 +118,6 @@ local function get_capabilities()
     return require('blink.cmp').get_lsp_capabilities(capabilities)
 end
 
--- require("mason").setup()
--- require("mason-lspconfig").setup()
--- -- only manage stuff in here when nix won't work
--- require('mason-tool-installer').setup({
---     ensure_installed = {
---         "codelldb",
---         -- "java-debug-adapter",
---         -- "java-test",
---         -- "jdtls",
---         -- "lombok-nightly",
---         -- "openjdk-17",
---         -- "rust-analyzer",
---         -- "spring-boot-tools",
---     }
--- })
---
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
@@ -201,30 +146,7 @@ vim.diagnostic.config({
     --     },
 })
 
---Set completeopt to have a better completion experience
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force to select one from the menu
--- shortness: avoid showing extra messages when using completion
--- updatetime: set updatetime for CursorHold
--- vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
--- vim.opt.shortmess = vim.opt.shortmess + { c = true }
--- vim.api.nvim_set_option_value("updatetime", 300, { scope = 'global' })
-
--- -- Fixed column for diagnostics to appear
--- -- Show autodiagnostic popup on cursor hover_range
--- -- Goto previous / next diagnostic warning / error
--- -- Show inlay_hints more frequently
--- vim.cmd([[
--- set signcolumn=yes
--- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
--- ]
---])
-
-
 return {
-
 
     setup = function()
         require("lsp-colors").setup()
