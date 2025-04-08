@@ -149,8 +149,6 @@ vim.diagnostic.config({
 return {
 
     setup = function()
-        require("lsp-colors").setup()
-
         local dap, dapui = require("dap"), require("dapui")
         dapui.setup()
         dap.adapters.lldb = {
