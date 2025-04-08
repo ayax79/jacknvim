@@ -1,10 +1,12 @@
 M = {}
 
 table.insert(M, {
+    "b0o/SchemaStore.nvim",
+    "folke/lsp-colors.nvim",
     "nvim-lua/plenary.nvim",
-    -- require("plugins/fidget"),
-    -- require("plugins/image"),
-    -- require("plugins/nvim_java"),
+    "nvimtools/none-ls.nvim",
+    "tpope/vim-abolish",
+    "tpope/vim-fugitive",
     require("plugins.mini"),
     require("plugins/avante"),
     require("plugins/blink"),
@@ -19,8 +21,6 @@ table.insert(M, {
     require("plugins/lspconfig"),
     require("plugins/lspsaga"),
     require("plugins/lualine"),
-    -- using menu improvements in 0.11
-    -- require("plugins/menu"),
     require("plugins/molten"),
     require("plugins/multicursor"),
     require("plugins/neoconf"),
@@ -30,40 +30,13 @@ table.insert(M, {
     require("plugins/nvim_coverage"),
     require("plugins/nvim_metals"),
     require("plugins/oil"),
-    -- require("plugins/onenord"),
     require("plugins/rustaceanvim"),
     require("plugins/snacks"),
     require("plugins/treesitter"),
     require("plugins/trouble"),
     require("plugins/ts_comments"),
-    -- largerly replaced by built in functionality in 0.11
-    -- require("plugins/unimpaired"),
     require("plugins/whichkey"),
     require("plugins/yazi"),
-
-    -- handy keybindings
-    { "tpope/vim-fugitive",        lazy = false },
-    -- { "f-person/git-blame.nvim", lazy = false },
-    -- ---------------------------------------------------------
-    --- COMPLETIONS SUPPORT
-    --------------------------------------------------------
-
-    -- github copilot
-    -- "onsails/lspkind.nvim",
-    --------------------------------------------------------
-    --- LSP SUPPORT
-    --------------------------------------------------------
-
-    -- {
-    --     "SmiteshP/nvim-navic",
-    --     requires = "neovim/nvim-lspconfig"
-    -- },
-    -- -- configures lsp and debugger for rust
-    -- fork of null-ls
-    "nvimtools/none-ls.nvim",
-    "folke/lsp-colors.nvim",
-    -- json/yaml schema stores
-    "b0o/SchemaStore.nvim",
 })
 
 return M
