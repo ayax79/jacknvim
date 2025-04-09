@@ -1,7 +1,6 @@
 local codelldb_home = vim.fn.stdpath('data') .. '/mason/packages/codelldb/extension/'
 local codelldb_path = codelldb_home .. 'adapter/codelldb'
 
-
 local liblldb_path = codelldb_home .. 'lldb/lib/liblldb'
 local this_os = vim.uv.os_uname().sysname;
 
@@ -118,6 +117,7 @@ local function get_capabilities()
     return require('blink.cmp').get_lsp_capabilities(capabilities)
 end
 
+-- Remove once this actually works
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
@@ -133,11 +133,34 @@ sign({ name = "DiagnosticSignHint", text = "" })
 sign({ name = "DiagnosticSignInfo", text = "" })
 
 vim.diagnostic.config({
-    virtual_lines = true,
-    signs = true,
+    virtual_lines = {
+        severity = {
+            min = vim.diagnostic.severity.ERROR,
+        },
+    },
+    virtual_text = {
+        severity = {
+            min = vim.diagnostic.severity.HINT,
+            max = vim.diagnostic.severity.WARN,
+        },
+    },
     update_in_insert = true,
     underline = true,
     severity_sort = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        }
+    },
+    linehl = {
+        [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+        [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
     --     float = {
     --         border = "rounded",
     --         source = "always",
