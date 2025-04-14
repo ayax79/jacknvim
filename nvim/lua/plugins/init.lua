@@ -9,7 +9,7 @@ table.insert(M, {
     "tpope/vim-fugitive",
     require("plugins.mini"),
     require("plugins/avante"),
-    require("plugins/blink"),
+    -- require("plugins/blink"),
     require("plugins/bufferline"),
     require("plugins/colorizer"),
     require("plugins/copilot"),

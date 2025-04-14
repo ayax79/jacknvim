@@ -2,37 +2,11 @@
 local wk = require("which-key")
 local crates = require("crates");
 
--- BEGIN HARPOON
--- local harpoon = require('harpoon')
--- END HARPOON
---
-
--- bacon plugin
-vim.keymap.set("n", "!", ":BaconLoad<CR>:w<CR>:BaconNext<CR>", { desc = "Navigate to next bacon location" })
-vim.keymap.set("n", ",", ":BaconList<CR>", { desc = "Open bacon locations list" })
-
 wk.add({
     -- Global Mappings
-    { "[d",        vim.diagnostic.goto_prev,  desc = "Prev Diagnostic", },
-    { "]d",        vim.diagnostic.goto_next,  desc = "Next Diagnostic", },
     { '<space>ql', vim.diagnostic.setloclist, desc = "Set Loclist", },
     { "<space>qq", vim.diagnostic.setqflist,  desc = "Set Quickfixlist", },
     { "-",         "<CMD>Oil<CR>",            desc = "Open parent directory", },
-    -- Bookmarks Group
-    --Renabling his is going to conflict with some of the multicursor settings. Update that first
-    -- Also the plugin is not installed
-    -- {
-    --     "<leader>m",
-    --     name = "Bookmarks",
-    --     group = "Bookmarks",
-    --     { "<leader>mm", "<Cmd>BookmarkToggle<CR>",   desc = "Toggle bookmark", },
-    --     { "<leader>mi", "<Cmd>BookmarkAnnotate<CR>", desc = "Annotate bookmark", },
-    --     { "<leader>mn", "<Cmd>BookmarkNext<CR>",     desc = "Jump to next bookmark in buffer", },
-    --     { "<leader>mp", "<Cmd>BookmarkPrev<CR>",     desc = "Jump to previous bookmark in buffer", },
-    --     { "<leader>ma", "<Cmd>BookmarkShowAll<CR>",  desc = "Show all bookmarks (toggle)", },
-    --     { "<leader>mc", "<Cmd>BookmarkClear<CR>",    desc = "Clear bookmarks in current buffer", },
-    --     { "<leader>mx", "<Cmd>BookmarkClearAll<CR>", desc = "Clear bookmarks in all buffers", },
-    -- },
     -- LSP Group
     { "<leader>a", group = "Avante" },
     { "<leader>b", group = "Buffers" },
@@ -87,21 +61,6 @@ wk.add({
     { "<leader>w", group = "Workspaces" },
     { "<leader>x", group = "Trouble" },
     { "<leader>/", group = "Search" },
-    -- Harpoon Group
-    -- {
-    --     "<leader>h",
-    --     name = "Harpooon",
-    --     group = "Harpooon",
-    --     { "<leader>ha", function() harpoon:list():add() end,                         desc = "Harpoon Add File" },
-    --     { "<leader>hq", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon Quicklist" },
-    --     { "<leader>hr", function() harpoon:list():remove() end,                      desc = "Remove Current File" },
-    --     { "<leader>h1", function() harpoon:list():select(1) end,                     desc = "Select Item 1" },
-    --     { "<leader>h2", function() harpoon:list():select(2) end,                     desc = "Select Item 2" },
-    --     { "<leader>h3", function() harpoon:list():select(3) end,                     desc = "Select Item 3" },
-    --     { "<leader>h4", function() harpoon:list():select(4) end,                     desc = "Select Item 4" },
-    --     { "[h",         function() harpoon:list():prev() end,                        desc = "Harpoon Prev" },
-    --     { "]h",         function() harpoon:list():next() end,                        desc = "Harpoon Next" },
-    -- },
 })
 
 -- Global mappings.
@@ -121,7 +80,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
         -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, util.with_description(opts, "Go to Declaration"))
-        -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, util.with_description(opts, "Go to definition"))
         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, util.with_description(opts, "LSP hover"))
         vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", util.with_description(opts, "DOC"))
         vim.keymap.set("n", "<M-k>", vim.lsp.buf.signature_help, util.with_description(opts, "Signature Help"))
@@ -160,24 +118,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set('v', 'M-K', require('dapui').eval, util.with_description(opts, "DAP Eval Expression"))
     end,
 })
-
--- replaced by improved menus in 0.11
--- local menu_options = require("menu_options");
---
--- -- Keyboard users
--- vim.keymap.set("n", "<C-t>", function()
---     require("menu").open("default")
--- end, {})
---
--- -- mouse users + nvimtree users!
--- vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
---     require('menu.utils').delete_old_menus()
---
---     vim.cmd.exec '"normal! \\<RightMouse>"'
---
---     -- clicked buf
---     -- local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
---     -- local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
---
---     require("menu").open(menu_options, { mouse = true })
--- end, {})

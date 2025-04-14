@@ -69,54 +69,6 @@ vim.g.rustaceanvim = function()
     }
 end
 
-local function setup_codelens_refresh(client, bufnr)
-    local status_ok, codelens_supported = pcall(function()
-        return client.supports_method("textDocument/codeLens")
-    end)
-    if not status_ok or not codelens_supported then
-        return
-    end
-    local group = "lsp_code_lens_refresh"
-    local cl_events = { "BufEnter", "InsertLeave" }
-    local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
-        group = group,
-        buffer = bufnr,
-        event = cl_events,
-    })
-    if ok and #cl_autocmds > 0 then
-        return
-    end
-    local cb = function()
-        if vim.api.nvim_buf_is_loaded(bufnr) and vim.api.nvim_buf_is_valid(bufnr) then
-            vim.lsp.codelens.refresh({ bufnr = bufnr })
-        end
-    end
-    vim.api.nvim_create_augroup(group, { clear = false })
-    vim.api.nvim_create_autocmd(cl_events, {
-        group = group,
-        buffer = bufnr,
-        callback = cb,
-    })
-end
-
-local function on_attach_common(client, bufnr)
-    vim.lsp.inlay_hint.enable(true)
-    setup_codelens_refresh(client, bufnr)
-
-    local status_ok, doc_symbols_supported = pcall(function()
-        return client.supports_method("textDocument/documentSymbol")
-    end)
-
-    --     if status_ok and doc_symbols_supported then
-    --         navic.attach(client, bufnr)
-    --     end
-end
-
-local function get_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    return require('blink.cmp').get_lsp_capabilities(capabilities)
-end
-
 -- Remove once this actually works
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
@@ -161,19 +113,11 @@ vim.diagnostic.config({
     numhl = {
         [vim.diagnostic.severity.WARN] = 'WarningMsg',
     },
-    --     float = {
-    --         border = "rounded",
-    --         source = "always",
-    --         header = "",
-    --         prefix = "",
-    --     },
 })
 
 return {
 
     setup = function()
-        local capabilities = get_capabilities()
-
         local dap, dapui = require("dap"), require("dapui")
         dapui.setup()
         dap.adapters.lldb = {
@@ -186,11 +130,7 @@ return {
             dapui.open()
         end
 
-        local lspconfig = require("lspconfig")
-
         vim.lsp.config('lua_ls', {
-            -- on_attach = on_attach_common,
-            -- capabilities = capabilities,
             settings = {
                 Lua = {
                     completion = {
@@ -207,8 +147,6 @@ return {
         vim.lsp.enable('lua_ls')
 
         vim.lsp.config('yamlls', {
-            -- on_attach = on_attach_common,
-            -- capabilities = capabilities,
             settings = {
                 yaml = {
                     hover = true,
@@ -250,7 +188,6 @@ return {
         vim.lsp.enable('yamlls')
 
         vim.lsp.config('jsonls', {
-            -- on_attach = on_attach_common,
             settings = {
                 json = {
                     schemas = require('schemastore').json.schemas(),
@@ -263,14 +200,10 @@ return {
         local null_ls = require("null-ls")
         vim.lsp.config('null-ls', {
             sources = {
-                -- null_ls.builtins.diagnostics.eslint,
                 null_ls.builtins.completion.spell,
                 null_ls.builtins.formatting.alejandra,
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.diagnostics.tidy,
-                -- null_ls.builtins.formatting.yq.with({
-                --     extra_args = { '-y' },
-                -- }),
             },
         })
         vim.lsp.enable('null-ls')
