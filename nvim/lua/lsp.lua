@@ -172,6 +172,8 @@ vim.diagnostic.config({
 return {
 
     setup = function()
+        local capabilities = get_capabilities()
+
         local dap, dapui = require("dap"), require("dapui")
         dapui.setup()
         dap.adapters.lldb = {
@@ -184,15 +186,11 @@ return {
             dapui.open()
         end
 
-        local capabilities = get_capabilities()
         local lspconfig = require("lspconfig")
-        --------------------------------------------------------
-        --- LUA configuration
-        --------------------------------------------------------
 
-        lspconfig.lua_ls.setup({
-            on_attach = on_attach_common,
-            capabilities = capabilities,
+        vim.lsp.config('lua_ls', {
+            -- on_attach = on_attach_common,
+            -- capabilities = capabilities,
             settings = {
                 Lua = {
                     completion = {
@@ -206,14 +204,11 @@ return {
                 },
             },
         })
+        vim.lsp.enable('lua_ls')
 
-        --------------------------------------------------------
-        --- YA configuration
-        --------------------------------------------------------
-
-        lspconfig.yamlls.setup {
-            on_attach = on_attach_common,
-            capabilities = capabilities,
+        vim.lsp.config('yamlls', {
+            -- on_attach = on_attach_common,
+            -- capabilities = capabilities,
             settings = {
                 yaml = {
                     hover = true,
@@ -251,29 +246,22 @@ return {
                     },
                 },
             },
-        }
+        })
+        vim.lsp.enable('yamlls')
 
-        --------------------------------------------------------
-        --- JSON LS configuration
-        --------------------------------------------------------
-
-        lspconfig.jsonls.setup {
-            on_attach = on_attach_common,
+        vim.lsp.config('jsonls', {
+            -- on_attach = on_attach_common,
             settings = {
                 json = {
                     schemas = require('schemastore').json.schemas(),
                     validate = { enable = true },
                 },
             },
-        }
-
-        --------------------------------------------------------
-        --- NONE-LS configuration
-        --------------------------------------------------------
+        })
+        vim.lsp.enable('jsonls')
 
         local null_ls = require("null-ls")
-
-        null_ls.setup({
+        vim.lsp.config('null-ls', {
             sources = {
                 -- null_ls.builtins.diagnostics.eslint,
                 null_ls.builtins.completion.spell,
@@ -285,94 +273,21 @@ return {
                 -- }),
             },
         })
+        vim.lsp.enable('null-ls')
+        vim.lsp.enable('pyright')
 
-        --------------------------------------------------------
-        --- PYTHON CONFIGURATION
-        --------------------------------------------------------
-        lspconfig.pyright.setup {}
-
-        --------------------------------------------------------
-        --- NIL LS CONFIGURATION (NIX)
-        --------------------------------------------------------
-        lspconfig.nil_ls.setup {
+        -- nix language server
+        vim.lsp.config('nil_ls', {
             settings = {
                 ['nil'] = {
                     autoArchive = true,
                 },
             },
-        }
-
-        --------------------------------------------------------
-        --- NUSHELL CONFIGURATION
-        --------------------------------------------------------
-        require 'lspconfig'.nushell.setup {
-            on_attach = on_attach_common,
-            capabilities = capabilities,
-        }
-
-        --------------------------------------------------------
-        --- JAVA CONFIGURATION
-        --------------------------------------------------------
-        -- require('java').setup()
-        -- require('lspconfig').jdtls.setup({})
-
-        --------------------------------------------------------
-        --- GO LANG CONFIGURATION
-        --------------------------------------------------------
-        lspconfig.gopls.setup({
-            on_attach = on_attach_common,
-            capabilities = capabilities,
         })
-
-        --------------------------------------------------------
-        --- TALS (scala) CONFIGURATION
-        --------------------------------------------------------
-        local metals_config = require("metals").bare_config()
-
-        -- Example of settings
-        metals_config.settings = {
-            showImplicitArguments = true,
-            excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-        }
-
-        -- *READ THIS*
-        -- I *highly* recommend setting statusBarProvider to true, however if you do,
-        -- you *have* to have a setting to display this in your statusline or else
-        -- you'll not see any messages from metals. There is more info in the help
-        -- docs about this
-        metals_config.init_options.statusBarProvider = "off"
-
-        -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-        metals_config.capabilities = get_capabilities()
-
-        metals_config.on_attach = function(client, bufnr)
-            require("metals").setup_dap()
-            on_attach_common(client, bufnr)
-        end
-
-        local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "scala", "sbt" },
-            callback = function()
-                require("metals").initialize_or_attach(metals_config)
-            end,
-            group = nvim_metals_group,
-        })
-
-        --------------------------------------------------------
-        --- TYPESCRIPT CONFIGURATION
-        --------------------------------------------------------
-        lspconfig.ts_ls.setup({
-            on_attach = on_attach_common,
-            capabilities = capabilities,
-        })
-
-        --------------------------------------------------------
-        --- TERRAFORCONFIGURATION
-        --------------------------------------------------------
-        lspconfig.terraformls.setup({
-            on_attach = on_attach_common,
-            capabilities = capabilities,
-        })
+        vim.lsp.enable('nil_ls')
+        vim.lsp.enable('nushell')
+        vim.lsp.enable('gopls')
+        vim.lsp.enable('ts_ls')
+        vim.lsp.enable('terraformls')
     end
 }
