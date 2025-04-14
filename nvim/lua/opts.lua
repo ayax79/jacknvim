@@ -1,3 +1,5 @@
+vim.g.theme_name = "nord"
+
 -- Disabling netrw because it is replaced by Oil
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
