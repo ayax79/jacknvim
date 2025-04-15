@@ -1,15 +1,20 @@
+local bufnr = vim.api.nvim_get_current_buf()
 vim.keymap.set(
     "n",
-    "<C-space>",
-    function() vim.cmd.RustLsp { 'hover', 'actions' } end,
-    { desc = "Show hover actions" }
+    "<leader>la",
+    function()
+        vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+        -- or vim.lsp.buf.codeAction() if you don't want grouping.
+    end,
+    { silent = true, buffer = bufnr }
 )
--- Code action groups
 vim.keymap.set(
     "n",
-    "<Leader>la",
-    function() vim.cmd.RustLsp('codeAction') end,
-    { desc = "Code Action Group" }
+    "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+    function()
+        vim.cmd.RustLsp({ 'hover', 'actions' })
+    end,
+    { silent = true, buffer = bufnr }
 )
 -- Runnables
 
@@ -22,3 +27,8 @@ vim.keymap.set("n", "<Leader>ldr", function() vim.cmd.RustLsp { 'debuggables' } 
     { desc = "Debuggables" })
 vim.keymap.set("n", "<Leader>ldR", function() vim.cmd.RustLsp { 'debuggables', 'last' } end,
     { desc = "Debug Last" })
+
+vim.keymap.set("n", "<Leader>ltr", function() vim.cmd.RustLsp { 'testables' } end,
+    { desc = "Testables" })
+vim.keymap.set("n", "<Leader>ltR", function() vim.cmd.RustLsp { 'testables', 'last' } end,
+    { desc = "Test Last" })
