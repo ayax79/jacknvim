@@ -1,6 +1,5 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
     build = ":TSUpdate",
     opts = {
         ensure_installed = {
@@ -21,11 +20,13 @@ return {
             "sql",
             "toml",
         },
+        sync_install = false,
         auto_install = true,
-        sync_install = true,
+        ignore_install = false,
         highlight = {
             enable = true,
-            additional_vim_regex_highlighting = { "markdown" },
+            -- additional_vim_regex_highlighting = { "markdown" },
+            additional_vim_regex_highlighting = false,
         },
         ident = { enable = true },
         rainbow = {
