@@ -5,6 +5,7 @@ require("opts")
 local lsp = require("lsp")
 
 require("config.lazy")
+vim.cmd.colorscheme(vim.g.theme_name)
 
 -- lsp configuration post lazy setup (lspconfig requriement)
 lsp.setup()
