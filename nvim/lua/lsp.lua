@@ -144,7 +144,6 @@ return {
                 },
             },
         })
-        vim.lsp.enable('lua_ls')
 
         vim.lsp.config('yamlls', {
             settings = {
@@ -161,31 +160,30 @@ return {
                     schemas = require('schemastore').yaml.schemas(),
                     customTags = {
                         -- SA/ Cloudformation
-                        "!fn",
                         "!And",
-                        "!If",
-                        "!Not",
-                        "!Equals",
-                        "!Or",
-                        "!FindInp sequence",
                         "!Base64",
                         "!Cidr",
-                        "!Ref",
-                        "!Ref Scalar",
-                        "!Sub",
-                        "!GetAtt",
+                        "!Equals",
+                        "!FindInp sequence",
                         "!GetAZs",
+                        "!GetAtt",
+                        "!If",
                         "!ImportValue",
+                        "!Join sequence",
+                        "!Not",
+                        "!Or",
+                        "!Ref Scalar",
+                        "!Ref",
                         "!Select",
                         "!Split",
-                        "!Join sequence",
+                        "!Sub",
+                        "!fn",
                         -- gitlab ci
                         "!reference sequence",
                     },
                 },
             },
         })
-        vim.lsp.enable('yamlls')
 
         vim.lsp.config('jsonls', {
             settings = {
@@ -195,7 +193,6 @@ return {
                 },
             },
         })
-        vim.lsp.enable('jsonls')
 
         local null_ls = require("null-ls")
         vim.lsp.config('null-ls', {
@@ -206,21 +203,30 @@ return {
                 null_ls.builtins.diagnostics.tidy,
             },
         })
-        vim.lsp.enable('null-ls')
-        vim.lsp.enable('pyright')
 
         -- nix language server
         vim.lsp.config('nil_ls', {
             settings = {
                 ['nil'] = {
                     autoArchive = true,
+                    formatting = {
+                        command = { "nixfmt" },
+                    }
                 },
             },
         })
-        vim.lsp.enable('nil_ls')
-        vim.lsp.enable('nushell')
-        vim.lsp.enable('gopls')
-        vim.lsp.enable('ts_ls')
-        vim.lsp.enable('terraformls')
+
+        vim.lsp.enable({
+            'gopls',
+            'jsonls',
+            'lua_ls',
+            'nil_ls',
+            'null-ls',
+            'nushell',
+            'pyright',
+            'terraformls',
+            'ts_ls',
+            'yamlls',
+        })
     end
 }

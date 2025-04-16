@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     hadolint
     dprint
@@ -25,6 +25,7 @@
     typescript-language-server
     # rustacean graph crate functionality
     graphviz
+    nixfmt
   ];
 
   programs.neovim = {
@@ -32,8 +33,8 @@
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
-    extraLuaPackages = ps: [ps.magick];
-    extraPackages = [pkgs.imagemagick];
+    extraLuaPackages = ps: [ ps.magick ];
+    extraPackages = [ pkgs.imagemagick ];
     extraPython3Packages = ps:
       with ps; [
         # ... other python packages
