@@ -25,7 +25,7 @@
     typescript-language-server
     # rustacean graph crate functionality
     graphviz
-    nixfmt
+    nixfmt-classic
   ];
 
   programs.neovim = {

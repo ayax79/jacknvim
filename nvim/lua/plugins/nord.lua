@@ -1,7 +1,7 @@
 return
 {
     "gbprod/nord.nvim",
-    enabled = false,
+    enabled = vim.g.theme_name == "nord",
     priority = 1000,
     config = function()
         require("nord").setup({
