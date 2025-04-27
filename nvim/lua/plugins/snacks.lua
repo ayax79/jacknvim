@@ -24,6 +24,17 @@ return {
             notification = {
                 -- wo = { wrap = true } -- Wrap notifications
             }
+        },
+        lazygit = {
+            enabled = true,
+            configure = true,
+            config = {
+                os = { editPreset = "nvim-remote" },
+                gui = {
+                    -- set to an empty string "" to disable icons
+                    nerdFontsVersion = "3",
+                },
+            },
         }
     },
     keys = {
