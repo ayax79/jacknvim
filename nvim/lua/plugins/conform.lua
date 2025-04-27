@@ -12,5 +12,10 @@ return -- lazy.nvim setup
                 args = { "format", "--language", "nu" },
             },
         },
+        default_format_opts = {
+            async = true,
+            lsp_format = "fallback",
+            timeout_ms = 10000,
+        },
     },
 }

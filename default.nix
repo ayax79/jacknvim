@@ -26,6 +26,7 @@
     # rustacean graph crate functionality
     graphviz
     nixfmt-classic
+    topiary
   ];
 
   programs.neovim = {

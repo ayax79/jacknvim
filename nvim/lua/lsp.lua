@@ -69,6 +69,34 @@ vim.g.rustaceanvim = function()
     }
 end
 
+vim.lsp.config('lua_ls', {
+    cmd = { 'lua-language-server' },
+    filetypes = { 'lua' },
+    root_markers = {
+        '.luarc.json',
+        '.luarc.jsonc',
+        '.luacheckrc',
+        '.stylua.toml',
+        'stylua.toml',
+        'selene.toml',
+        'selene.yml',
+        '.git',
+    },
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Replace",
+            },
+            workspace = {
+                -- ke the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+        },
+    },
+})
+
+
 -- Remove once this actually works
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
@@ -130,22 +158,27 @@ return {
             dapui.open()
         end
 
-        vim.lsp.config('lua_ls', {
+
+
+        vim.lsp.config('jsonls', {
+            cmd = { 'vscode-json-language-server', '--stdio' },
+            filetypes = { 'json', 'jsonc' },
+            init_options = {
+                provideFormatter = true,
+            },
+            root_markers = { '.git' },
             settings = {
-                Lua = {
-                    completion = {
-                        callSnippet = "Replace",
-                    },
-                    workspace = {
-                        -- ke the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file("", true),
-                        checkThirdParty = false,
-                    },
+                json = {
+                    schemas = require('schemastore').json.schemas(),
+                    validate = { enable = true },
                 },
             },
         })
 
         vim.lsp.config('yamlls', {
+            cmd = { 'yaml-language-server', '--stdio' },
+            filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab' },
+            root_markers = { '.git' },
             settings = {
                 yaml = {
                     hover = true,
@@ -185,27 +218,11 @@ return {
             },
         })
 
-        vim.lsp.config('jsonls', {
-            settings = {
-                json = {
-                    schemas = require('schemastore').json.schemas(),
-                    validate = { enable = true },
-                },
-            },
-        })
-
-        local null_ls = require("null-ls")
-        vim.lsp.config('null-ls', {
-            sources = {
-                null_ls.builtins.completion.spell,
-                null_ls.builtins.formatting.alejandra,
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.diagnostics.tidy,
-            },
-        })
-
         -- nix language server
         vim.lsp.config('nil_ls', {
+            cmd = { 'nil' },
+            filetypes = { 'nix' },
+            root_markers = { 'flake.nix', '.git' },
             settings = {
                 ['nil'] = {
                     autoArchive = true,
