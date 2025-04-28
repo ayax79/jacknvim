@@ -1,5 +1,7 @@
 return {
     "nvim-neotest/neotest",
+    -- disabling because of slow load time
+    enabled = false,
     dependencies = {
         "nvim-neotest/nvim-nio",
         "nvim-lua/plenary.nvim",
