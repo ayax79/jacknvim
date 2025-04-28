@@ -30,72 +30,11 @@ vim.g.rustaceanvim = function()
                 }
             },
         },
-        -- LSP configuration
-        server = {
-            settings = {
-                ['rust-analyzer'] = {
-                    diagnostics = { disabled = { "inactive-code" } },
-                    files = {
-                        excludeDirs = {
-                            ".dart_tool",
-                            ".flatpak-builder",
-                            ".git",
-                            ".gitlab",
-                            ".gitlab-ci",
-                            ".gradle",
-                            ".idea",
-                            ".next",
-                            ".project",
-                            ".scannerwork",
-                            ".settings",
-                            ".venv",
-                            "_build",
-                            "archetype-resources",
-                            "bin",
-                            "hooks",
-                            "node_modules",
-                            "po",
-                            "screenshots",
-                            "target"
-                        }
-                    }
-                },
-            }
-        },
-        -- DAP configuration
         dap = {
             adapter = require('rustaceanvim.config').get_codelldb_adapter(codelldb_path, liblldb_path),
         },
     }
 end
-
-vim.lsp.config('lua_ls', {
-    cmd = { 'lua-language-server' },
-    filetypes = { 'lua' },
-    root_markers = {
-        '.luarc.json',
-        '.luarc.jsonc',
-        '.luacheckrc',
-        '.stylua.toml',
-        'stylua.toml',
-        'selene.toml',
-        'selene.yml',
-        '.git',
-    },
-    settings = {
-        Lua = {
-            completion = {
-                callSnippet = "Replace",
-            },
-            workspace = {
-                -- ke the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-        },
-    },
-})
-
 
 -- Remove once this actually works
 -- LSP Diagnostics Options Setup
@@ -157,81 +96,6 @@ return {
         dap.listeners.after.event_initialized["dapui_config"] = function()
             dapui.open()
         end
-
-
-
-        vim.lsp.config('jsonls', {
-            cmd = { 'vscode-json-language-server', '--stdio' },
-            filetypes = { 'json', 'jsonc' },
-            init_options = {
-                provideFormatter = true,
-            },
-            root_markers = { '.git' },
-            settings = {
-                json = {
-                    schemas = require('schemastore').json.schemas(),
-                    validate = { enable = true },
-                },
-            },
-        })
-
-        vim.lsp.config('yamlls', {
-            cmd = { 'yaml-language-server', '--stdio' },
-            filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab' },
-            root_markers = { '.git' },
-            settings = {
-                yaml = {
-                    hover = true,
-                    completion = true,
-                    schemaStore = {
-                        -- You must disable built-in schemaStore support if you want to use
-                        -- this plugin and its advanced options like `ignore`.
-                        enable = false,
-                        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                        url = "",
-                    },
-                    schemas = require('schemastore').yaml.schemas(),
-                    customTags = {
-                        -- SA/ Cloudformation
-                        "!And",
-                        "!Base64",
-                        "!Cidr",
-                        "!Equals",
-                        "!FindInp sequence",
-                        "!GetAZs",
-                        "!GetAtt",
-                        "!If",
-                        "!ImportValue",
-                        "!Join sequence",
-                        "!Not",
-                        "!Or",
-                        "!Ref Scalar",
-                        "!Ref",
-                        "!Select",
-                        "!Split",
-                        "!Sub",
-                        "!fn",
-                        -- gitlab ci
-                        "!reference sequence",
-                    },
-                },
-            },
-        })
-
-        -- nix language server
-        vim.lsp.config('nil_ls', {
-            cmd = { 'nil' },
-            filetypes = { 'nix' },
-            root_markers = { 'flake.nix', '.git' },
-            settings = {
-                ['nil'] = {
-                    autoArchive = true,
-                    formatting = {
-                        command = { "nixfmt" },
-                    }
-                },
-            },
-        })
 
         vim.lsp.enable({
             'jsonls',
