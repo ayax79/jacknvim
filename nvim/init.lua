@@ -1,14 +1,13 @@
 require("opts")
 
--- This step will load constants, functions etc
--- that should be loaded before lazy
-local lsp = require("lsp")
+-- This wraps the calls to lazy so that the lsp
+-- settings that need to applied before and after plugins
+-- are loaded happens correctly
+require("lsp").initialize(function()
+    require("config.lazy")
+end)
 
-require("config.lazy")
 vim.cmd.colorscheme(vim.g.theme_name)
-
--- lsp configuration post lazy setup (lspconfig requriement)
-lsp.setup()
 
 -- key mappings including which key
 require("keys")
