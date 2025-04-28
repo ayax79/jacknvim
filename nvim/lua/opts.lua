@@ -10,9 +10,7 @@ vim.wo.number = true
 -- vim.wo.colorcolumn = "120"
 
 -- maintain undo history between sessions
-vim.cmd([[
-set undofile
-]])
+vim.opt.undofile = true
 
 -- Example using a list of specs with the default options
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
@@ -37,10 +35,8 @@ vim.filetype.add({
     extension = {
         avsc = "json",
     },
-    filename = {
-        ["Jenkinsfile"] = "groovy",
-        ["Jenkinsfile.rollback"] = "groovy",
-        ["AutoJenkinsfile"] = "groovy",
+    pattern = {
+        [".*Jenkinsfile.*"] = "groovy",
     },
 })
 
