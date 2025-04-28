@@ -1,4 +1,4 @@
 return {
     "nvimtools/none-ls.nvim",
-    enable = false,
+    enabled = false,
 }

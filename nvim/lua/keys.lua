@@ -43,8 +43,6 @@ wk.add({
         name = "LSP",
         group = "LSP",
         { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
-        { "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek Definition", },
-        { "<leader>lo", "<cmd>Lspsaga outline<cr>",         desc = "Outline", },
         --Debugger Group
         {
             "<leader>lD",
@@ -71,7 +69,7 @@ local util = require("util")
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    -- group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
         -- Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -81,7 +79,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local opts = { buffer = ev.buf, silent = true }
         -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, util.with_description(opts, "Go to Declaration"))
         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, util.with_description(opts, "LSP hover"))
-        -- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", util.with_description(opts, "DOC"))
         vim.keymap.set("n", "<M-k>", vim.lsp.buf.signature_help, util.with_description(opts, "Signature Help"))
         vim.keymap.set("n", "gx", vim.lsp.buf.incoming_calls, util.with_description(opts, "Go to incoming calls"))
         vim.keymap.set("n", "gX", vim.lsp.buf.outgoing_calls, util.with_description(opts, "Go to outgoing calls"))

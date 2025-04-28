@@ -234,7 +234,6 @@ return {
         })
 
         vim.lsp.enable({
-            'gopls',
             'jsonls',
             'lua_ls',
             'nil_ls',
