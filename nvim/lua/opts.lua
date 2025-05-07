@@ -1,4 +1,4 @@
-vim.g.theme_name = "nord"
+vim.g.theme_name = "melange"
 
 -- Disabling netrw because it is replaced by Oil
 vim.g.loaded_netrw = 1
@@ -27,6 +27,7 @@ vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("space:⋅")
 
 -- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true;
 
 -- git blame off by default
 vim.g.gitblame_enabled = 0
