@@ -1,6 +1,7 @@
 return {
     {
         'echasnovski/mini.pairs',
+        lazy = false,
         version = '*',
         opts = {
             modes = { insert = true, command = true, terminal = false },
@@ -13,10 +14,11 @@ return {
             skip_unbalanced = true,
             -- better deal with markdown code blocks
             markdown = true,
-        }
+        },
+        config = true,
     },
-    { 'echasnovski/mini.surround',  version = '*' },
-    { 'echasnovski/mini.pairs',     version = '*' },
-    { 'echasnovski/mini.move',      version = '*' },
-    { 'echasnovski/mini.splitjoin', version = '*' },
+    { 'echasnovski/mini.surround',  version = '*', lazy = false, config = true },
+    { 'echasnovski/mini.pairs',     version = '*', lazy = false, config = true },
+    { 'echasnovski/mini.move',      version = '*', lazy = false, config = true },
+    { 'echasnovski/mini.splitjoin', version = '*', lazy = false, config = true },
 }
