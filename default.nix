@@ -44,7 +44,8 @@
         cairosvg # for image rendering
         # Build failure 2024-03-17
         # pnglatex # for image rendering
-        plotly # for image rendering
+        # plotly broken 2025-06-23
+        # plotly # for image rendering
         pyperclip
         nbformat
       ];
