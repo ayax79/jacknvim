@@ -25,20 +25,20 @@ return {
                 end, { expr = true, desc = 'Previous uncommitted change' })
 
                 -- Actions
-                -- map('n', '<leader>gs', gs.stage_hunk, { desc = 'State Hunk' })
-                map('n', '<leader>gr', gs.reset_hunk, { desc = 'Reset Hunk' })
-                map('v', '<leader>gs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+                -- map('n', '<leader>Gs', gs.stage_hunk, { desc = 'State Hunk' })
+                map('n', '<leader>Gr', gs.reset_hunk, { desc = 'Reset Hunk' })
+                map('v', '<leader>Gs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
                     { desc = 'State Hunk' })
-                map('v', '<leader>gr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+                map('v', '<leader>Gr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
                     { desc = 'Reset Hunk' })
-                -- map('n', '<leader>gS', gs.stage_buffer, { desc = 'State Buffer' })
-                map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'Undo State Hunk' })
-                map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset Buffer' })
-                map('n', '<leader>gp', gs.preview_hunk, { desc = 'Preview Hunk' })
-                map('n', '<leader>gb', function() gs.blame_line { full = true } end, { desc = 'Blame Line' })
+                -- map('n', '<leader>GS', gs.stage_buffer, { desc = 'State Buffer' })
+                map('n', '<leader>Gu', gs.undo_stage_hunk, { desc = 'Undo State Hunk' })
+                map('n', '<leader>GR', gs.reset_buffer, { desc = 'Reset Buffer' })
+                map('n', '<leader>Gp', gs.preview_hunk, { desc = 'Preview Hunk' })
+                map('n', '<leader>Gb', function() gs.blame_line { full = true } end, { desc = 'Blame Line' })
                 map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle Current Line Blame' })
-                -- map('n', '<leader>gd', gs.diffthis, { desc = 'Diff this' })
-                map('n', '<leader>gD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
+                -- map('n', '<leader>Gd', gs.diffthis, { desc = 'Diff this' })
+                map('n', '<leader>GD', function() gs.diffthis('~') end, { desc = 'Diff this ~' })
                 map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle Deleted' })
 
                 -- Text object
