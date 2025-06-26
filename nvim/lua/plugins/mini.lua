@@ -21,4 +21,5 @@ return {
     { 'echasnovski/mini.pairs',     version = '*', lazy = false, config = true },
     { 'echasnovski/mini.move',      version = '*', lazy = false, config = true },
     { 'echasnovski/mini.splitjoin', version = '*', lazy = false, config = true },
+    { 'echasnovski/mini.icons', version = '*', lazy = false, config = true },
 }
