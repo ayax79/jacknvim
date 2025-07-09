@@ -1,32 +1,31 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    hadolint
-    dprint
-    yq
-    tree-sitter
-    nil # nix language server
-    jdt-language-server # java language server
-    nodePackages.vscode-langservers-extracted
-    yaml-language-server # YAML language server
-    efm-langserver # EFM language server
-    pyright # Pyright language server
+    # vale
+    # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
     alejandra # Alejandra nix formatting
-    # Lua language server
-    lua-language-server
-    vscode-extensions.vscjava.vscode-java-test
-    # Currently broken on the mac
-    # vscode-extensions.vadimcn.vscode-lldb.adapter
-    coursier
     black # python formatter
     code-lldb
-    luarocks
-    lua5_1
+    coursier
+    dprint
+    efm-langserver # EFM language server
+    graphviz # rustacean graph crate functionality
+    hadolint
     html-tidy # html/xml formatter
-    typescript-language-server
-    # rustacean graph crate functionality
-    graphviz
+    jdt-language-server # java language server
+    lua-language-server # Lua language server
+    lua5_1
+    luarocks
+    markdownlint-cli2
+    nil # nix language server
     nixfmt-classic
+    nodePackages.vscode-langservers-extracted
+    pyright # Pyright language server
     topiary
+    tree-sitter
+    typescript-language-server
+    vscode-extensions.vscjava.vscode-java-test
+    yaml-language-server # YAML language server
+    yq
   ];
 
   programs.neovim = {
