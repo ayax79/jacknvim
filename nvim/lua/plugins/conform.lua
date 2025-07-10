@@ -2,9 +2,13 @@ return -- lazy.nvim setup
 {
     "stevearc/conform.nvim",
     event = "VeryLazy",
+    keys = {
+        { "<leader>lf", function() require("conform").format() end, desc = "Format" },
+    },
     opts = {
         formatters_by_ft = {
             nu = { "topiary_nu" },
+            markdown = { "dprint" },
         },
         formatters = {
             topiary_nu = {

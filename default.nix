@@ -37,16 +37,15 @@
     extraPackages = [ pkgs.imagemagick ];
     extraPython3Packages = ps:
       with ps; [
-        # ... other python packages
-        pynvim
-        jupyter-client
-        cairosvg # for image rendering
         # Build failure 2024-03-17
-        # pnglatex # for image rendering
-        # plotly broken 2025-06-23
         # plotly # for image rendering
-        pyperclip
+        # plotly broken 2025-06-23
+        # pnglatex # for image rendering
+        cairosvg # for image rendering
+        jupyter-client
         nbformat
+        pynvim
+        pyperclip
       ];
   };
 

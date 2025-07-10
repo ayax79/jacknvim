@@ -109,7 +109,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- end
 
         --vim.keymap.set({ "n", "v" }, "<space>la", exec_code_action, util.with_description(opts, "Code Action"))
-        vim.keymap.set("n", "<space>lf", require('conform').format, util.with_description(opts, "Format"))
         vim.keymap.set('v', 'M-K', require('dapui').eval, util.with_description(opts, "DAP Eval Expression"))
     end,
 })
