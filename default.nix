@@ -3,7 +3,7 @@
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
     alejandra # Alejandra nix formatting
-    black # python formatter
+    ruff # python formatter
     code-lldb
     coursier
     dprint

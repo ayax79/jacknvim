@@ -9,6 +9,8 @@ return -- lazy.nvim setup
         formatters_by_ft = {
             nu = { "topiary_nu" },
             markdown = { "dprint" },
+            toml = { "dprint" },
+            python = { "ruff" }
         },
         formatters = {
             topiary_nu = {
