@@ -10,7 +10,6 @@ return -- lazy.nvim setup
             nu = { "topiary_nu" },
             markdown = { "dprint" },
             toml = { "dprint" },
-            python = { "ruff" }
         },
         formatters = {
             topiary_nu = {
