@@ -10,6 +10,7 @@
     efm-langserver # EFM language server
     graphviz # rustacean graph crate functionality
     hadolint
+    helm-ls
     html-tidy # html/xml formatter
     jdt-language-server # java language server
     lua-language-server # Lua language server

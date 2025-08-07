@@ -113,6 +113,8 @@ return {
         })
 
         vim.lsp.enable({
+            -- 'yamlls', --helm-ls will use yamlls
+            'helm_ls',
             'jsonls',
             'lua_ls',
             'nil_ls',
@@ -122,7 +124,6 @@ return {
             'ruff',
             'terraformls',
             'ts_ls',
-            'yamlls',
         })
     end
 }
