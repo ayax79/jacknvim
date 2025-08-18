@@ -3,7 +3,7 @@
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
     alejandra # Alejandra nix formatting
-    ruff # python formatter
+    basedpyright
     code-lldb
     coursier
     dprint
@@ -21,6 +21,7 @@
     nixfmt-classic
     nodePackages.vscode-langservers-extracted
     pyright # Pyright language server
+    ruff # python formatter
     topiary
     tree-sitter
     typescript-language-server
