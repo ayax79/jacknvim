@@ -1,12 +1,26 @@
 -- which key
 local wk = require("which-key")
-  local crates = require("crates");
+local crates = require("crates");
 
 wk.add({
     -- Global Mappings
-    { '<space>ql', vim.diagnostic.setloclist, desc = "Set Loclist", },
-    { "<space>qq", vim.diagnostic.setqflist,  desc = "Set Quickfixlist", },
-    { "-",         "<CMD>Oil<CR>",            desc = "Open parent directory", },
+    { '<space>qla', vim.diagnostic.setloclist, desc = "Set Loclist (all)", },
+    {
+        '<space>qla',
+        function()
+            vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.ERROR })
+        end,
+        desc = "Set Loclist (error)",
+    },
+    { "<space>qqa", vim.diagnostic.setqflist,  desc = "Set Quickfixlist (all)", },
+    {
+        "<space>qqe",
+        function()
+            vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+        end,
+        desc = "Set Quickfixlist (error)",
+    },
+    { "-",         "<CMD>Oil<CR>",   desc = "Open parent directory", },
     -- LSP Group
     { "<leader>a", group = "Avante" },
     { "<leader>b", group = "Buffers" },
@@ -42,7 +56,7 @@ wk.add({
         "<leader>l",
         name = "LSP",
         group = "LSP",
-        { "<leader>ll", vim.lsp.codelens.run,               desc = "CodeLens Action", },
+        { "<leader>ll", vim.lsp.codelens.run, desc = "CodeLens Action", },
         --Debugger Group
         {
             "<leader>lD",
