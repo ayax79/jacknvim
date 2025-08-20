@@ -112,7 +112,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, util.with_description(opts, "List workspace folders"))
         vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, util.with_description(opts, "Type definition"))
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
 
         -- local exec_code_action = function()
         --     if vim.bo.filetype == 'rust' then
