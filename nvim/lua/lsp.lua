@@ -114,7 +114,7 @@ return {
 
         vim.lsp.enable({
             -- 'yamlls', --helm-ls will use yamlls
-            'basedpyright',
+            -- 'basedpyright',
             'gopls',
             'helm_ls',
             'jsonls',
@@ -122,6 +122,7 @@ return {
             'nil_ls',
             'null-ls',
             'nushell',
+            'pyright',
             'ruff',
             'terraformls',
             'ts_ls',
