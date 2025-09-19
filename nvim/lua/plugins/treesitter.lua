@@ -67,23 +67,35 @@ return {
                 goto_previous_start = { ["[m"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
                 goto_previous_end = { ["[M"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
             },
+            keymaps = {
+                -- Nushell only
+                ["aP"] = "@pipeline.outer",
+                ["iP"] = "@pipeline.inner",
+
+                -- supported in other languages as well
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["al"] = "@loop.outer",
+                ["il"] = "@loop.inner",
+                ["aC"] = "@conditional.outer",
+                ["iC"] = "@conditional.inner",
+                ["iS"] = "@statement.inner",
+                ["aS"] = "@statement.outer",
+            }
         },
     },
-    -- config = function(_, opts)
-    --     local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-    --     parser_config.nu = {
-    --         install_info = {
-    --             url = "~/nikedev/nushell/tree-sitter-nu",            -- local path or git repo
-    --             files = { "src/parser.c", "src/scanner.c" },     -- note that some parsers also require src/scanner.c or src/scanner.cc
-    --             branch = "main",                                 -- default branch in case of git repo if different from master
-    --             generate_requires_npm = false,                   -- if stand-alone parser without npm dependencies
-    --             requires_generate_from_grammar = false,          -- if folder contains pre-generated src/parser.c
-    --         },
-    --         filetype = "nu",                                     -- if filetype does not match the parser name
-    --     }
-    --     require("nvim-treesitter.configs").setup(opts)
-    -- end,
     config = function(_, opts)
+        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+        -- parser_config.nu = {
+        --     install_info = {
+        --         url = "~/nikedev/nushell/tree-sitter-nu",    -- local path or git repo
+        --         files = { "src/parser.c", "src/scanner.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+        --         branch = "main",                             -- default branch in case of git repo if different from master
+        --         generate_requires_npm = false,               -- if stand-alone parser without npm dependencies
+        --         requires_generate_from_grammar = false,      -- if folder contains pre-generated src/parser.c
+        --     },
+        --     filetype = "nu",                                 -- if filetype does not match the parser name
+        -- }
         require("nvim-treesitter.configs").setup(opts)
     end,
     dependencies = { 'nushell/tree-sitter-nu' },
