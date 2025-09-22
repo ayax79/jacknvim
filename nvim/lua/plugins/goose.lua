@@ -1,5 +1,6 @@
 return {
     "azorng/goose.nvim",
+    enabled = false,
     config = function()
         require("goose").setup({
             preferred_picker = "snacks",
