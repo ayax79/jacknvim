@@ -119,6 +119,7 @@ return {
             'helm_ls',
             'jsonls',
             'lua_ls',
+            'marksman',
             'nil_ls',
             'null-ls',
             'nushell',

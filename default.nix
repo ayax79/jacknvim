@@ -16,6 +16,7 @@
     lua-language-server # Lua language server
     lua5_1
     luarocks
+    marksman
     markdownlint-cli2
     nil # nix language server
     nixfmt-classic
