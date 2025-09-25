@@ -18,7 +18,7 @@
     luarocks
     marksman
     markdownlint-cli2
-    nil # nix language server
+    nixd # nix language server
     nixfmt-classic
     nodePackages.vscode-langservers-extracted
     pyright # Pyright language server
