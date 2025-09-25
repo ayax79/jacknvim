@@ -3,7 +3,7 @@ return -- lazy.nvim setup
     "stevearc/conform.nvim",
     event = "VeryLazy",
     keys = {
-        { "<leader>lf", function() require("conform").format() end, desc = "Format" },
+        { "<leader>lf", function() require("conform").format() end, desc = "Format", mode = { "n", "v" } },
     },
     opts = {
         formatters_by_ft = {
