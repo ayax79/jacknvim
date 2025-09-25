@@ -22,4 +22,9 @@ require("lazy").setup({
         colorscheme = { vim.g.theme_name },
     },
     checker = { enabled = true },
+    git = {
+        throttle = {
+            enabled = true,
+        }
+    },
 })
