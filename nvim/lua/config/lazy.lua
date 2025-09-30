@@ -22,9 +22,10 @@ require("lazy").setup({
         colorscheme = { vim.g.theme_name },
     },
     checker = { enabled = true },
+    -- Only needed if the cache is cleared.
     git = {
         throttle = {
-            enabled = true,
+            enabled = vim.env.THROTTLE_LAZY,
         }
     },
 })
