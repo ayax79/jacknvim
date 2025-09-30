@@ -50,7 +50,7 @@ wk.add({
         { "<leader>cC", crates.open_crates_io,                     desc = "Open Crates IO" },
     },
     { "<leader>f", group = "Find" },
-    { "<leader>G", group = "Git" },
+    { "<leader>g", group = "Git" },
     { "<leader>j", group = "Molten" },
     {
         "<leader>l",
