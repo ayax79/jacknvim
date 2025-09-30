@@ -1,11 +1,13 @@
 return {
     "yetone/avante.nvim",
-    enabled = false,
+    -- dir = vim.fn.expand("$HOME/nikedev/yetone/avante.nvim"),
+    enabled = true,
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-        provider = "copilot",
+        -- provider = "copilot",
+        provider = "goose",
         --     vendors = {
         --         ollama = {
         --             __inherited_from = "openai",
@@ -15,6 +17,16 @@ return {
         --             model = "deepseek-coder",
         --         },
         --     },
+        -- acp_providers = {
+        --     ["goose"] = {
+        --         command = vim.fn.expand("$HOME/.cargo/bin/goose"),
+        --         args = { "acp" },
+        --         env = {
+        --             -- RUST_LOG = "agent_client_protocol=trace,mcp_client=debug,goose_cli=debug",
+        --             RUST_LOG = "trace",
+        --         },
+        --     },
+        -- },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
