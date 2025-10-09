@@ -120,7 +120,7 @@ return {
             'jsonls',
             'lua_ls',
             'marksman',
-            -- 'nil_ls',
+            'nil_ls',
             'nixd',
             'null-ls',
             'nushell',

@@ -18,6 +18,7 @@
     luarocks
     marksman
     markdownlint-cli2
+    nil # nix language server
     nixd # nix language server
     nixfmt-classic
     nix-tree # dependency tree for nix
