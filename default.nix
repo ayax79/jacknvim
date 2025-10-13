@@ -38,6 +38,7 @@
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
+    withRuby = false;
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = [ pkgs.imagemagick ];
     extraPython3Packages = ps:
