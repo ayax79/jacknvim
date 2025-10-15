@@ -72,7 +72,13 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-            extensions = { "lazy", "fzf", "oil" , "trouble"},
+            extensions = {
+                "avante",
+                "fzf",
+                "lazy",
+                "oil",
+                "trouble",
+            },
         }
         -- local trouble = require("trouble")
         -- local symbols = trouble.statusline({
