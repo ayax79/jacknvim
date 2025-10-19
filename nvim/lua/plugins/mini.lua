@@ -20,7 +20,7 @@ return {
         require('mini.move').setup()
         require('mini.splitjoin').setup()
         require('mini.icons').setup()
-        require('mini.diff').setup()
+        -- require('mini.diff').setup()
         require('mini.git').setup()
     end,
 }
