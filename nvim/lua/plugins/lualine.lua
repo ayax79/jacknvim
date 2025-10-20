@@ -31,21 +31,22 @@ return {
                     {
                         "filename",
                         file_status = true,
+                        new_file_status = true,
                         path = 3,
                         shorting_target = 40,
                     },
                 },
                 -- lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_x = {
-                    {
-                        require("noice").api.status.message.get_hl,
-                        cond = require("noice").api.status.message.has,
-                    },
-                    {
-                        require("noice").api.status.command.get,
-                        cond = require("noice").api.status.command.has,
-                        color = { fg = "#d08770" },
-                    },
+                    -- {
+                    --     require("noice").api.status.message.get_hl,
+                    --     cond = require("noice").api.status.message.has,
+                    -- },
+                   -- {
+                   --      require("noice").api.status.command.get,
+                   --      cond = require("noice").api.status.command.has,
+                   --      color = { fg = "#d08770" },
+                   --  },
                     {
                         require("noice").api.status.mode.get,
                         cond = require("noice").api.status.mode.has,
@@ -78,6 +79,7 @@ return {
                 "lazy",
                 "oil",
                 "trouble",
+                "quickfix",
             },
         }
         -- local trouble = require("trouble")
