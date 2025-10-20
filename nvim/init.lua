@@ -7,7 +7,8 @@ require("lsp").initialize(function()
     require("config.lazy")
 end)
 
-vim.cmd.colorscheme(vim.g.theme_name)
+-- vim.cmd.colorscheme(vim.g.theme_name)
+vim.cmd.colorscheme("kanagawa-dragon")
 
 -- key mappings including which key
 require("keys")
