@@ -1,4 +1,4 @@
-vim.g.theme_name = "kanagawa"
+vim.g.theme_name = "kanagawa-dragon"
 
 -- Disabling netrw because it is replaced by Oil
 vim.g.loaded_netrw = 1

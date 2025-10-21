@@ -1,6 +1,25 @@
+local theme;
+if string.find(vim.g.theme_name, "lotus")
+then
+    theme = "lotus"
+elseif string.find(vim.g.theme_name, "dragon")
+then
+    theme = "dragon"
+else
+    theme = "wave"
+end
+
+local dark;
+if string.find(vim.g.theme_name, "dragon")
+then
+    theme = "dragon"
+else
+    theme = "wave"
+end
+
 return {
     "rebelot/kanagawa.nvim",
-    enabled = vim.g.theme_name == "kanagawa",
+    enabled = string.find(vim.g.theme_name, "kanagawa"),
     priority = 1000,
     opts = {
         compile = false,  -- enable compiling the colorscheme
@@ -84,9 +103,10 @@ return {
                 SnacksPickerPickWin        = { fg = theme.ui.fg, bg = theme.ui.bg_search, bold = true },
             }
         end,
-        theme = "dragon",    -- Load "wave" theme
-        background = {       -- map the value of 'background' option to a theme
-            dark = "dragon", -- dragon, wave
+        -- theme = "dragon",    -- Load "wave" theme
+        theme = theme,
+        background = {   -- map the value of 'background' option to a theme
+            dark = dark, -- dragon, wave
             light = "lotus"
         },
     }
