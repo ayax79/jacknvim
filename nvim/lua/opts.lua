@@ -1,4 +1,5 @@
-vim.g.theme_name = "kanagawa-dragon"
+vim.g.theme_name = os.getenv("THEME")
+vim.o.background = "dark" -- or "light" for light mode
 
 -- Disabling netrw because it is replaced by Oil
 vim.g.loaded_netrw = 1
