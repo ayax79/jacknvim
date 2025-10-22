@@ -21,6 +21,6 @@ return {
         require('mini.splitjoin').setup()
         require('mini.icons').setup()
         -- require('mini.diff').setup()
-        require('mini.git').setup()
+        -- require('mini.git').setup()
     end,
 }
