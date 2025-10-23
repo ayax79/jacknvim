@@ -127,6 +127,7 @@ return {
             'pyright',
             'ruff',
             'terraformls',
+            'texlab',
             'ts_ls',
         })
     end
