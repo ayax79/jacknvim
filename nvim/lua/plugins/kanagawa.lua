@@ -19,7 +19,7 @@ end
 
 return {
     "rebelot/kanagawa.nvim",
-    enabled = string.find(vim.g.theme_name, "kanagawa"),
+    enabled = string.find(vim.g.theme_name, "kanagawa") ~= nil,
     priority = 1000,
     opts = {
         compile = false,  -- enable compiling the colorscheme
