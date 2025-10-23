@@ -5,6 +5,7 @@ return {
     lazy = false,
     config = function()
         require('mini.align').setup()
+        require('mini.ai').setup()
         -- require('mini.diff').setup()
         -- require('mini.git').setup()
         require('mini.icons').setup()
@@ -23,7 +24,7 @@ return {
         --     markdown = true,
         -- })
         require('mini.jump').setup()
-        -- require('mini.jump2d').setup()
+        require('mini.jump2d').setup()
         require('mini.splitjoin').setup()
         require('mini.surround').setup()
     end,

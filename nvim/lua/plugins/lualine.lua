@@ -3,6 +3,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
+    enabled = true,
     opts = function()
         local opts = {
             options = {
@@ -28,13 +29,7 @@ return {
                 lualine_a = { "mode" },
                 lualine_b = { "branch", "diff", "diagnostics" },
                 lualine_c = {
-                    {
-                        "filename",
-                        file_status = true,
-                        new_file_status = true,
-                        path = 3,
-                        shorting_target = 40,
-                    },
+                    'filename'
                 },
                 -- lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_x = {
@@ -42,11 +37,11 @@ return {
                     --     require("noice").api.status.message.get_hl,
                     --     cond = require("noice").api.status.message.has,
                     -- },
-                   -- {
-                   --      require("noice").api.status.command.get,
-                   --      cond = require("noice").api.status.command.has,
-                   --      color = { fg = "#d08770" },
-                   --  },
+                    -- {
+                    --      require("noice").api.status.command.get,
+                    --      cond = require("noice").api.status.command.has,
+                    --      color = { fg = "#d08770" },
+                    --  },
                     {
                         require("noice").api.status.mode.get,
                         cond = require("noice").api.status.mode.has,
@@ -70,7 +65,22 @@ return {
                 lualine_y = {},
                 lualine_z = {},
             },
-            tabline = {},
+            tabline = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    {
+                        "filename",
+                        file_status = true,
+                        new_file_status = true,
+                        path = 3,
+                        shorting_target = 40,
+                    },
+                },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {}
+            },
             winbar = {},
             inactive_winbar = {},
             extensions = {
