@@ -1,6 +1,7 @@
 return {
     'nvim-mini/mini.nvim',
     version = '*',
+    enabled = true,
     lazy = false,
     config = function()
         require('mini.align').setup()
@@ -22,7 +23,7 @@ return {
         --     markdown = true,
         -- })
         require('mini.jump').setup()
-        require('mini.jump2d').setup()
+        -- require('mini.jump2d').setup()
         require('mini.splitjoin').setup()
         require('mini.surround').setup()
     end,
