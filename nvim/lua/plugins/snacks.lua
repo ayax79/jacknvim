@@ -10,7 +10,12 @@ return {
         explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        image = { enabled = true },
+        image = {
+            enabled = true,
+            convert = {
+                notify = false,
+            },
+        },
         notifier = {
             enabled = true,
             timeout = 3000,
