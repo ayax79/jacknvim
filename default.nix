@@ -25,6 +25,7 @@
     nodePackages.vscode-langservers-extracted
     pyright # Pyright language server
     ruff # python formatter
+    stylua
     topiary
     tree-sitter
     typescript-language-server
