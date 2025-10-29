@@ -2,6 +2,7 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    dir = vim.fn.expand("$HOME/nikedev/folke/snacks.nvim"),
     ---@module 'snacks'
     ---@type snacks.Config
     opts = {
@@ -165,25 +166,23 @@ return {
                         local pattern, pargs = Snacks.picker.util.parse(ctx.filter.search)
                         table.insert(args, string.format('--pattern=%s', pattern))
                         vim.list_extend(args, pargs)
-                        return require('snacks.picker.source.proc').proc({
-                            opts,
-                            {
-                                cmd = cmd,
-                                args = args,
-                                transform = function(item)
-                                    local entry = vim.json.decode(item.text)
-                                    if vim.tbl_isempty(entry) then
-                                        return false
-                                    else
-                                        local start = entry.range.start
-                                        item.cwd = svim.fs.normalize(opts and opts.cwd or vim.uv.cwd() or '.') or nil
-                                        item.file = entry.file
-                                        item.line = entry.text
-                                        item.pos = { tonumber(start.line) + 1, tonumber(start.column) }
-                                    end
-                                end,
-                            },
-                        }, ctx)
+                        opts = vim.tbl_extend('force', opts, {
+                            cmd = cmd,
+                            args = args,
+                            transform = function(item)
+                                local entry = vim.json.decode(item.text)
+                                if vim.tbl_isempty(entry) then
+                                    return false
+                                else
+                                    local start = entry.range.start
+                                    item.cwd = svim.fs.normalize(opts and opts.cwd or vim.uv.cwd() or '.') or nil
+                                    item.file = entry.file
+                                    item.line = entry.text
+                                    item.pos = { tonumber(start.line) + 1, tonumber(start.column) }
+                                end
+                            end,
+                        })
+                        return require('snacks.picker.source.proc').proc(opts, ctx)
                     end,
                 }
             end
