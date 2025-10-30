@@ -1,8 +1,8 @@
 return {
     "folke/snacks.nvim",
     priority = 1000,
+    enabled = true,
     lazy = false,
-    dir = vim.fn.expand("$HOME/nikedev/folke/snacks.nvim"),
     ---@module 'snacks'
     ---@type snacks.Config
     opts = {

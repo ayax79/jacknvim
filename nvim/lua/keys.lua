@@ -71,7 +71,6 @@ wk.add({
     { "<leader>s", group = "Search (Picker)" },
     { "<leader>u", group = "Opts" },
     { "<leader>w", group = "Workspaces" },
-    { "<leader>x", group = "Trouble" },
     { "<leader>/", group = "Search" },
 })
 
