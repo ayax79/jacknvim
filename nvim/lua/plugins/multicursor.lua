@@ -39,7 +39,7 @@ return {
         end)
 
         -- Press `mWi"ap` will create a cursor in every match of string captured by `i"` inside range `ap`.
-        set("n", "mW", mc.operator, { desc = "MultiCursor Operator", nargs = "*" })
+        set("n", "mW", mc.operator, { desc = "MultiCursor Operator"})
 
         -- Add all matches in the document
         set({ "n", "x" }, "<leader>A", mc.matchAllAddCursors, { desc = "Add MultiCursor All Matches" })
