@@ -1,5 +1,7 @@
--- vim.g.theme_name = os.getenv("THEME")
-vim.g.theme_name = "gruvbox-material"
+vim.g.theme_name = os.getenv("THEME")
+if vim.g.theme_name == "gruvbox" then
+    vim.g.theme_name = "gruvbox-material"
+end
 vim.o.background = "dark" -- or "light" for light mode
 
 -- Disabling netrw because it is replaced by Oil
