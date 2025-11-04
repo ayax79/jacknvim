@@ -60,7 +60,8 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevelstart = 99
-
 vim.opt.numberwidth = 3
 vim.opt.signcolumn = "yes:1"
 vim.opt.statuscolumn = "%l%s"
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
