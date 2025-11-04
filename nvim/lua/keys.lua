@@ -66,6 +66,7 @@ wk.add({
             { "<leader>lDu", require("dapui").toggle,        desc = "Toggle Debugger UI", },
         },
     },
+    { "<leader>o", group = "Trouble" },
     { "<leader>q", group = "Quickfix" },
     { "<leader>r", group = "Refactor" },
     { "<leader>s", group = "Search (Picker)" },
