@@ -27,6 +27,7 @@ return {
         require('mini.jump').setup()
         require('mini.jump2d').setup()
         require('mini.splitjoin').setup()
+        require('mini.sessions').setup()
         require('mini.surround').setup()
     end,
 }
