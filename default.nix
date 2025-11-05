@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   home.packages = with pkgs; [
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
@@ -36,6 +36,7 @@
 
   programs.neovim = {
     enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
