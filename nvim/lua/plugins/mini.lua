@@ -10,6 +10,7 @@ return {
         -- require('mini.git').setup()
         require('mini.icons').setup()
         require('mini.move').setup()
+        require('mini.notify').setup()
         require('mini.pairs').setup()
         -- require('mini.pairs').setup({
         --     modes = { insert = true, command = true, terminal = false },
