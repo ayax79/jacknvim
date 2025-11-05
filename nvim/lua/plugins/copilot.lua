@@ -24,7 +24,7 @@ return {
                     auto_trigger = true,
                 },
                 panel = { enabled = true },
-                model = "claude-sonnet-4",
+                model = "claude-sonnet-4.5",
             })
         end,
     },
