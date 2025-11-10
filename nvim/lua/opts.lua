@@ -65,3 +65,6 @@ vim.opt.signcolumn = "yes:1"
 vim.opt.statuscolumn = "%l%s"
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.o.timeout = true
+vim.o.timeoutlen = 500
