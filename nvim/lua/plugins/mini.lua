@@ -13,7 +13,7 @@ return {
         require('mini.notify').setup({
             -- This isn't necessary because noice provides LSP status
             lsp_progress = {
-                enabled = false,
+                enable = false,
             }
         })
         require('mini.pairs').setup()
