@@ -39,7 +39,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${system}.default;
+    # package = inputs.neovim-nightly-overlay.packages.${system}.default;
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
