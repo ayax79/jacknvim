@@ -10,7 +10,13 @@ return {
                 -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
                 url = "",
             },
-            schemas = require('schemastore').yaml.schemas(),
+            schemas = require('schemastore').yaml.schemas({
+                select = {
+                    "AWS CloudFormation",
+                    "AWS CloudFormation Serverless Application Model (SAM)",
+                    "AWS SAM CLI Samconfig",
+                },
+            }),
             customTags = {
                 -- SA/ Cloudformation
                 "!And",
