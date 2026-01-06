@@ -46,4 +46,5 @@ vim.lsp.enable({
     "pyright",
     "ruff",
     "marksman",
+    "ts_ls",
 })
