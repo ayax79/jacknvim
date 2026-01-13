@@ -10,12 +10,12 @@ return {
         -- require('mini.git').setup()
         require('mini.icons').setup()
         require('mini.move').setup()
-        require('mini.notify').setup({
-            -- This isn't necessary because noice provides LSP status
-            lsp_progress = {
-                enable = false,
-            }
-        })
+        -- require('mini.notify').setup({
+        --     -- This isn't necessary because noice provides LSP status
+        --     lsp_progress = {
+        --         enable = false,
+        --     }
+        -- })
         require('mini.pairs').setup()
         -- require('mini.pairs').setup({
         --     modes = { insert = true, command = true, terminal = false },
