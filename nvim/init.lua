@@ -3,7 +3,7 @@ require("lsp")
 require("config.lazy")
 vim.cmd.colorscheme(vim.g.theme_name)
 require("keys")
-require("commands")
+require("nu_runner")
 
 
 -- local util = require('lspconfig.util')
