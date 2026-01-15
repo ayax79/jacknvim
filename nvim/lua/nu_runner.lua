@@ -1,4 +1,3 @@
--- lua/nu_runner.lua
 local function build_nu_cmd(args, fargs)
     local cmd = args
     local table_mode = fargs[1]
