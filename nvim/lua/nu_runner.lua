@@ -1,6 +1,4 @@
 -- lua/nu_runner.lua
-local M = {}
-
 local function build_nu_cmd(args, fargs)
     local cmd = args
     local table_mode = fargs[1]
@@ -19,8 +17,8 @@ end
 
 -- Return a string (no side effects), suitable for expression register
 -- Markdowwn format will be be used by default unless overridden as it pasts in documents nicely
--- Example:  "= v.lua require('nu_runner').run_expr('ls')
-function M.run_expr(args, fargs)
+-- Example:  "= v.lua.nu('ls')
+function _G.nu(args, fargs)
     local output = nu_eval(args, fargs or { "table_mode=markdown" })
     if vim.v.shell_error ~= 0 then
         vim.api.nvim_echo({ { 'Nushell error: ' .. output } }, true, { err = true })
@@ -39,5 +37,3 @@ end, {
     nargs = '+',
     desc = 'Run a Nushell command and insert its output. Use table_mode=<mode> to set table display mode.',
 })
-
-return M
