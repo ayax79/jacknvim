@@ -1,6 +1,8 @@
 vim.g.theme_name = os.getenv("THEME")
 if vim.g.theme_name == "gruvbox" then
     vim.g.theme_name = "gruvbox-material"
+elseif vim.g.theme_name == "nord" then
+    vim.g.theme_name = "onenord"
 end
 vim.o.background = "dark" -- or "light" for light mode
 
