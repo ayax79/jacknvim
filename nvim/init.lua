@@ -1,7 +1,7 @@
 require("opts")
 require("lsp")
 require("config.lazy")
--- vim.cmd.colorscheme(vim.g.theme_name)
+vim.cmd.colorscheme(vim.g.theme_name)
 require("keys")
 require("nu_runner")
 
