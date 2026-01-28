@@ -9,7 +9,7 @@ in {
     code-lldb
     coursier
     dprint
-    efm-langserver # EFM language server
+    # efm-langserver # EFM language server
     graphviz # rustacean graph crate functionality
     hadolint
     helm-ls
