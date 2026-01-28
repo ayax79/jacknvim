@@ -18,7 +18,7 @@ in {
     lua-language-server # Lua language server
     lua5_1
     luarocks
-    marksman
+    # marksman # Disabled: requires .NET which pulls in Swift on macOS ARM, causing slow GitHub CI builds
     markdownlint-cli2
     nil # nix language server
     nixd # nix language server
