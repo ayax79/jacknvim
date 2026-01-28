@@ -1,6 +1,5 @@
-{ pkgs, inputs, ... }: 
-let 
-  system = pkgs.stdenv.hostPlatform.system;
+{ pkgs, inputs, ... }:
+let system = pkgs.stdenv.hostPlatform.system;
 in {
   home.packages = with pkgs; [
     # vale
@@ -39,7 +38,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${system}.default;
+    # package = inputs.neovim-nightly-overlay.packages.${system}.default;
     defaultEditor = true;
     coc.enable = false;
     vimAlias = true;
