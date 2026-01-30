@@ -35,7 +35,8 @@ return {
                 "!Ref",
                 "!Select sequence",
                 "!Split sequence",
-                "!Sub",
+                "!Sub scalar",
+                "!Sub sequence",
 
                 -- gitlab ci
                 "!reference sequence",
