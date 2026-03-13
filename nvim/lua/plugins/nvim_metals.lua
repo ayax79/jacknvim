@@ -1,10 +1,10 @@
 return {
     "scalameta/nvim-metals",
-    enabled = false,
+    enabled = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    ft = { "scala", "sbt", "java" },
+    ft = { "scala", "sbt" }, --removed java
     opts = function()
         local metals_config = require("metals").bare_config()
         metals_config.on_attach = function(client, bufnr)
