@@ -147,6 +147,11 @@ end
 -- Run the loader
 load_plugin_specs()
 
+-- Emit the legacy `User VeryLazy` autocommand so plugins that set up
+-- autocommands on that event (from lazy.nvim-style specs) still get their
+-- callbacks invoked. This approximates lazy.nvim's scheduling of VeryLazy.
+pcall(vim.api.nvim_exec, 'doautocmd User VeryLazy', false)
+
 -- Provide a minimal compatibility shim for 'require("lazy")' calls if any remain.
 package.loaded['lazy'] = nil
 package.preload['lazy'] = function()
