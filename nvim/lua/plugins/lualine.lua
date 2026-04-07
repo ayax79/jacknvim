@@ -43,15 +43,31 @@ return {
                     --      color = { fg = "#d08770" },
                     --  },
                     {
-                        require("noice").api.status.mode.get,
-                        cond = require("noice").api.status.mode.has,
-                        color = { fg = "#d08770" },
+                        'lsp_status',
+                        icon = '', -- f013
+                        symbols = {
+                            -- Standard unicode symbols to cycle through for LSP progress:
+                            spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+                            -- Standard unicode symbol for when LSP is done:
+                            done = '✓',
+                            -- Delimiter inserted between LSP names:
+                            separator = ' ',
+                        },
+                        -- List of LSP names to ignore (e.g., `null-ls`):
+                        ignore_lsp = {},
+                        -- Display the LSP name
+                        show_name = false,
                     },
-                    {
-                        require("noice").api.status.search.get,
-                        cond = require("noice").api.status.search.has,
-                        color = { fg = "#d08770" },
-                    },
+                    -- {
+                    --     require("noice").api.status.mode.get,
+                    --     cond = require("noice").api.status.mode.has,
+                    --     color = { fg = "#d08770" },
+                    -- },
+                    -- {
+                    --     require("noice").api.status.search.get,
+                    --     cond = require("noice").api.status.search.has,
+                    --     color = { fg = "#d08770" },
+                    -- },
                     'filetype',
                 },
                 lualine_y = { "progress" },
