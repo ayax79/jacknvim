@@ -24,7 +24,6 @@ in {
     nixd # nix language server
     nixfmt-classic
     nix-tree # dependency tree for nix
-    nodePackages.vscode-langservers-extracted
     pyright # Pyright language server
     ruff # python formatter
     stylua
