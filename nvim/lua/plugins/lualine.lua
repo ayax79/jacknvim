@@ -54,9 +54,9 @@ return {
                             separator = ' ',
                         },
                         -- List of LSP names to ignore (e.g., `null-ls`):
-                        ignore_lsp = {},
+                        ignore_lsp = { "copilot" },
                         -- Display the LSP name
-                        show_name = false,
+                        show_name = true,
                     },
                     -- {
                     --     require("noice").api.status.mode.get,
