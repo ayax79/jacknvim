@@ -1,6 +1,4 @@
-{ pkgs, inputs, ... }:
-let system = pkgs.stdenv.hostPlatform.system;
-in {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
