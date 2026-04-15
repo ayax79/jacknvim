@@ -21,7 +21,7 @@ return {
                 globalstatus = true,
                 refresh = {
                     statusline = 1000,
-                    tabline = 1000,
+                    -- tabline = 1000,
                     winbar = 1000,
                 },
             },
@@ -82,20 +82,20 @@ return {
                 lualine_z = {},
             },
             tabline = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {
-                    {
-                        "filename",
-                        file_status = true,
-                        new_file_status = true,
-                        path = 3,
-                        shorting_target = 40,
-                    },
-                },
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
+                -- lualine_a = {},
+                -- lualine_b = {},
+                -- lualine_c = {
+                --     -- {
+                --     --     "filename",
+                --     --     file_status = true,
+                --     --     new_file_status = true,
+                --     --     path = 3,
+                --     --     shorting_target = 40,
+                --     -- },
+                -- },
+                -- lualine_x = {},
+                -- lualine_y = {},
+                -- lualine_z = {}
             },
             winbar = {},
             inactive_winbar = {},
