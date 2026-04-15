@@ -70,3 +70,4 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.o.timeout = true
 vim.o.timeoutlen = 500
+vim.o.showtabline = 2
