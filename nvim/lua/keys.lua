@@ -73,6 +73,20 @@ wk.add({
     { "<leader>u", group = "Opts" },
     { "<leader>w", group = "Workspaces" },
     { "<leader>/", group = "Search" },
+    { "[p",        "<cmd>tabnext<cr>",       desc = "Next Tab Page", },
+    { "[P",        "<cmd>tabnext<cr>",       desc = "Previous Tab Page", },
+    {
+        "<leader>t",
+        name = "Tabs",
+        group = "Tabs",
+        { "<leader>ta",  "<cmd>$tabnew<CR>",  desc = "New Tab", },
+        { "<leader>tc",  "<cmd>tabclose<CR>", desc = "Close Tab", },
+        { "<leader>to",  "<cmd>tabonly<CR>",  desc = "Close Other Tabs", },
+        { "<leader>tn",  "<cmd>tabn<CR>",     desc = "Next Tab", },
+        { "<leader>tp",  "<cmd>tabp<CR>",     desc = "Previous Tab", },
+        { "<leader>tmp", "<cmd>-tabmove<CR>", desc = "Move Tab Left", },
+        { "<leader>tmn", "<cmd>+tabmove<CR>", desc = "Move Tab Right", },
+    }
 })
 
 -- Global mappings.
