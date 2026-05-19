@@ -52,3 +52,4 @@ vim.lsp.enable({
     "marksman",
     "ts_ls",
 })
+vim.g.initialize_dap()
