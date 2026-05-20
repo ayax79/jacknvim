@@ -29,7 +29,12 @@ return {
                 lualine_a = { "mode" },
                 lualine_b = { "branch", "diff", "diagnostics" },
                 lualine_c = {
-                    'filename'
+                    {
+                        'filename',
+                        file_status = true,
+                        path = 1,
+                        shortening_target = 40,
+                    }
                 },
                 -- lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_x = {
