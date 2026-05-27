@@ -399,7 +399,12 @@ require('mini.jump2d').setup()
 require('mini.splitjoin').setup()
 require('mini.surround').setup()
 
--- Tmux Navigator (plugin sets up <c-h/j/k/l> mappings automatically)
+-- Tmux Navigator
+vim.keymap.set("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
+vim.keymap.set("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
+vim.keymap.set("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
+vim.keymap.set("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
+vim.keymap.set("n", "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>", { silent = true })
 
 -- Yazi
 lazyload.on_vim_enter(function()
