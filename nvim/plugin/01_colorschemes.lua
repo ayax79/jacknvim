@@ -105,3 +105,4 @@ elseif theme_name == "onedark" then
 elseif theme_name == "onenord" then
     require("onenord").setup({ fade_nc = true })
 end
+vim.cmd.colorscheme(vim.g.theme_name)

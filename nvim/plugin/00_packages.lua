@@ -8,14 +8,14 @@ vim.pack.add({
     { src = "https://github.com/nvim-neotest/nvim-nio" },
 
     -- Colorschemes
-    { src = "https://github.com/rebelot/kanagawa.nvim" },
+    -- { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/catppuccin/nvim" },
-    { src = "https://github.com/sainnhe/gruvbox-material" },
-    { src = "https://github.com/sainnhe/everforest" },
-    { src = "https://github.com/savq/melange-nvim" },
-    { src = "https://github.com/gbprod/nord.nvim" },
-    { src = "https://github.com/navarasu/onedark.nvim" },
-    { src = "https://github.com/rmehri01/onenord.nvim" },
+    -- { src = "https://github.com/sainnhe/gruvbox-material" },
+    -- { src = "https://github.com/sainnhe/everforest" },
+    -- { src = "https://github.com/savq/melange-nvim" },
+    -- { src = "https://github.com/gbprod/nord.nvim" },
+    -- { src = "https://github.com/navarasu/onedark.nvim" },
+    -- { src = "https://github.com/rmehri01/onenord.nvim" },
 
     -- UI
     { src = "https://github.com/folke/snacks.nvim" },
@@ -33,7 +33,7 @@ vim.pack.add({
     { src = "https://github.com/mikavilpas/yazi.nvim" },
 
     -- Completion
-    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+    { src = "https://github.com/saghen/blink.cmp",                                version = vim.version.range("1.*") },
     { src = "https://github.com/rafamadriz/friendly-snippets" },
 
     -- LSP / Diagnostics
@@ -46,7 +46,7 @@ vim.pack.add({
     { src = "https://github.com/stevearc/conform.nvim" },
 
     -- Treesitter
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter",                 version = "main" },
     { src = "https://github.com/nushell/tree-sitter-nu" },
     { src = "https://github.com/folke/ts-comments.nvim" },
     { src = "https://github.com/dariuscorvus/tree-sitter-language-injection.nvim" },
