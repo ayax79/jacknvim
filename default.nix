@@ -40,6 +40,7 @@
     coc.enable = false;
     vimAlias = true;
     withRuby = false;
+    withPython3 = true;
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = [ pkgs.imagemagick ];
     extraPython3Packages = ps:

@@ -82,35 +82,5 @@ vim.diagnostic.config({
     },
 })
 
-vim.g.initialize_dap = function()
-    -- The path is different on Windows
-    local dap, dapui = require("dap"), require("dapui")
-    dapui.setup()
-    dap.adapters.lldb = {
-        type = "executable",
-        command = vim.g.codelldb_path,
-        name = "lldb",
-    }
-    dap.configurations.rust = {
-        type = "lldb",
-        request = "launch",
-        cargo = {
-            args = { "test", "foo", "--", "--test-threads=3" },
-            env = { RUSTFLAGS = "-Clinker=ld.mold" },
-            cwd = "${workspaceFolder}",
-            problemMatcher = "$rustc",
-        }
-    }
-    dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-    end
-    dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-    end
-    dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-    end
-end
+-- DAP initialization is now in plugin/03_setup.lua
+

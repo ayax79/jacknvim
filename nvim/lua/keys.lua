@@ -1,4 +1,4 @@
--- which key
+-- which-key bindings (called from plugin/setup.lua after VimEnter)
 local wk = require("which-key")
 local crates = require("crates");
 
