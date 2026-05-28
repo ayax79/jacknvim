@@ -77,7 +77,8 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 map("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
 map("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+    { desc = "Find Config File" })
 map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 map("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
@@ -209,7 +210,9 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
     once = true,
     callback = function()
+        ---@diagnostic disable-next-line: duplicate-set-field
         _G.dd = function(...) Snacks.debug.inspect(...) end
+        ---@diagnostic disable-next-line: duplicate-set-field
         _G.bt = function() Snacks.debug.backtrace() end
         vim.print = _G.dd
 
@@ -218,7 +221,8 @@ vim.api.nvim_create_autocmd("User", {
         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
-        Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
+        Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
+        "<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
