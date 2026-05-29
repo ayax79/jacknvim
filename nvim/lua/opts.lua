@@ -3,7 +3,11 @@ if vim.g.theme_name == "gruvbox" then
     vim.g.theme_name = "gruvbox-material"
 elseif vim.g.theme_name == "nord" then
     vim.g.theme_name = "onenord"
+elseif vim.g.theme_name == "catppuccin" then
+    vim.g.theme_name = "catppuccin-mocha"
+    -- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 end
+
 vim.o.background = "dark" -- or "light" for light mode
 
 -- Disabling netrw because it is replaced by Oil

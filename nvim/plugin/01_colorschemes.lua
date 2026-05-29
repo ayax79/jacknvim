@@ -102,6 +102,10 @@ elseif theme_name == "nord" then
 elseif theme_name == "onedark" then
     require('onedark').setup({ style = 'warmer' })
     require('onedark').load()
+elseif string.find(theme_name, "catppuccin") then
+    require("catppuccin").setup({
+        auto_integrations = true,
+    })
 elseif theme_name == "onenord" then
     require("onenord").setup({ fade_nc = true })
 end

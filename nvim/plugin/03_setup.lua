@@ -65,8 +65,7 @@ lazyload.on_vim_enter(function()
     require("lualine").setup({
         options = {
             icons_enabled = true,
-            -- theme = "auto",
-            theme = "catppuccin-nvim",
+            theme = "auto",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
             disabled_filetypes = { statusline = {}, winbar = {} },
