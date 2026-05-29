@@ -61,75 +61,71 @@ require("oil").setup({
 require("oil-git-status").setup({})
 
 -- Lualine
-lazyload.on_vim_enter(function()
-    require("lualine").setup({
-        options = {
-            icons_enabled = true,
-            theme = "auto",
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
-            disabled_filetypes = { statusline = {}, winbar = {} },
-            ignore_focus = {},
-            always_divide_middle = true,
-            globalstatus = true,
-            refresh = { statusline = 1000, winbar = 1000 },
-        },
-        sections = {
-            lualine_a = { "mode" },
-            lualine_b = { "branch", "diff", "diagnostics" },
-            lualine_c = { { 'filename', file_status = true, path = 1, shortening_target = 40 } },
-            lualine_x = {
-                {
-                    'lsp_status',
-                    icon = '',
-                    symbols = {
-                        spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
-                        done = '✓',
-                        separator = ' ',
-                    },
-                    ignore_lsp = { "copilot" },
-                    show_name = true,
+require("lualine").setup({
+    options = {
+        icons_enabled = true,
+        theme = "auto",
+        -- component_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
+        disabled_filetypes = { statusline = {}, winbar = {} },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = true,
+        refresh = { statusline = 1000, winbar = 1000 },
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { { 'filename', file_status = true, path = 1, shortening_target = 40 } },
+        lualine_x = {
+            {
+                'lsp_status',
+                icon = '',
+                symbols = {
+                    spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+                    done = '✓',
+                    separator = ' ',
                 },
-                'filetype',
+                ignore_lsp = { "copilot" },
+                show_name = true,
             },
-            lualine_y = { "progress" },
-            lualine_z = { "location" },
+            'filetype',
         },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { "filename" },
-            lualine_x = { "location" },
-            lualine_y = {},
-            lualine_z = {},
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = { "avante", "fzf", "oil", "trouble", "quickfix" },
-    })
-end, { sync = true })
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = { "avante", "fzf", "oil", "trouble", "quickfix" },
+})
 
 -- Tabby
-lazyload.on_vim_enter(function()
-    require('tabby').setup({
-        preset = 'active_wins_at_tail',
-        option = {
-            theme = {
-                fill = 'TabLineFill',
-                head = 'TabLine',
-                current_tab = 'TabLineSel',
-                tab = 'TabLine',
-                win = 'TabLine',
-                tail = 'TabLine',
-            },
-            nerdfont = true,
-            lualine_theme = nil,
-            tab_name = { name_fallback = function(tabid) return tabid end },
-            buf_name = { mode = 'unique' },
+require('tabby').setup({
+    preset = 'active_wins_at_tail',
+    option = {
+        theme = {
+            fill = 'TabLineFill',
+            head = 'TabLine',
+            current_tab = 'TabLineSel',
+            tab = 'TabLine',
+            win = 'TabLine',
+            tail = 'TabLine',
         },
-    })
-end, { sync = true })
+        nerdfont = true,
+        lualine_theme = nil,
+        tab_name = { name_fallback = function(tabid) return tabid end },
+        buf_name = { mode = 'unique' },
+    },
+})
 
 -- Which-key + Crates + Keys
 lazyload.on_vim_enter(function()
