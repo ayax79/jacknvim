@@ -63,7 +63,6 @@ vim.pack.add({
 
     -- Testing
     { src = "https://github.com/nvim-neotest/neotest" },
-    { src = "https://github.com/antoinemadec/FixCursorHold.nvim" },
 
     -- Language-specific
     { src = "https://github.com/mrcjkb/rustaceanvim" },
