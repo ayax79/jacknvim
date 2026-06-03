@@ -12,11 +12,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 -- On the main branch, nvim-treesitter uses vim.treesitter directly
 -- and auto-installs parsers. The old configs module is gone.
-require("nvim-treesitter").setup({
+require("tree-sitter-manager").setup({
     ensure_installed = {
         "comment", "css", "go", "gomod", "gosum", "gotmpl", "gowork",
         "html", "json", "lua", "markdown_inline", "markdown", "nix",
-        "norg", "nu", "regex", "rust", "scss", "sql", "svelte", "toml",
+        "nu", "regex", "rust", "scss", "sql", "svelte", "toml",
         "tsx", "typst", "vue",
     },
     auto_install = true,

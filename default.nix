@@ -26,7 +26,7 @@
     ruff # python formatter
     stylua
     topiary
-    # tree-sitter
+    tree-sitter
     typescript-language-server
     vscode-extensions.vscjava.vscode-java-test
     yaml-language-server # YAML language server

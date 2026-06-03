@@ -46,7 +46,7 @@ vim.pack.add({
     { src = "https://github.com/stevearc/conform.nvim" },
 
     -- Treesitter
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter",                 version = "main" },
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
     { src = "https://github.com/nushell/tree-sitter-nu" },
     { src = "https://github.com/folke/ts-comments.nvim" },
     { src = "https://github.com/dariuscorvus/tree-sitter-language-injection.nvim" },

@@ -52,7 +52,6 @@ vim.filetype.add({
 })
 
 vim.o.cursorline = true
-
 vim.o.conceallevel = 2
 
 -- -- views can only be fully collapsed with the global statusline
@@ -63,8 +62,8 @@ vim.opt.laststatus = 3
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevelstart = 99
 vim.opt.numberwidth = 3
 vim.opt.signcolumn = "yes:1"
