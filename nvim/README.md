@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A modern Neovim configuration built on native Neovim 0.11+ features (native `vim.pack`, native LSP, native treesitter folding) with no plugin manager—just declarative package loading and deferred setup.
+A modern Neovim configuration built on **Neovim 0.12+** features—specifically the built-in `vim.pack` package manager, native LSP via `vim.lsp.enable()`, and treesitter-based folding. No external plugin manager (no lazy.nvim, no packer)—just the built-in `vim.pack` that ships with Neovim 0.12.
 
 ## Architecture
 
@@ -29,7 +29,7 @@ nvim/
 ### Loading Strategy
 
 1. **`init.lua`** — Loads global options and LSP diagnostics config immediately.
-2. **`plugin/00_packages.lua`** — Declares all packages via `vim.pack.add()` (native Neovim package management, no lazy.nvim).
+2. **`plugin/00_packages.lua`** — Declares all packages via the built-in `vim.pack.add()` (Neovim 0.12's native package manager—no lazy.nvim or packer needed).
 3. **`plugin/01_colorschemes.lua`** — Sets up and applies the colorscheme (driven by `$THEME` env var).
 4. **`plugin/02_snacks.lua`** — Configures Snacks.nvim (picker, explorer, notifications, etc.) and its keymaps.
 5. **`plugin/03_setup.lua`** — Deferred setup for all other plugins using `lazyload.on_vim_enter()` to avoid blocking startup.
