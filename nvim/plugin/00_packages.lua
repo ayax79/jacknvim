@@ -9,7 +9,8 @@ vim.pack.add({
 
     -- Colorschemes
     -- { src = "https://github.com/rebelot/kanagawa.nvim" },
-    { src = "https://github.com/catppuccin/nvim",                                 name = "catppuccin" },
+    -- { src = "https://github.com/catppuccin/nvim",                                 name = "catppuccin" },
+    { src = "https://github.com/nyoom-engineering/oxocarbon.nvim",                   name = "oxocarbon" },
     -- { src = "https://github.com/sainnhe/gruvbox-material" },
     -- { src = "https://github.com/sainnhe/everforest" },
     -- { src = "https://github.com/savq/melange-nvim" },

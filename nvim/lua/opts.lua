@@ -6,6 +6,8 @@ elseif vim.g.theme_name == "nord" then
 elseif vim.g.theme_name == "catppuccin" then
     vim.g.theme_name = "catppuccin-mocha"
     -- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+elseif vim.g.theme_name == "oxocarbon" then
+    vim.g.theme_name = "oxocarbon"
 end
 
 vim.o.background = "dark" -- or "light" for light mode

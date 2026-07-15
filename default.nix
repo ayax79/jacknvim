@@ -20,7 +20,7 @@
     markdownlint-cli2
     nil # nix language server
     nixd # nix language server
-    nixfmt-classic
+    nixfmt
     nix-tree # dependency tree for nix
     pyright # Pyright language server
     ruff # python formatter
