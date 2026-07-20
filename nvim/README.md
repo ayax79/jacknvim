@@ -89,7 +89,7 @@ nvim/
 
 | Plugin                                                                                                | Purpose                            |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [tree-sitter-manager.nvim](https://github.com/romus204/tree-sitter-manager.nvim)                      | Parser management and auto-install |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)                                 | Parser management and auto-install |
 | [ts-comments.nvim](https://github.com/folke/ts-comments.nvim)                                         | Treesitter-aware commenting        |
 | [tree-sitter-language-injection](https://github.com/dariuscorvus/tree-sitter-language-injection.nvim) | Language injection support         |
 
