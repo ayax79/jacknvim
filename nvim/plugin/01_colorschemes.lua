@@ -106,6 +106,11 @@ elseif string.find(theme_name, "catppuccin") then
     require("catppuccin").setup({
         auto_integrations = true,
     })
+elseif theme_name == "oxocarbon" then
+    -- The following allows for a transparent background
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 elseif theme_name == "onenord" then
     require("onenord").setup({ fade_nc = true })
 end
