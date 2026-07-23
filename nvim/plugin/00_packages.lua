@@ -74,7 +74,7 @@ vim.pack.add({
 
     -- AI
     { src = "https://github.com/zbirenbaum/copilot.lua" },
-    { src = "https://github.com/yetone/avante.nvim" },
+    -- { src = "https://github.com/yetone/avante.nvim" },
     { src = "https://github.com/HakonHarnes/img-clip.nvim" },
 
     -- Editing

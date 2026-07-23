@@ -22,7 +22,7 @@ wk.add({
     },
     { "-",         "<CMD>Oil<CR>",   desc = "Open parent directory", },
     -- LSP Group
-    { "<leader>a", group = "Avante" },
+    -- { "<leader>a", group = "Avante" },
     { "<leader>b", group = "Buffers" },
     -- Crates Group
     {

@@ -105,7 +105,13 @@ require("lualine").setup({
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = { "avante", "fzf", "oil", "trouble", "quickfix" },
+    extensions = {
+        -- "avante",
+        "fzf",
+        "oil",
+        "trouble",
+        "quickfix"
+    },
 })
 
 -- Tabby
@@ -282,30 +288,30 @@ lazyload.on_vim_enter(function()
 end)
 
 -- Avante
-lazyload.on_vim_enter(function()
-    vim.api.nvim_create_autocmd("PackChanged", {
-        callback = function(ev)
-            if ev.data.spec.name == "avante.nvim" then
-                vim.fn.system("make -C " .. ev.data.path)
-            end
-        end,
-    })
-    require("img-clip").setup({
-        default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = { insert_mode = true },
-            use_absolute_path = true,
-        },
-    })
-    require("avante").setup({
-        provider = "goose",
-        input = {
-            provider = "snacks",
-            provider_opts = { title = "Avante Input", icon = " " },
-        }
-    })
-end)
+-- lazyload.on_vim_enter(function()
+--     vim.api.nvim_create_autocmd("PackChanged", {
+--         callback = function(ev)
+--             if ev.data.spec.name == "avante.nvim" then
+--                 vim.fn.system("make -C " .. ev.data.path)
+--             end
+--         end,
+--     })
+--     require("img-clip").setup({
+--         default = {
+--             embed_image_as_base64 = false,
+--             prompt_for_file_name = false,
+--             drag_and_drop = { insert_mode = true },
+--             use_absolute_path = true,
+--         },
+--     })
+--     require("avante").setup({
+--         provider = "goose",
+--         input = {
+--             provider = "snacks",
+--             provider_opts = { title = "Avante Input", icon = " " },
+--         }
+--     })
+-- end)
 
 -- Multicursor
 lazyload.on_vim_enter(function()
