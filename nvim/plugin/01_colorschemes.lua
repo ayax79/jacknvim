@@ -100,7 +100,10 @@ elseif theme_name == "everforest" then
 elseif theme_name == "nord" then
     require("nord").setup({ transparent = true })
 elseif theme_name == "onedark" then
-    require('onedark').setup({ style = 'warmer' })
+    require('onedark').setup({
+        style = 'darker',
+        transparent = 'true'
+    })
     require('onedark').load()
 elseif string.find(theme_name, "catppuccin") then
     require("catppuccin").setup({
