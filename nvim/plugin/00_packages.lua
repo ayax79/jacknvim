@@ -86,4 +86,7 @@ vim.pack.add({
     -- Misc
     { src = "https://github.com/meznaric/key-analyzer.nvim" },
     { src = "https://github.com/kawre/leetcode.nvim" },
+
+    -- Mermaid
+    { src = "https://github.com/kevalin/mermaid.nvim" },
 })

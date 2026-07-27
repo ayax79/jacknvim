@@ -18,7 +18,7 @@ ts.setup({
     install_dir = vim.fn.stdpath('data') .. '/site'
 })
 ts.install({ "comment", "css", "go", "gomod", "gosum", "gotmpl", "gowork",
-    "html", "json", "lua", "markdown_inline", "markdown", "nix",
+    "html", "json", "lua", "markdown_inline", "markdown", "mermaid", "nix",
     "nu", "regex", "rust", "scss", "sql", "svelte", "toml",
     "tsx", "typst", "vue", })
 
@@ -388,6 +388,17 @@ lazyload.on_vim_enter(function()
                 end,
             },
         },
+    })
+end)
+
+-- Mermaid
+lazyload.on_vim_enter(function()
+    require("mermaid").setup({
+        theme = "default",
+        lint = {
+            enabledd = true,
+            command = "mmdc -p ~/.config/mermaid/puppeteerConfigFile.json",
+        }
     })
 end)
 
