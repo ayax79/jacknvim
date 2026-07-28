@@ -77,7 +77,3 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 vim.o.showtabline = 2
-
--- spelling settings
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
