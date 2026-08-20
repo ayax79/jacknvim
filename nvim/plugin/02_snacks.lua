@@ -84,6 +84,52 @@ map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find 
 map("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
 map("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
 map("n", "<leader>gb", function() Snacks.picker.git_branches() end, { desc = "Git Branches" })
+map("n", "<leader>gw", function()
+    Snacks.picker({
+        title = "Git Worktrees",
+        finder = function(opts, ctx)
+            return require("snacks.picker.source.proc").proc(vim.tbl_extend("force", opts, {
+                cmd = "git",
+                args = { "worktree", "list" },
+                transform = function(item)
+                    local line = item.text
+                    if not line or line == "" then return false end
+                    local path, hash, branch = line:match("^(%S+)%s+(%S+)%s+%[(.-)%]")
+                    if not path then
+                        -- bare worktree or detached HEAD
+                        path, hash = line:match("^(%S+)%s+(%S+)")
+                        branch = hash or ""
+                    end
+                    if not path then return false end
+                    item.file = path
+                    item.text = ("%s [%s]"):format(path, branch or "")
+                    item.path = path
+                    item.branch = branch or ""
+                end,
+            }), ctx)
+        end,
+        format = "text",
+        confirm = function(picker, item)
+            picker:close()
+            if item and item.path then
+                vim.fn.chdir(item.path)
+                vim.notify("Changed directory to " .. item.path, vim.log.levels.INFO)
+            end
+        end,
+        preview = function(ctx)
+            local item = ctx.item
+            if not item or not item.path then return end
+            local lines = {}
+            table.insert(lines, "Worktree: " .. item.path)
+            table.insert(lines, "Branch:   " .. (item.branch or ""))
+            table.insert(lines, "")
+            table.insert(lines, "--- Recent commits ---")
+            local result = vim.fn.systemlist({ "git", "-C", item.path, "log", "--oneline", "-20" })
+            vim.list_extend(lines, result)
+            return { text = table.concat(lines, "\n"), ft = "git" }
+        end,
+    })
+end, { desc = "Git Worktrees" })
 map("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log" })
 map("n", "<leader>gL", function() Snacks.picker.git_log_line() end, { desc = "Git Log Line" })
 map("n", "<leader>gs", function() Snacks.picker.git_status() end, { desc = "Git Status" })
@@ -222,7 +268,7 @@ vim.api.nvim_create_autocmd("User", {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
-        "<leader>uc")
+            "<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
