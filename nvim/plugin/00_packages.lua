@@ -49,7 +49,7 @@ vim.pack.add({
     -- Treesitter
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },                  -- Treesitter integration for syntax highlighting, indentation, and code understanding
     { src = "https://github.com/nushell/tree-sitter-nu" },                           -- Treesitter grammar for the Nushell scripting language
-    { src = "https://github.com/folke/ts-comments.nvim" },                           -- Sets correct commentstring per language using treesitter
+    -- { src = "https://github.com/folke/ts-comments.nvim" },                           -- Sets correct commentstring per language using treesitter
     { src = "https://github.com/dariuscorvus/tree-sitter-language-injection.nvim" }, -- Custom treesitter language injection rules (e.g., SQL in strings)
 
     -- Git

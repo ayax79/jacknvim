@@ -427,7 +427,7 @@ lazyload.on_vim_enter(function()
 end)
 
 -- ts-comments
-require("ts-comments").setup({})
+-- require("ts-comments").setup({})
 
 -- tree-sitter-language-injection
 require("tree-sitter-language-injection").setup({})
