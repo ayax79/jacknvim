@@ -77,3 +77,5 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.o.timeout = true
 vim.o.timeoutlen = 500
 vim.o.showtabline = 2
+
+vim.g.tmux_navigator_no_mappings = 1
