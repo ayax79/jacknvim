@@ -79,7 +79,7 @@ vim.pack.add({
 
     -- Editing
     { src = "https://github.com/nvim-mini/mini.nvim" },           -- 30+ minimal Lua modules (surround, pairs, align, ai textobjects, etc.)
-    { src = "https://github.com/jake-stewart/multicursor.nvim" }, -- Multiple cursor support for simultaneous editing
+    -- { src = "https://github.com/jake-stewart/multicursor.nvim" }, -- Multiple cursor support for simultaneous editing
     { src = "https://github.com/tpope/vim-abolish" },             -- Smarter substitution, coercion (camelCase↔snake_case), abbreviations
     { src = "https://github.com/nicwest/vim-camelsnek" },         -- Convert between camelCase, snake_case, kebab-case, etc.
 

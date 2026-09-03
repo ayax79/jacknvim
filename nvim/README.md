@@ -132,7 +132,7 @@ nvim/
 | Plugin                                                               | Purpose                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------- |
 | [mini.nvim](https://github.com/nvim-mini/mini.nvim)                  | align, ai textobjects, icons, move, jump2d, splitjoin, surround |
-| [multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim) | Multiple cursors                                                |
+<!-- | [multicursor.nvim](https://github.com/jake-stewart/multicursor.nvim) | Multiple cursors                                                | -->
 | [vim-abolish](https://github.com/tpope/vim-abolish)                  | Case-preserving substitution                                    |
 | [vim-camelsnek](https://github.com/nicwest/vim-camelsnek)            | Case conversion                                                 |
 
@@ -278,6 +278,7 @@ nvim/
 | `<leader>tp` | n    | Previous Tab     |
 | `<leader>to` | n    | Close Other Tabs |
 
+<!--
 ### Multicursor
 
 | Key               | Mode | Description                  |
@@ -289,6 +290,7 @@ nvim/
 | `<c-q>`           | n, x | Toggle cursor                |
 | `<Esc>`           | n    | Clear cursors                |
 | `S`               | x    | Split selection into cursors |
+-->
 
 ### Copilot (Insert Mode)
 
