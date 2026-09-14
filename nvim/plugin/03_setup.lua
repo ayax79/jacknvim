@@ -413,11 +413,11 @@ require('mini.splitjoin').setup()
 require('mini.surround').setup()
 
 -- Tmux Navigator
-vim.keymap.set("n", "<M-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
-vim.keymap.set("n", "<M-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
-vim.keymap.set("n", "<M-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
-vim.keymap.set("n", "<M-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
-vim.keymap.set("n", "<M-\\>", "<cmd>TmuxNavigatePrevious<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-\\>", "<cmd>TmuxNavigatePrevious<cr>", { silent = true })
 
 -- Yazi
 lazyload.on_vim_enter(function()
