@@ -10,7 +10,7 @@ end
 
 local function nu_eval(args, fargs)
     local nu_cmd = build_nu_cmd(args, fargs)
-    local full = 'nu -c ' .. nu_cmd
+    local full = 'nu -l -c ' .. nu_cmd
     return vim.fn.system(full)
 end
 
