@@ -78,10 +78,10 @@ vim.pack.add({
     { src = "https://github.com/HakonHarnes/img-clip.nvim" }, -- Paste images from clipboard into documents (Markdown, Avante, etc.)
 
     -- Editing
-    { src = "https://github.com/nvim-mini/mini.nvim" },           -- 30+ minimal Lua modules (surround, pairs, align, ai textobjects, etc.)
+    { src = "https://github.com/nvim-mini/mini.nvim" },   -- 30+ minimal Lua modules (surround, pairs, align, ai textobjects, etc.)
     -- { src = "https://github.com/jake-stewart/multicursor.nvim" }, -- Multiple cursor support for simultaneous editing
-    { src = "https://github.com/tpope/vim-abolish" },             -- Smarter substitution, coercion (camelCase↔snake_case), abbreviations
-    { src = "https://github.com/nicwest/vim-camelsnek" },         -- Convert between camelCase, snake_case, kebab-case, etc.
+    { src = "https://github.com/tpope/vim-abolish" },     -- Smarter substitution, coercion (camelCase↔snake_case), abbreviations
+    { src = "https://github.com/nicwest/vim-camelsnek" }, -- Convert between camelCase, snake_case, kebab-case, etc.
 
     -- Misc
     { src = "https://github.com/meznaric/key-analyzer.nvim" }, -- Analyzes and visualizes keybinding usage and conflicts
@@ -89,4 +89,6 @@ vim.pack.add({
 
     -- Mermaid
     { src = "https://github.com/kevalin/mermaid.nvim" }, -- Preview and render Mermaid diagrams from within Neovim
+
+    { src = "https://github.com/benlubas/molten-nvim",                            version = vim.version.range("1.*") }
 })
