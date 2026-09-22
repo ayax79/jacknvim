@@ -508,9 +508,61 @@ vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>",
     { silent = true, desc = "re-evaluate cell" })
 vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
     { silent = true, desc = "evaluate visual selection" })
-    vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>",
+vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>",
     { silent = true, desc = "molten delete cell" })
 vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>",
     { silent = true, desc = "hide output" })
 vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>",
     { silent = true, desc = "show/enter output" })
+
+require("avante").setup({
+    provider = "goose",
+    behaviour = {
+        auto_suggestions = false,
+    },
+    -- RAG runs as a separate container with its OWN llm/embed config; it does
+    -- NOT use the goose/Copilot acp_provider below. Copilot's "vscode-chat"
+    -- integrator refuses embedding models.
+    --
+    -- Embeddings are served by Colima's AI model runner (Docker Model Runner),
+    -- which exposes an OpenAI-compatible API. Requires the krunkit VM type, so
+    -- we use a dedicated `ai` profile (the main dev profile stays vz):
+    --   brew tap slp/krun && brew install krunkit
+    --   colima start ai --vm-type krunkit --cpus 4 --memory 8 --disk 50
+    --   colima model setup -p ai
+    --   colima model serve ai/nomic-embed-text-v1.5 --port 8080 -p ai
+    -- The RAG container reaches the host-forwarded port via host.docker.internal.
+    -- api_key can be any non-empty string (Docker Model Runner ignores it).
+    -- After changing this block, recreate the RAG container:
+    --   docker rm -fv avante-rag-service
+    rag_service = {
+        enabled = true,
+        host_mount = os.getenv("HOME"),
+        runner = "docker",
+        llm = {
+            provider = "openai",
+            endpoint = "http://host.docker.internal:8080/v1",
+            api_key = "OPENAI_API_KEY",
+            model = "ai/qwen2.5",
+        },
+        embed = {
+            provider = "openai",
+            endpoint = "http://host.docker.internal:8080/v1",
+            api_key = "OPENAI_API_KEY",
+            model = "ai/nomic-embed-text-v1.5",
+            extra = {
+                dimensions = 768,
+            },
+        },
+    },
+    acp_providers = {
+        ["goose"] = {
+            command = "goose",
+            args = { "acp" },
+            env = {
+                GOOSE_PROVIDER = "github_copilot",
+                GOOSE_MODEL = "claude-opus-4.8",
+            }
+        }
+    }
+})
