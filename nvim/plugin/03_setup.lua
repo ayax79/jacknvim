@@ -516,7 +516,7 @@ vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>",
     { silent = true, desc = "show/enter output" })
 
 require("avante").setup({
-    provider = "goose",
+    provider = "cursor",
     behaviour = {
         auto_suggestions = false,
     },
@@ -535,26 +535,26 @@ require("avante").setup({
     -- api_key can be any non-empty string (Docker Model Runner ignores it).
     -- After changing this block, recreate the RAG container:
     --   docker rm -fv avante-rag-service
-    rag_service = {
-        enabled = true,
-        host_mount = os.getenv("HOME"),
-        runner = "docker",
-        llm = {
-            provider = "openai",
-            endpoint = "http://host.docker.internal:8080/v1",
-            api_key = "OPENAI_API_KEY",
-            model = "ai/qwen2.5",
-        },
-        embed = {
-            provider = "openai",
-            endpoint = "http://host.docker.internal:8080/v1",
-            api_key = "OPENAI_API_KEY",
-            model = "ai/nomic-embed-text-v1.5",
-            extra = {
-                dimensions = 768,
-            },
-        },
-    },
+    -- rag_service = {
+        -- enabled = false,
+        -- host_mount = os.getenv("HOME"),
+        -- runner = "docker",
+        -- llm = {
+        --     provider = "openai",
+        --     endpoint = "http://host.docker.internal:8080/v1",
+        --     -- api_key = "OPENAI_API_KEY",
+        --     model = "ai/qwen2.5",
+        -- },
+        -- embed = {
+        --     provider = "openai",
+        --     endpoint = "http://host.docker.internal:8080/v1",
+        --     -- api_key = "OPENAI_API_KEY",
+        --     model = "ai/nomic-embed-text-v1.5",
+        --     extra = {
+        --         dimensions = 768,
+        --     },
+        -- },
+    -- },
     acp_providers = {
         ["goose"] = {
             command = "goose",
@@ -563,6 +563,10 @@ require("avante").setup({
                 GOOSE_PROVIDER = "github_copilot",
                 GOOSE_MODEL = "claude-opus-4.8",
             }
+        },
+        ["cursor"] = {
+            command = "agent",
+            args = { "acp" },
         }
     }
 })
