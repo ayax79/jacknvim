@@ -404,7 +404,8 @@ end)
 
 -- Mini
 require('mini.align').setup()
-require('mini.ai').setup()
+-- conflicts new neovim text objects, disabling for now
+-- require('mini.ai').setup()
 require('mini.icons').setup()
 require('mini.move').setup()
 require('mini.jump').setup()
@@ -536,24 +537,24 @@ require("avante").setup({
     -- After changing this block, recreate the RAG container:
     --   docker rm -fv avante-rag-service
     -- rag_service = {
-        -- enabled = false,
-        -- host_mount = os.getenv("HOME"),
-        -- runner = "docker",
-        -- llm = {
-        --     provider = "openai",
-        --     endpoint = "http://host.docker.internal:8080/v1",
-        --     -- api_key = "OPENAI_API_KEY",
-        --     model = "ai/qwen2.5",
-        -- },
-        -- embed = {
-        --     provider = "openai",
-        --     endpoint = "http://host.docker.internal:8080/v1",
-        --     -- api_key = "OPENAI_API_KEY",
-        --     model = "ai/nomic-embed-text-v1.5",
-        --     extra = {
-        --         dimensions = 768,
-        --     },
-        -- },
+    -- enabled = false,
+    -- host_mount = os.getenv("HOME"),
+    -- runner = "docker",
+    -- llm = {
+    --     provider = "openai",
+    --     endpoint = "http://host.docker.internal:8080/v1",
+    --     -- api_key = "OPENAI_API_KEY",
+    --     model = "ai/qwen2.5",
+    -- },
+    -- embed = {
+    --     provider = "openai",
+    --     endpoint = "http://host.docker.internal:8080/v1",
+    --     -- api_key = "OPENAI_API_KEY",
+    --     model = "ai/nomic-embed-text-v1.5",
+    --     extra = {
+    --         dimensions = 768,
+    --     },
+    -- },
     -- },
     acp_providers = {
         ["goose"] = {
