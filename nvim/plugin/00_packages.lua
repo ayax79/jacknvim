@@ -59,7 +59,7 @@ vim.pack.add({
 
     -- DAP (Debugging)
     { src = "https://github.com/mfussenegger/nvim-dap" },           -- Debug Adapter Protocol client for step debugging in the editor
-    { src = "https://github.com/rcarriga/nvim-dap-ui" },            -- Full debugging UI (watches, breakpoints, stack, REPL) for nvim-dap
+    { src = "https://github.com/igorlfs/nvim-dap-view" },           -- Modern debugging UI (watches, breakpoints, stack, REPL) for nvim-dap
     { src = "https://github.com/theHamsta/nvim-dap-virtual-text" }, -- Shows variable values as virtual text while debugging
 
     -- Testing

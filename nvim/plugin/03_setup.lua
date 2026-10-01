@@ -235,10 +235,10 @@ end)
 -- DAP
 lazyload.on_vim_enter(function()
     require("nvim-dap-virtual-text").setup()
-    require("dapui").setup()
+    require("dap-view").setup()
 
     -- Initialize DAP (moved from lsp.lua since it requires dap module)
-    local dap, dapui = require("dap"), require("dapui")
+    local dap, dapView = require("dap"), require("dap-view")
     dap.adapters.lldb = {
         type = "executable",
         command = vim.g.codelldb_path,
@@ -254,10 +254,10 @@ lazyload.on_vim_enter(function()
             problemMatcher = "$rustc",
         }
     }
-    dap.listeners.before.attach.dapui_config = function() dapui.open() end
-    dap.listeners.before.launch.dapui_config = function() dapui.open() end
-    dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-    dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+    dap.listeners.before.attach.dap_view_config = function() dapView.open() end
+    dap.listeners.before.launch.dap_view_config = function() dapView.open() end
+    dap.listeners.before.event_terminated.dap_view_config = function() dapView.close() end
+    dap.listeners.before.event_exited.dap_view_config = function() dapView.close() end
 end)
 
 -- Neotest

@@ -63,7 +63,7 @@ wk.add({
             name = "Debugger",
             group = "Debugger",
             { "<leader>lDb", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint", },
-            { "<leader>lDu", require("dapui").toggle,        desc = "Toggle Debugger UI", },
+            { "<leader>lDu", require("dap-view").toggle,        desc = "Toggle Debugger UI", },
         },
     },
     { "<leader>o", group = "Trouble" },
@@ -137,6 +137,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- end
 
         --vim.keymap.set({ "n", "v" }, "<space>la", exec_code_action, util.with_description(opts, "Code Action"))
-        vim.keymap.set('v', 'M-K', require('dapui').eval, util.with_description(opts, "DAP Eval Expression"))
+        vim.keymap.set('v', '<M-K>', function() require('dap-view').hover() end, util.with_description(opts, "DAP Eval Expression"))
     end,
 })
