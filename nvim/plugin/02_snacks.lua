@@ -173,6 +173,7 @@ map("n", "<leader>Z", function() Snacks.zen.zoom() end, { desc = "Toggle Zoom" }
 map("n", "<leader>.", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
 map("n", "<leader>S", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
 map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
+map("n", "<leader>bD", function() Snacks.bufdelete.invisible() end, { desc = "Delete Invisible Buffers" })
 map("n", "<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
 map({ "n", "v" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
 map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
