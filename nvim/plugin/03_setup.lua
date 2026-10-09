@@ -158,7 +158,6 @@ require("conform").setup({
     formatters_by_ft = {
         nu = { "topiary_nu" },
         markdown = { "dprint" },
-        toml = { "dprint" },
     },
     formatters = {
         topiary_nu = { command = "topiary", args = { "format", "--language", "nu" } },
@@ -435,15 +434,16 @@ require("key-analyzer").setup({})
 
 -- Enable LSP servers (after SchemaStore is on rtp)
 vim.lsp.enable({
-    "nixd",
-    "nil_ls",
     "lua_ls",
+    "marksman",
+    "nil_ls",
+    "nixd",
     "nushell",
-    "yamlls",
     "pyright",
     "ruff",
-    "marksman",
+    "tombi",
     "ts_ls",
+    "yamlls",
 })
 
 -- Lazydev (lua ft)

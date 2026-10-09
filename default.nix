@@ -26,6 +26,7 @@
     ruff # python formatter
     stylua
     topiary
+    tombi
     tree-sitter
     typescript-language-server
     vscode-extensions.vscjava.vscode-java-test
@@ -43,8 +44,8 @@
     withPython3 = true;
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = [ pkgs.imagemagick ];
-    extraPython3Packages = ps:
-      with ps; [
+    extraPython3Packages =
+      ps: with ps; [
         # Build failure 2024-03-17
         # plotly # for image rendering
         # plotly broken 2025-06-23
