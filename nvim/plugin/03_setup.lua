@@ -203,6 +203,15 @@ require("gitsigns").setup({
     end
 })
 
+-- Atlas (PR review / issues for GitHub, GitLab, Bitbucket, Jira)
+-- Run :checkhealth atlas to verify setup. GitHub requires `gh auth login`.
+lazyload.on_vim_enter(function()
+    require("atlas").setup({})
+    vim.keymap.set("n", "<leader>Ar", "<cmd>Atlas review<cr>", { desc = "Atlas: Review PR" })
+    vim.keymap.set("n", "<leader>Ab", "<cmd>Atlas browse .<cr>", { desc = "Atlas: Browse repo" })
+    vim.keymap.set("n", "<leader>Ap", "<cmd>Atlas pipelines .<cr>", { desc = "Atlas: Pipelines (current branch)" })
+end)
+
 -- Git Conflict
 lazyload.on_vim_enter(function()
     require('git-conflict').setup({

@@ -56,6 +56,7 @@ vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim" },   -- Git diff signs in the sign column, inline blame, and hunk actions
     { src = "https://github.com/tpope/vim-fugitive" },        -- Premier Git wrapper — :Git commands for blame, diff, log, etc.
     { src = "https://github.com/akinsho/git-conflict.nvim" }, -- Visualizes and resolves git merge conflicts with keybindings
+    { src = "https://github.com/emrearmagan/atlas.nvim" },    -- Review PRs and manage issues (GitHub, GitLab, Bitbucket, Jira)
 
     -- DAP (Debugging)
     { src = "https://github.com/mfussenegger/nvim-dap" },           -- Debug Adapter Protocol client for step debugging in the editor
