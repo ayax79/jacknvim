@@ -176,10 +176,10 @@ require("gitsigns").setup({
             vim.keymap.set(mode, l, r, opts)
         end
         map('n', ']c', function()
-            if vim.wo.diff then vim.cmd.normal({ ']c', bang = true }) else gs.nav_hunk('next') end
+            if vim.wo.diff then vim.cmd.normal({ ']c', bang = true }) else gs.nav_hunk('next', { target = 'all' }) end
         end, { desc = 'Next uncommitted change' })
         map('n', '[c', function()
-            if vim.wo.diff then vim.cmd.normal({ '[c', bang = true }) else gs.nav_hunk('prev') end
+            if vim.wo.diff then vim.cmd.normal({ '[c', bang = true }) else gs.nav_hunk('prev', { target = 'all' }) end
         end, { desc = 'Previous uncommitted change' })
         map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage Hunk' })
         map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset Hunk' })
