@@ -496,7 +496,6 @@ vim.api.nvim_create_autocmd("FileType", {
     once = true,
     callback = function() require("coverage").setup() end,
 })
-<<<<<<< Updated upstream
 
 -- molten setup
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -578,19 +577,3 @@ require("avante").setup({
         }
     }
 })
-||||||| Stash base
-=======
-
--- jypynium
-vim.api.nvim_create_autocmd("PackChanged", {
-    callback = function(ev)
-        if ev.data.spec.name == "jupynium" then
-            vim.cmd("uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python")
-        end
-    end,
-})
-
-lazyload.on_vim_enter(function()
-    require("jupynium").setup({})
-end)
->>>>>>> Stashed changes
