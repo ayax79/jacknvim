@@ -522,6 +522,8 @@ vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>",
 vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>",
     { silent = true, desc = "show/enter output" })
 
+-- avante.Config marks many fields as required even though setup() merges with defaults
+---@diagnostic disable: missing-fields
 require("avante").setup({
     provider = "cursor",
     behaviour = {
@@ -577,3 +579,4 @@ require("avante").setup({
         }
     }
 })
+---@diagnostic enable: missing-fields
