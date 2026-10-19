@@ -18,9 +18,9 @@ ts.setup({
     install_dir = vim.fn.stdpath('data') .. '/site'
 })
 ts.install({ "comment", "css", "go", "gomod", "gosum", "gotmpl", "gowork",
-    "html", "json", "lua", "markdown_inline", "markdown", "mermaid", "nix",
+    "bash", "html", "json", "lua", "markdown_inline", "markdown", "mermaid", "nix",
     "nu", "regex", "rust", "scss", "sql", "svelte", "toml",
-    "tsx", "typst", "vue", })
+    "tsx", "typst", "vue", "zsh", })
 
 -- Blink completion
 require("blink.cmp").setup({
