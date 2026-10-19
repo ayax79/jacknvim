@@ -118,3 +118,6 @@ elseif theme_name == "onenord" then
     require("onenord").setup({ fade_nc = true })
 end
 vim.cmd.colorscheme(vim.g.theme_name)
+
+-- Subtle background behind injected languages (bash/zsh/nu in nix, etc.)
+require("injection_bg").setup({ amount = 0.06 })

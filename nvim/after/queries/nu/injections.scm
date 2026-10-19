@@ -13,5 +13,5 @@
 
 ; any string whose content starts with a SQL keyword (case-insensitive)
 ((string_content) @injection.content
-  (#match? @injection.content "\\c^\\_s*\\(select\\|with\\|insert\\|update\\|delete\\|create\\)\\>")
+  (#match? @injection.content "\\v\\c^\\_s*(select|with|insert|update|delete|create)>")
   (#set! injection.language "sql"))
