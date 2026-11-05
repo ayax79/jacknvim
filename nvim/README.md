@@ -66,7 +66,7 @@ nvim/
 | ----------------------------------------------------------------------- | --------------------------------------- |
 | [oil.nvim](https://github.com/stevearc/oil.nvim)                        | File explorer as a buffer (`-` to open) |
 | [yazi.nvim](https://github.com/mikavilpas/yazi.nvim)                    | Yazi file manager integration           |
-| [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) | Seamless tmux/nvim pane navigation      |
+| [smart-splits.nvim](https://github.com/mrjones2014/smart-splits.nvim) | Seamless tmux/nvim pane navigation      |
 
 ### Completion / Snippets
 
@@ -221,7 +221,7 @@ nvim/
 | `gy`         | n    | Go to Type Definition                    |
 | `gai`        | n    | Incoming Calls                           |
 | `gao`        | n    | Outgoing Calls                           |
-| `<M-k>`      | n    | Signature Help                           |
+| `gK`         | n    | Signature Help                           |
 | `<leader>la` | n    | Code Action (Rust-specific in .rs files) |
 | `<leader>ll` | n    | CodeLens Action                          |
 | `<leader>lf` | n, v | Format (conform)                         |
@@ -301,14 +301,18 @@ nvim/
 | `<C-H>` | i    | Previous suggestion |
 | `<C-L>` | i    | Next suggestion     |
 
-### Tmux Navigation
+### Tmux Navigation (smart-splits)
 
 | Key     | Mode | Description               |
 | ------- | ---- | ------------------------- |
-| `<C-h>` | n    | Navigate left (tmux/nvim) |
-| `<C-j>` | n    | Navigate down             |
-| `<C-k>` | n    | Navigate up               |
-| `<C-l>` | n    | Navigate right            |
+| `<C-h>`   | n    | Navigate left (tmux/nvim) |
+| `<C-j>`   | n    | Navigate down             |
+| `<C-k>`   | n    | Navigate up               |
+| `<C-l>`   | n    | Navigate right            |
+| `<A-h>`   | n    | Resize left               |
+| `<A-j>`   | n    | Resize down               |
+| `<A-k>`   | n    | Resize up                 |
+| `<A-l>`   | n    | Resize right              |
 
 ### Toggle Options (`<leader>u`)
 

@@ -78,5 +78,4 @@ vim.o.timeout = true
 vim.o.timeoutlen = 500
 vim.o.showtabline = 2
 
-vim.g.tmux_navigator_no_mappings = 1
 vim.opt.autoread = true

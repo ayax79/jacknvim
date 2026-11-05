@@ -6,7 +6,7 @@ wk.add({
     -- Global Mappings
     { '<space>qla', vim.diagnostic.setloclist, desc = "Set Loclist (all)", },
     {
-        '<space>qla',
+        '<space>qle',
         function()
             vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.ERROR })
         end,
@@ -46,7 +46,7 @@ wk.add({
         { "<leader>cX", crates.extract_crate_into_table,           desc = "Extract crate into table" },
 
         { "<leader>cH", crates.open_homepage,                      desc = "Open Homepage" },
-        { "<leader>cR", crates.open_repository,                    desc = "Open Repository" },
+        { "<leader>cG", crates.open_repository,                    desc = "Open Repository" },
         { "<leader>cD", crates.open_documentation,                 desc = "Open Documentation" },
         { "<leader>cC", crates.open_crates_io,                     desc = "Open Crates IO" },
     },
@@ -75,7 +75,8 @@ wk.add({
     { "<leader>w", group = "Workspaces" },
     { "<leader>/", group = "Search" },
     { "[p",        "<cmd>tabnext<cr>",       desc = "Next Tab Page", },
-    { "[P",        "<cmd>tabnext<cr>",       desc = "Previous Tab Page", },
+    { "[P",        "<cmd>tabprevious<cr>",   desc = "Previous Tab Page", },
+    { "]P",        "<cmd>tabnext<cr>",       desc = "Next Tab Page", },
     {
         "<leader>t",
         name = "Tabs",
@@ -109,7 +110,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, util.with_description(opts, "Go to Declaration"))
         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, util.with_description(opts, "LSP hover"))
         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, util.with_description(opts, "Go to Definition"))
-        vim.keymap.set("n", "<M-k>", vim.lsp.buf.signature_help, util.with_description(opts, "Signature Help"))
+        vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, util.with_description(opts, "Signature Help"))
         vim.keymap.set("n", "gx", vim.lsp.buf.incoming_calls, util.with_description(opts, "Go to incoming calls"))
         vim.keymap.set("n", "gX", vim.lsp.buf.outgoing_calls, util.with_description(opts, "Go to outgoing calls"))
         vim.keymap.set(

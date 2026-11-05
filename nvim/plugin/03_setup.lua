@@ -425,12 +425,17 @@ require('mini.jump2d').setup()
 require('mini.splitjoin').setup()
 require('mini.surround').setup()
 
--- Tmux Navigator
-vim.keymap.set("n", "<M-S-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
-vim.keymap.set("n", "<M-S-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
-vim.keymap.set("n", "<M-S-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
-vim.keymap.set("n", "<M-S-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
-vim.keymap.set("n", "<M-S-\\>", "<cmd>TmuxNavigatePrevious<cr>", { silent = true })
+-- Smart Splits (tmux/nvim pane navigation)
+local smart_splits = require("smart-splits")
+smart_splits.setup({ multiplexer_integration = "tmux" })
+vim.keymap.set("n", "<C-h>", smart_splits.move_cursor_left, { silent = true, desc = "Navigate left (tmux/nvim)" })
+vim.keymap.set("n", "<C-j>", smart_splits.move_cursor_down, { silent = true, desc = "Navigate down (tmux/nvim)" })
+vim.keymap.set("n", "<C-k>", smart_splits.move_cursor_up, { silent = true, desc = "Navigate up (tmux/nvim)" })
+vim.keymap.set("n", "<C-l>", smart_splits.move_cursor_right, { silent = true, desc = "Navigate right (tmux/nvim)" })
+vim.keymap.set("n", "<A-h>", smart_splits.resize_left, { silent = true, desc = "Resize split left (tmux/nvim)" })
+vim.keymap.set("n", "<A-j>", smart_splits.resize_down, { silent = true, desc = "Resize split down (tmux/nvim)" })
+vim.keymap.set("n", "<A-k>", smart_splits.resize_up, { silent = true, desc = "Resize split up (tmux/nvim)" })
+vim.keymap.set("n", "<A-l>", smart_splits.resize_right, { silent = true, desc = "Resize split right (tmux/nvim)" })
 
 -- Yazi
 lazyload.on_vim_enter(function()
