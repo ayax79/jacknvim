@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
     alejandra # Alejandra nix formatting
     # basedpyright
-    code-lldb
+    vscode-extensions.vadimcn.vscode-lldb # codelldb DAP adapter
     coursier
     dprint
     # efm-langserver # EFM language server
@@ -42,10 +42,10 @@
     vimAlias = true;
     withRuby = false;
     withPython3 = true;
-    extraLuaPackages = ps: [ ps.magick ];
-    extraPackages = [ pkgs.imagemagick ];
-    extraPython3Packages =
-      ps: with ps; [
+    extraLuaPackages = ps: [ps.magick];
+    extraPackages = [pkgs.imagemagick];
+    extraPython3Packages = ps:
+      with ps; [
         # Build failure 2024-03-17
         # plotly # for image rendering
         # plotly broken 2025-06-23
