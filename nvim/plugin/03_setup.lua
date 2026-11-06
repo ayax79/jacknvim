@@ -359,8 +359,16 @@ vim.keymap.set("n", "<A-h>", smart_splits.resize_left, { silent = true, desc = "
 vim.keymap.set("n", "<A-j>", smart_splits.resize_down, { silent = true, desc = "Resize split down (tmux/nvim)" })
 vim.keymap.set("n", "<A-k>", smart_splits.resize_up, { silent = true, desc = "Resize split up (tmux/nvim)" })
 vim.keymap.set("n", "<A-l>", smart_splits.resize_right, { silent = true, desc = "Resize split right (tmux/nvim)" })
--- <C-l> no longer clears search highlight, so use <Esc> instead
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true, desc = "Clear search highlight" })
+-- <C-l> is used for navigation, so <Esc> takes over the default <C-l> behavior
+-- (:help CTRL-L-default): clear search highlight, remove multicursors, update diffs, redraw.
+vim.keymap.set(
+    "n",
+    "<Esc>",
+    '<Cmd>nohlsearch<Bar>diffupdate'
+    .. '<Bar>call nvim_buf_clear_namespace(0, nvim_create_namespace("nvim.multicursor"), 0, -1)'
+    .. '<Bar>normal! <C-L><CR>',
+    { silent = true, desc = "Clear highlights, multicursors, update diffs, redraw (CTRL-L-default)" }
+)
 
 -- Yazi
 lazyload.on_vim_enter(function()
