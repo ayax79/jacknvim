@@ -31,6 +31,7 @@ vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },                -- Edit the filesystem like a buffer (rename, move, delete as text edits)
     { src = "https://github.com/refractalize/oil-git-status.nvim" }, -- Git status indicators for oil.nvim file listings
     { src = "https://github.com/mrjones2014/smart-splits.nvim" },     -- Seamless navigation between Neovim splits and tmux panes
+    { src = "https://github.com/smart-splits-nvim/backend-tmux" },   -- tmux backend for smart-splits.nvim v3
     { src = "https://github.com/mikavilpas/yazi.nvim" },             -- Integration with the Yazi terminal file manager
 
     -- Completion
