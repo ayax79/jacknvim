@@ -427,7 +427,7 @@ require('mini.surround').setup()
 
 -- Smart Splits (tmux/nvim pane navigation)
 local smart_splits = require("smart-splits")
-smart_splits.setup({ multiplexer_integration = "tmux" })
+smart_splits.setup({ mux = { backend = "smart-splits-backend-tmux" } })
 vim.keymap.set("n", "<C-h>", smart_splits.move_cursor_left, { silent = true, desc = "Navigate left (tmux/nvim)" })
 vim.keymap.set("n", "<C-j>", smart_splits.move_cursor_down, { silent = true, desc = "Navigate down (tmux/nvim)" })
 vim.keymap.set("n", "<C-k>", smart_splits.move_cursor_up, { silent = true, desc = "Navigate up (tmux/nvim)" })
@@ -436,6 +436,8 @@ vim.keymap.set("n", "<A-h>", smart_splits.resize_left, { silent = true, desc = "
 vim.keymap.set("n", "<A-j>", smart_splits.resize_down, { silent = true, desc = "Resize split down (tmux/nvim)" })
 vim.keymap.set("n", "<A-k>", smart_splits.resize_up, { silent = true, desc = "Resize split up (tmux/nvim)" })
 vim.keymap.set("n", "<A-l>", smart_splits.resize_right, { silent = true, desc = "Resize split right (tmux/nvim)" })
+-- <C-l> no longer clears search highlight, so use <Esc> instead
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true, desc = "Clear search highlight" })
 
 -- Yazi
 lazyload.on_vim_enter(function()

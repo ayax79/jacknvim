@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # vale
     # vscode-extensions.vadimcn.vscode-lldb.adapter # Currently broken on the mac
@@ -32,6 +36,10 @@
     vscode-extensions.vscjava.vscode-java-test
     yaml-language-server # YAML language server
     yq
+    tectonic # LaTeX rendering for snacks.image
+  ]
+  ++ lib.optionals pkgs.stdenv.isDarwin [
+    pngpaste # required by img-clip.nvim on macOS
   ];
 
   programs.neovim = {
@@ -42,6 +50,9 @@
     vimAlias = true;
     withRuby = false;
     withPython3 = true;
+    # Our init.lua comes from ./nvim, so load home-manager's generated init
+    # (python3_host_prog, etc.) via the wrapper instead of writing init.lua.
+    sideloadInitLua = true;
     extraLuaPackages = ps: [ps.magick];
     extraPackages = [pkgs.imagemagick];
     extraPython3Packages = ps:

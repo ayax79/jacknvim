@@ -313,6 +313,7 @@ nvim/
 | `<A-j>`   | n    | Resize down               |
 | `<A-k>`   | n    | Resize up                 |
 | `<A-l>`   | n    | Resize right              |
+| `<Esc>`   | n    | Clear search highlight    |
 
 ### Toggle Options (`<leader>u`)
 
