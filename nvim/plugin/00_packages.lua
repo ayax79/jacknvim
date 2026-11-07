@@ -94,5 +94,7 @@ vim.pack.add({
 
     { src = "https://github.com/benlubas/molten-nvim",                            version = vim.version.range("1.*") }, -- Molten: juypter notebook integration for Neovim with inline code execution and visualization:w
 
+    { src = "https://github.com/ColinKennedy/mega.logging" },  -- Logging library, required by avante.nvim >= 0.5
+    { src = "https://github.com/ColinKennedy/mega.cmdparse" }, -- Command parser, required by avante.nvim >= 0.5
     { src = "https://github.com/avante-corp/avante.nvim",                         version = vim.version.range("0.*") }, -- Avante: AI-powered code generation and assistance
 })
